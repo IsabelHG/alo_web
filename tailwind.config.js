@@ -65,6 +65,14 @@ module.exports = {
           '25%': {width: '0%'},
           '100%': {width: '0%'},
         },
+        marquee: {
+          '0%': {transform: 'translateX(0)'},
+          '100%': {transform: 'translateX(100%)'},
+        },
+        marquee2: {
+          '0%': {transform: 'translateX(-100%)'},
+          '100%': {transform: 'translateX(0)'},
+        }
       },
       animation: {
         fadeIn: 'fadeIn 2s ease-in-out both',
@@ -88,6 +96,8 @@ module.exports = {
         slideUpText: 'slideUpText 0.5s ease-in-out both',
         imageCarousel1: 'imageCarousel 7s ease-in both infinite',
         imageCarousel2: 'imageCarousel 7s ease-in 4s both infinite',
+        marquee: 'marquee 20s linear infinite',
+        marquee2: 'marquee2 20s linear infinite',
       }
     },
     fontFamily: {

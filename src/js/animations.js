@@ -1,24 +1,36 @@
 let isHorizontalScrollEnabled = true;
 
+let animation1 = document.getElementsByClassName("paused")[0]
+let animation2 = document.getElementsByClassName("paused")[1]
 window.addEventListener('scroll', function () {
-  let animation = document.querySelectorAll(".paused");
+  let position1 = animation1.getBoundingClientRect();
+  let position2 = animation2.getBoundingClientRect();
   let screenWidth = window.innerWidth;
 
-  animation.forEach(elm => {
-    let position = elm.getBoundingClientRect().right;
-    let isVisible = position < screenWidth && position > screenWidth - elm.offsetWidth;
-    if (isVisible) {
-      elm.classList.add("overflow-y-auto")
-      isHorizontalScrollEnabled = false;
-    } else {
+  if (position1.left <= 50 && position1.right >= screenWidth) {
+    animation1.classList.add("overflow-y-auto")
+    console.log("entra 1")
+    isHorizontalScrollEnabled = false;
+  } else {
+    if (this.scrollX < 4500) {
       isHorizontalScrollEnabled = true;
     }
-  });
+  }
+
+  if (position2.left <= 40 && position2.right >= screenWidth) {
+    animation2.classList.add("overflow-y-auto")
+    console.log("entra 2")
+    isHorizontalScrollEnabled = false;
+  } else {
+    if (this.scrollX > 4500) {
+
+      isHorizontalScrollEnabled = true;
+    }
+  }
 });
 
 const enableScrollButton = document.getElementById("enableScrollButton");
 enableScrollButton.addEventListener("click", function () {
-
   isHorizontalScrollEnabled = true;
 });
 
@@ -28,7 +40,19 @@ enableScrollButton.addEventListener("click", function () {
   targetDiv.scrollIntoView({ behavior: "smooth" });
 });
 
+const enableScrollButton2 = document.getElementById("enableScrollButton2");
 
+const targetDiv2 = document.getElementById("targetDiv2");
+enableScrollButton2.addEventListener("click", function () {
+  isHorizontalScrollEnabled = true;
+  targetDiv2.scrollIntoView({ behavior: "smooth" });
+});
+
+const wedoDiv = document.getElementById("wedoDiv");
+function scrollHome() {
+  isHorizontalScrollEnabled = true;
+  wedoDiv.scrollIntoView({ behavior: "smooth" });
+}
 
 function scrollHorizontally(e) {
   if (!isHorizontalScrollEnabled) {
@@ -62,8 +86,11 @@ function cambiarDireccion() {
   } else {
     marquee.setAttribute('direction', 'up'); // Cambia la dirección a 'left' para pantallas grandes
   }
-
-  console.log(marquee.getAttribute('direction'));
 }
-window.addEventListener('resize', cambiarDireccion); // Llama a la función cuando cambia el tamaño de la ventana
+
 cambiarDireccion(); // Llama a la función al cargar la página para establecer la dirección inicial
+
+window.addEventListener('resize', function () {
+  cambiarDireccion();
+}); // Llama a la función cuando cambia el tamaño de la ventana
+
