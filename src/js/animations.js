@@ -1,70 +1,37 @@
-let isHorizontalScrollEnabled = true;
-
-let animation1 = document.getElementsByClassName("paused")[0]
-let animation2 = document.getElementsByClassName("paused")[1]
-window.addEventListener('scroll', function () {
-  let position1 = animation1.getBoundingClientRect();
-  let position2 = animation2.getBoundingClientRect();
-  let screenWidth = window.innerWidth;
-
-  if (position1.left <= 50 && position1.right >= screenWidth) {
-    animation1.classList.add("overflow-y-auto")
-    console.log("entra 1")
-    isHorizontalScrollEnabled = false;
-  } else {
-    if (this.scrollX < 4500) {
-      isHorizontalScrollEnabled = true;
-    }
-  }
-
-  if (position2.left <= 40 && position2.right >= screenWidth) {
-    animation2.classList.add("overflow-y-auto")
-    console.log("entra 2")
-    isHorizontalScrollEnabled = false;
-  } else {
-    if (this.scrollX > 4500) {
-
-      isHorizontalScrollEnabled = true;
-    }
-  }
-});
-
-const enableScrollButton = document.getElementById("enableScrollButton");
-enableScrollButton.addEventListener("click", function () {
-  isHorizontalScrollEnabled = true;
-});
-
-const targetDiv = document.getElementById("targetDiv");
-
-enableScrollButton.addEventListener("click", function () {
-  targetDiv.scrollIntoView({ behavior: "smooth" });
-});
-
-const enableScrollButton2 = document.getElementById("enableScrollButton2");
-
-const targetDiv2 = document.getElementById("targetDiv2");
-enableScrollButton2.addEventListener("click", function () {
-  isHorizontalScrollEnabled = true;
-  targetDiv2.scrollIntoView({ behavior: "smooth" });
-});
-
-const wedoDiv = document.getElementById("wedoDiv");
-function scrollHome() {
-  isHorizontalScrollEnabled = true;
-  wedoDiv.scrollIntoView({ behavior: "smooth" });
-}
-
+let isAnimating = false;
 function scrollHorizontally(e) {
   if (!isHorizontalScrollEnabled) {
     e.preventDefault();
     return;
   }
+
+  // Detener cualquier animación anterior en curso
+  if (isAnimating) return;
+  isAnimating = true;
+
   e = window.event || e;
-  var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-  var scrollSpeed = 60;
-  document.documentElement.scrollLeft -= (delta * scrollSpeed);
-  document.body.scrollLeft -= (delta * scrollSpeed);
-  e.preventDefault();
+  const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+  const scrollSpeed = 60;
+  const scrollAmount = -delta * scrollSpeed;
+  const scrollStep = 30; // Tamaño del paso para el desplazamiento (puedes ajustarlo según tus preferencias)
+
+  // Función para animar el desplazamiento
+  function animateScroll(totalSteps) {
+    if (totalSteps <= 0) {
+      isAnimating = false;
+      return;
+    }
+
+    const step = Math.min(scrollStep, totalSteps);
+    document.documentElement.scrollLeft += (scrollAmount * step / scrollSpeed);
+    document.body.scrollLeft += (scrollAmount * step / scrollSpeed);
+
+    // Utiliza requestAnimationFrame para una animación más fluida
+    requestAnimationFrame(() => animateScroll(totalSteps - step));
+  }
+
+  // Comenzar la animación del scroll
+  animateScroll(Math.abs(scrollAmount));
 }
 
 if (window.addEventListener) {
@@ -79,18 +46,81 @@ if (window.addEventListener) {
   }
 }
 
-function cambiarDireccion() {
-  var marquee = document.getElementById('myMarquee');
-  if (window.outerWidth < 1024) {
-    marquee.setAttribute('direction', 'left'); // Cambia la dirección a 'up' para pantallas pequeñas
-  } else {
-    marquee.setAttribute('direction', 'up'); // Cambia la dirección a 'left' para pantallas grandes
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+const body = document.querySelector("body");
+const mainContainer = body.querySelector(".main-container");
+let proxy = { skew: 0 },
+  skewSetter = gsap.quickSetter(".box1", "skewY", "deg"), // fast
+  clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
+
+let scrollTween = gsap.to(".main-container", {
+  xPercent: -100,
+  x: () => window.innerWidth,
+  ease: "none", // <-- IMPORTANT!
+  scrollTrigger: {
+    pin: "body",
+    trigger: "body",
+    start: "left left",
+    end: () => `+=${mainContainer.offsetWidth} bottom`,
+    scrub: 1,
+    onUpdate: self => {
+      let skew = clamp(self.getVelocity() / -300);
+
+      if (Math.abs(skew) > Math.abs(proxy.skew)) {
+        proxy.skew = skew;
+        gsap.to(proxy, {
+          skew: 0,
+          duration: 0.8,
+          ease: "power3.easeInOut",
+          overwrite: true, onUpdate: () => skewSetter(proxy.skew)
+        });
+      }
+    }
   }
-}
+});
 
-cambiarDireccion(); // Llama a la función al cargar la página para establecer la dirección inicial
+// Obtener todos los elementos con la clase "scroll-trigger"
+const scrollTriggers = document.querySelectorAll(".scroll-trigger");
 
-window.addEventListener('resize', function () {
-  cambiarDireccion();
-}); // Llama a la función cuando cambia el tamaño de la ventana
+// Agregar un evento de clic a cada elemento "span"
+scrollTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    // Obtener el ID del div al que se debe desplazar
+    const targetID = trigger.dataset.target;
 
+    // Obtener la posición del div objetivo horizontalmente
+    const targetPosition = mainContainer.querySelector(`#${targetID}`).offsetLeft;
+
+    // Realizar la animación de desplazamiento suave usando ScrollToPlugin
+    gsap.to(window, {
+      scrollTo: targetPosition, // Cambia "100" por la distancia que desees entre el borde superior del div y la parte superior de la ventana
+      duration: 1, // Duración de la animación en segundos
+      ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
+    });
+  });
+});
+
+
+const wedoDiv = mainContainer.querySelector("#wedo");
+const scrollDivs = document.querySelectorAll(".scroll-div");
+
+// Agregar un evento de clic a cada elemento "span"
+scrollDivs.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    // Obtener el ID del div al que se debe desplazar
+    const targetID = trigger.dataset.target;
+
+    console.log(targetID);
+    // Obtener la posición del div objetivo horizontalmente
+    const targetPosition = document.querySelector(`#${targetID}`).offsetLeft;
+
+    console.log(targetPosition)
+    // Realizar la animación de desplazamiento suave usando ScrollToPlugin
+    gsap.to(window, {
+      scrollTo: targetPosition, // Cambia "100" por la distancia que desees entre el borde superior del div y la parte superior de la ventana
+      duration: 1, // Duración de la animación en segundos
+      ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
+    });
+  });
+});

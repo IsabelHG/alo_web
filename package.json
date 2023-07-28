@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "type": "module",
     "dev": "postcss src/css/main.css -o src/css/style.css --watch --verbose"
   },
   "devDependencies": {
