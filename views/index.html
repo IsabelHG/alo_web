@@ -48,6 +48,39 @@
     text-align: center;
   }
 
+  .img {
+    width: 100%;
+    /* Ancho de la mitad para que ambas imágenes quepan en el contenedor */
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fade-effect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(to left, transparent, white);
+    /* Gradiente para crear el efecto de desvanecimiento */
+    animation: slideImages 8s alternate infinite;
+  }
+
+  @keyframes slideImages {
+    0%, 45% {
+      /* mostrar la mitad derecha de la imagen */
+      clip-path: inset(0 100% 0 0);
+ 
+      /* Inicia el desvanecimiento desde la parte derecha */
+    }
+
+    55%, 100% {
+      clip-path: inset(0 0 0 0);
+      /* Desaparece completamente hacia la izquierda */
+    }
+  }
+
   @keyframes carouselAnimation {
 
     0%,
@@ -159,7 +192,8 @@
 
 <body class="font-grotesk lg:overflow-hidden scroll-smooth">
 
-  <div class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed left-0 z-[999] animate-disappear">
+  <div
+    class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed left-0 z-[999] animate-disappear">
     <div class="p-4">
       <div>
         <img class="animate-fadeIn w-1/2 md:w-1/3 lg:w-[80%]" src="../src/img/alo.svg" alt="">
@@ -207,8 +241,7 @@
         <div
           class="flex justify-end absolute w-full top-0 right-0 md:max-w-[50%] lg:static lg:h-[93vh] lg:flex-col-reverse lg:left-0 lg:items-end lg:w-[20vw] lg:min-w-[280px]">
           <div class="w-4/12 md:w-5/12 lg:w-full flex justify-end animate-sideScale lg:animate-sideScalePc">
-            <img
-              class="pr-2 h-20 md:h-36 bg-aloOrange lg:animate-orangeLine object-cover object-right"
+            <img class="pr-2 h-20 md:h-36 bg-aloOrange lg:animate-orangeLine object-cover object-right"
               src="../src/img/02_Home.jpg" alt="">
           </div>
           <div
@@ -304,11 +337,9 @@
         </div>
       </div>
       <div class="px-4 text-black md:flex md:px-6 md:pb-12 lg:pt-6">
-        <div class="w-full h-[400px] lg:h-[calc(100vh-6rem)] lg:w-[35vw] overflow-x-hidden relative md:w-1/2">
-          <img class="w-full h-auto lg:h-full object-left object-cover absolute image1 z-10 origin-center"
-            src="../src/img/03_Weare_Andrea.jpg" alt="">
-          <img class="w-full h-auto lg:h-full object-cover absolute image2 opacity-0 left-full origin-left"
-            src="../src/img/02_Weare_Andrea.jpg" alt="">
+        <div class="w-full h-[400px] lg:h-[calc(100vh-6rem)] lg:w-[35vw] overflow-hidden relative md:w-1/2">
+          <img class="fade-effect w-full h-auto lg:h-full object-cover absolute" src="../src/img/03_Weare_Andrea.jpg" alt="">
+          <img class="w-full h-auto lg:h-full object-cover absolute img" src="../src/img/02_Weare_Andrea.jpg" alt="">
         </div>
         <div class="md:w-1/2 md:ps-6 lg:w-[70vw] lg:pl-[4vw] lg:pr-[41vw]">
           <div class="overflow-hidden pt-4 uppercase text-xs lg:pt-0 lg:text-sm">
@@ -1029,14 +1060,19 @@
     </div>
   </div>
 
-  <div id="responsiveNav" class="bg-aloGray text-white w-screen h-[95vh] fixed top-[-100vh] left-0 z-[997] lg:hidden overflow-hidden">
+  <div id="responsiveNav"
+    class="bg-aloGray text-white w-screen h-[95vh] fixed top-[-100vh] left-0 z-[997] lg:hidden overflow-hidden">
     <div class="flex flex-col justify-between p-4 h-full">
       <div class="text-sm">
-        <a onclick="showHideNav()" href="#weare"  class="border-aloGray border-r p-2 cursor-pointer scroll-trigger" data-target="weare">WE ARE</a><br>
-        <a onclick="showHideNav()" href="#wedo"  class="border-aloGray border-r p-2 cursor-pointer scroll-trigger" data-target="wedo">WE
+        <a onclick="showHideNav()" href="#weare" class="border-aloGray border-r p-2 cursor-pointer scroll-trigger"
+          data-target="weare">WE ARE</a><br>
+        <a onclick="showHideNav()" href="#wedo" class="border-aloGray border-r p-2 cursor-pointer scroll-trigger"
+          data-target="wedo">WE
           DO</a><br>
-        <a onclick="showHideNav()" href="#ourpassions" class="border-aloGray border-r p-2 cursor-pointer scroll-trigger" data-target="ourpassions">OUR PASSIONS</a><br>
-        <a onclick="showHideNav()" href="#weconnect"  class="p-2 cursor-pointer" data-target="weconnect scroll-trigger">WE CONNECT</a>
+        <a onclick="showHideNav()" href="#ourpassions" class="border-aloGray border-r p-2 cursor-pointer scroll-trigger"
+          data-target="ourpassions">OUR PASSIONS</a><br>
+        <a onclick="showHideNav()" href="#weconnect" class="p-2 cursor-pointer"
+          data-target="weconnect scroll-trigger">WE CONNECT</a>
       </div>
       <div class="text-xs h-fit">
         <a href="#about" class="float-right px-2">

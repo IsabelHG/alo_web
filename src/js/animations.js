@@ -137,19 +137,31 @@ scrollDivs.forEach((trigger) => {
   });
 });
 
-// Seleccionar las imágenes
-const image1 = document.querySelector('.image1');
-const image2 = document.querySelector('.image2');
+/* // Seleccionar las imágenes del carrusel
+const images = document.querySelectorAll('.image');
 
-// Crear la animación infinita
+// Función para animar las imágenes en el carrusel
 function animateImages() {
-  gsap.timeline({ repeat: -1 })
-    .to(image1, { duration: 1, scaleX: 0, xPercent: 100, ease: "power2.inOut" }) // Escalamos y desplazamos la imagen 1 hacia la derecha
-    .to(image2, { duration: 2, opacity: 1 }) // Mostramos la imagen 2
-    .to(image1, { duration: 0, scaleX: 1 }) // Reiniciamos el escalado de la imagen 1
-    .to(image1, { duration: 0, opacity: 0 }) // Ocultamos la imagen 1
-    .to(image2, { duration: 1, scaleX: 1, xPercent: 0, ease: "power2.inOut" }); // Escalamos y desplazamos la imagen 2 hacia la izquierda para mostrarla completamente
+  gsap.to(images, {
+    duration: 2, // Ajusta la duración según tus preferencias
+    xPercent: -100, // Desplazar hacia la izquierda
+    ease: "power2.inOut",
+    stagger: {
+      each: 2, // Ajusta el tiempo entre las animaciones de cada imagen
+      repeat: -1, // Repetir infinitamente
+      repeatDelay: 0, // Sin retraso entre repeticiones
+      onStart: function (index) {
+        // Al comenzar cada animación, cambiamos el orden de las imágenes
+        const nextIndex = (index + 1) % images.length;
+        images[nextIndex].style.zIndex = 1;
+      },
+      onComplete: function (index) {
+        // Al completar cada animación, restablecemos el orden de las imágenes
+        images[index].style.zIndex = '';
+      },
+    }
+  });
 }
 
 // Iniciar la animación
-animateImages();
+animateImages(); */
