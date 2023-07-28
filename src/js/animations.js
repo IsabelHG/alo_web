@@ -1,3 +1,15 @@
+function showHideNav() {
+  console.log("Hola");
+  let responsiveNav = document.getElementById("responsiveNav");
+  console.log(responsiveNav.style.top);
+  let topProperty = responsiveNav.style.top;
+  if(topProperty == "-100vh"){
+    responsiveNav.style.top = "0";
+  }else{
+    responsiveNav.style.top = "-100vh";
+  }
+}
+
 let isAnimating = false;
 function scrollHorizontally(e) {
   if (!isHorizontalScrollEnabled) {
