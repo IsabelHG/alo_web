@@ -124,3 +124,20 @@ scrollDivs.forEach((trigger) => {
     });
   });
 });
+
+// Seleccionar las imágenes
+const image1 = document.querySelector('.image1');
+const image2 = document.querySelector('.image2');
+
+// Crear la animación infinita
+function animateImages() {
+  gsap.timeline({ repeat: -1 })
+    .to(image1, { duration: 1, scaleX: 0, xPercent: 100, ease: "power2.inOut" }) // Escalamos y desplazamos la imagen 1 hacia la derecha
+    .to(image2, { duration: 2, opacity: 1 }) // Mostramos la imagen 2
+    .to(image1, { duration: 0, scaleX: 1 }) // Reiniciamos el escalado de la imagen 1
+    .to(image1, { duration: 0, opacity: 0 }) // Ocultamos la imagen 1
+    .to(image2, { duration: 1, scaleX: 1, xPercent: 0, ease: "power2.inOut" }); // Escalamos y desplazamos la imagen 2 hacia la izquierda para mostrarla completamente
+}
+
+// Iniciar la animación
+animateImages();
