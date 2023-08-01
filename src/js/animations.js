@@ -3,9 +3,9 @@ function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
   console.log(responsiveNav.style.top);
   let topProperty = responsiveNav.style.top;
-  if(topProperty == "-100vh"){
+  if (topProperty == "-100vh") {
     responsiveNav.style.top = "0";
-  }else{
+  } else {
     responsiveNav.style.top = "-100vh";
   }
 }
@@ -63,7 +63,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const body = document.querySelector("body");
 const mainContainer = body.querySelector(".main-container");
 let proxy = { skew: 0 },
-  skewSetter = gsap.quickSetter(".box1", "skewY", "deg"), // fast
+  skewSetter = gsap.quickSetter(".box1", "skewX", "deg"), // fast
   clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
 
 let scrollTween = gsap.to(".main-container", {
@@ -85,12 +85,84 @@ let scrollTween = gsap.to(".main-container", {
           skew: 0,
           duration: 0.8,
           ease: "power3.easeInOut",
-          overwrite: true, onUpdate: () => skewSetter(proxy.skew)
+          overwrite: true,
+          onUpdate: () => skewSetter(proxy.skew)
         });
+      }
+      const stopScrollHere = document.getElementById("prueba");
+      const rect = stopScrollHere.getBoundingClientRect();
+      const isVisible = rect.left >= 0 && rect.left < 10;
+
+      if (isVisible) {
+        stopScrollHere.classList.add("overflow-y-auto")
+      }
+
+      const prueba2 = document.getElementById("prueba2");
+      const rect2 = prueba2.getBoundingClientRect();
+      const isVisible2 = rect2.left >= 0 && rect2.left < 10;
+
+      if (isVisible2) {
+        prueba2.classList.add("overflow-y-auto")
+      }
+
+      const prueba3 = document.getElementById("prueba3");
+      const rect3 = prueba3.getBoundingClientRect();
+      const isVisible3 = rect3.left >= 0 && rect3.left < 10;
+
+      if (isVisible3) {
+        prueba3.classList.add("overflow-y-auto")
+      }
+
+      const divWedo = document.getElementById("footer-nav");
+      console.log(self.progress)
+      if (self.progress < 0.134) {
+        divWedo.classList.add("bg-aloWhite")
+      } else {
+        divWedo.classList.remove("bg-aloWhite")
+      }
+      if (self.progress < 0.30 && self.progress >= 0.134) {
+        divWedo.classList.add("bg-aloBrown")
+      } else {
+        divWedo.classList.remove("bg-aloBrown")
+      }
+      if (self.progress >= 0.30 && self.progress < 0.835) {
+        divWedo.classList.add("bg-aloGreen")
+      } else {
+        divWedo.classList.remove("bg-aloGreen")
+      }
+      if (self.progress >= 0.835 && self.progress < 0.9228) {
+        divWedo.classList.add("bg-white")
+      } else {
+        divWedo.classList.remove("bg-white")
+      }
+      if (self.progress >= 0.9228) {
+        divWedo.classList.add("bg-aloGray")
+        divWedo.classList.add("text-white")
+      } else {
+        divWedo.classList.remove("bg-aloGray")
+        divWedo.classList.remove("text-white")
       }
     }
   }
 });
+
+const scrollDivs = document.querySelectorAll(".scroll-div");
+scrollDivs.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    stopScrollHere.classList.remove("overflow-y-auto")
+    const targetID = trigger.dataset.target;
+    const targetPosition = mainContainer.querySelector(`#${targetID}`).offsetLeft;
+    gsap.to(window, {
+      scrollTo: targetPosition,
+      duration: 1,
+      ease: "power2.inOut",
+    })
+  });
+});
+
+
+
+/* scrollTween.scrollTrigger.disable(); */
 
 // Obtener todos los elementos con la clase "scroll-trigger"
 const scrollTriggers = document.querySelectorAll(".scroll-trigger");
@@ -112,56 +184,3 @@ scrollTriggers.forEach((trigger) => {
     });
   });
 });
-
-
-const wedoDiv = mainContainer.querySelector("#wedo");
-const scrollDivs = document.querySelectorAll(".scroll-div");
-
-// Agregar un evento de clic a cada elemento "span"
-scrollDivs.forEach((trigger) => {
-  trigger.addEventListener("click", () => {
-    // Obtener el ID del div al que se debe desplazar
-    const targetID = trigger.dataset.target;
-
-    console.log(targetID);
-    // Obtener la posición del div objetivo horizontalmente
-    const targetPosition = document.querySelector(`#${targetID}`).offsetLeft;
-
-    console.log(targetPosition)
-    // Realizar la animación de desplazamiento suave usando ScrollToPlugin
-    gsap.to(window, {
-      scrollTo: targetPosition, // Cambia "100" por la distancia que desees entre el borde superior del div y la parte superior de la ventana
-      duration: 1, // Duración de la animación en segundos
-      ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
-    });
-  });
-});
-
-/* // Seleccionar las imágenes del carrusel
-const images = document.querySelectorAll('.image');
-
-// Función para animar las imágenes en el carrusel
-function animateImages() {
-  gsap.to(images, {
-    duration: 2, // Ajusta la duración según tus preferencias
-    xPercent: -100, // Desplazar hacia la izquierda
-    ease: "power2.inOut",
-    stagger: {
-      each: 2, // Ajusta el tiempo entre las animaciones de cada imagen
-      repeat: -1, // Repetir infinitamente
-      repeatDelay: 0, // Sin retraso entre repeticiones
-      onStart: function (index) {
-        // Al comenzar cada animación, cambiamos el orden de las imágenes
-        const nextIndex = (index + 1) % images.length;
-        images[nextIndex].style.zIndex = 1;
-      },
-      onComplete: function (index) {
-        // Al completar cada animación, restablecemos el orden de las imágenes
-        images[index].style.zIndex = '';
-      },
-    }
-  });
-}
-
-// Iniciar la animación
-animateImages(); */
