@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- CSS Local Styles -->
   <link rel="stylesheet" href="../src/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
@@ -24,18 +24,8 @@
   }
 
   .carousel {
-    position: relative;
-    width: 700px;
-    height: 96px;
-    /* Altura ajustada para adaptarse al tamaño de fuente */
     overflow: hidden;
     color: #fff;
-  }
-
-  .carousel-inner {
-    position: absolute;
-    width: 100%;
-    animation: carouselAnimation 40s ease-in-out infinite;
   }
 
   .word {
@@ -45,7 +35,6 @@
     /* Altura ajustada para adaptarse al tamaño de fuente */
     height: 96px;
     /* Altura ajustada para adaptarse al tamaño de fuente */
-    text-align: center;
   }
 
   .img {
@@ -68,129 +57,26 @@
   }
 
   @keyframes slideImages {
-    0%, 45% {
+
+    0%,
+    45% {
       /* mostrar la mitad derecha de la imagen */
       clip-path: inset(0 100% 0 0);
- 
+
       /* Inicia el desvanecimiento desde la parte derecha */
     }
 
-    55%, 100% {
+    55%,
+    100% {
       clip-path: inset(0 0 0 0);
       /* Desaparece completamente hacia la izquierda */
     }
   }
 
-  @keyframes carouselAnimation {
-
-    0%,
-    4% {
-      transform: translateY(0);
-    }
-
-    5%,
-    9% {
-      transform: translateY(-100px);
-    }
-
-    10%,
-    14% {
-      transform: translateY(-195px);
-    }
-
-    15%,
-    19% {
-      transform: translateY(-295px);
-    }
-
-    20%,
-    24% {
-      transform: translateY(-390px);
-    }
-
-    25%,
-    29% {
-      transform: translateY(-490px);
-    }
-
-    30%,
-    34% {
-      transform: translateY(-585px);
-    }
-
-    35%,
-    39% {
-      transform: translateY(-680px);
-    }
-
-    40%,
-    44% {
-      transform: translateY(-780px);
-    }
-
-    45%,
-    49% {
-      transform: translateY(-875px);
-    }
-
-    50%,
-    54% {
-      transform: translateY(-970px);
-    }
-
-    55%,
-    59% {
-      transform: translateY(-1065px);
-    }
-
-    60%,
-    64% {
-      transform: translateY(-1160px);
-    }
-
-    65%,
-    69% {
-      transform: translateY(-1253px);
-    }
-
-    70%,
-    74% {
-      transform: translateY(-1375px);
-    }
-
-    75%,
-    79% {
-      transform: translateY(-1475px);
-    }
-
-    80%,
-    84% {
-      transform: translateY(-1568px);
-    }
-
-    85%,
-    89% {
-      transform: translateY(-1680px);
-    }
-
-    90%,
-    94% {
-      transform: translateY(-1778px);
-    }
-
-    95%,
-    99% {
-      transform: translateY(-1855px);
-    }
-
-    100% {
-      transform: translateY(-1970px);
-    }
-
-  }
+  
 </style>
 
-<body class="font-grotesk lg:overflow-hidden scroll-smooth">
+<body class="font-grotesk lg:overflow-hidden">
 
   <div
     class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed left-0 z-[999] animate-disappear">
@@ -233,8 +119,11 @@
     </div>
   </div>
 
-  <div class="flex flex-col lg:flex-row w-screen lg:w-fit lg:overflow-y-hidden main-container">
 
+  <div class="flex flex-col lg:flex-row w-screen lg:w-fit lg:overflow-y-hidden main-container relative">
+
+
+  <div class="flex flex-col lg:flex-row w-screen lg:w-fit lg:overflow-y-hidden main-container relative">
 
     <div id="home" class="bg-aloWhite w-[100vw] h-screen lg:w-[165vw] lg:h-[93vh] relative">
       <div class="lg:flex lg:items-end">
@@ -448,7 +337,8 @@
 
       </div>
       <div
-        class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20" id="prueba" style="padding: 0;">
+        class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20"
+        id="prueba" style="padding: 0;">
         <div class="lg:h-[calc(100vh-6rem)] overflow-x-hidden flex flex-col justify-between lg:pl-[5vw] pl-5 lg:fixed">
           <h1 class="text-5xl pt-[70px] lg:w-96">How have we
             achieved this?</h1>
@@ -966,14 +856,14 @@
           <!-- <div class="text-2xl md:text-4xl lg:text-8xl">
             <p>& You</p>
           </div> -->
-          <div class="carousel h-24 flex text-2xl md:text-4xl lg:text-8xl">
-            <pre>&</pre>
-            <div class="carousel-inner ">
+          <div class="carousel h-16 flex text-2xl md:text-4xl lg:text-8xl lg:h-48 relative w-screen lg:w-screen">
+            <pre class="z-10">&</pre>
+            <div class="lg:animate-carouselAnimationLg animate-carouselAnimationSm absolute pl-5 lg:pl-16 lg:flex lg:flex-col lg:gap-28">
               <span class="word">Lavazza</span>
               <span class="word">Microsoft</span>
               <span class="word">CEA</span>
               <span class="word">Migrante</span>
-              <span class="word lg:text-5xl pt-10">Heritage Collective</span>
+              <span class="word">Heritage Collective</span>
               <span class="word">Portobello</span>
               <span class="word">Colombia</span>
               <span class="word">Italia</span>
@@ -982,8 +872,8 @@
               <span class="word">Agrofuturo</span>
               <span class="word">Corferias</span>
               <span class="word">AgriLink</span>
-              <span class="word pt-3">CCC</span>
-              <span class="word lg:text-4xl pt-16">Cámara de Comercio de Medellín</span>
+              <span class="word pt-3 lg:pt-0">CCC</span>
+              <span class="word">Cámara de Comercio de Medellín</span>
               <span class="word pt-10">Makaia</span>
               <span class="word pt-10">Áttimo</span>
               <span class="word pt-10">TEDx</span>
@@ -1004,7 +894,7 @@
   </div>
 
   <div
-    class="overflow-hidden fixed bottom-0 w-screen h-[7vh] border-t border-aloGray flex justify-between items-center px-2 z-40" id="footer-nav">
+    class="overflow-hidden fixed bottom-0 w-screen h-[7vh] border-t border-aloGray flex justify-between items-center px-2 z-40 bg-aloWhite" id="footer-nav">
     <ul class="text-xs h-fit">
       <span class="float-left px-2 cursor-pointer scroll-trigger" data-target="home">
         <svg class="h-[3vh]" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1060,7 +950,7 @@
   </div>
 
   <div id="responsiveNav"
-    class="bg-aloGray text-white w-screen h-[95vh] fixed top-[-100vh] left-0 z-[997] lg:hidden overflow-hidden">
+    class="bg-aloGray text-white w-screen h-[93vh] fixed top-0 hidden right-0 left-0 z-30 lg:hidden overflow-hidden">
     <div class="flex flex-col justify-between p-4 h-full">
       <div class="text-sm">
         <a onclick="showHideNav()" href="#weare" class="border-aloGray border-r p-2 cursor-pointer scroll-trigger"
