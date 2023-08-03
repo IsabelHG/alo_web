@@ -1,12 +1,10 @@
 function showHideNav() {
-  console.log("Hola");
   let responsiveNav = document.getElementById("responsiveNav");
-  console.log(responsiveNav.style.top);
-  let topProperty = responsiveNav.style.top;
-  if (topProperty == "-100vh") {
-    responsiveNav.style.top = "0";
+  const hiddenNav = responsiveNav.classList.contains("hidden")
+  if (hiddenNav) {
+    responsiveNav.classList.remove("hidden");
   } else {
-    responsiveNav.style.top = "-100vh";
+    responsiveNav.classList.add("hidden");
   }
 }
 
@@ -60,91 +58,6 @@ if (window.addEventListener) {
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-const body = document.querySelector("body");
-const mainContainer = body.querySelector(".main-container");
-let proxy = { skew: 0 },
-  skewSetter = gsap.quickSetter(".box1", "skewX", "deg"), // fast
-  clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
-
-let scrollTween = gsap.to(".main-container", {
-  xPercent: -100,
-  x: () => window.innerWidth,
-  ease: "none", // <-- IMPORTANT!
-  scrollTrigger: {
-    pin: "body",
-    trigger: "body",
-    start: "left left",
-    end: () => `+=${mainContainer.offsetWidth} bottom`,
-    scrub: 1,
-    onUpdate: self => {
-      let skew = clamp(self.getVelocity() / -300);
-
-      if (Math.abs(skew) > Math.abs(proxy.skew)) {
-        proxy.skew = skew;
-        gsap.to(proxy, {
-          skew: 0,
-          duration: 0.8,
-          ease: "power3.easeInOut",
-          overwrite: true,
-          onUpdate: () => skewSetter(proxy.skew)
-        });
-      }
-      const stopScrollHere = document.getElementById("prueba");
-      const rect = stopScrollHere.getBoundingClientRect();
-      const isVisible = rect.left >= 0 && rect.left < 10;
-
-      if (isVisible) {
-        stopScrollHere.classList.add("overflow-y-auto")
-      }
-
-      const prueba2 = document.getElementById("prueba2");
-      const rect2 = prueba2.getBoundingClientRect();
-      const isVisible2 = rect2.left >= 0 && rect2.left < 10;
-
-      if (isVisible2) {
-        prueba2.classList.add("overflow-y-auto")
-      }
-
-      const prueba3 = document.getElementById("prueba3");
-      const rect3 = prueba3.getBoundingClientRect();
-      const isVisible3 = rect3.left >= 0 && rect3.left < 10;
-
-      if (isVisible3) {
-        prueba3.classList.add("overflow-y-auto")
-      }
-
-      const divWedo = document.getElementById("footer-nav");
-      console.log(self.progress)
-      if (self.progress < 0.134) {
-        divWedo.classList.add("bg-aloWhite")
-      } else {
-        divWedo.classList.remove("bg-aloWhite")
-      }
-      if (self.progress < 0.30 && self.progress >= 0.134) {
-        divWedo.classList.add("bg-aloBrown")
-      } else {
-        divWedo.classList.remove("bg-aloBrown")
-      }
-      if (self.progress >= 0.30 && self.progress < 0.835) {
-        divWedo.classList.add("bg-aloGreen")
-      } else {
-        divWedo.classList.remove("bg-aloGreen")
-      }
-      if (self.progress >= 0.835 && self.progress < 0.9228) {
-        divWedo.classList.add("bg-white")
-      } else {
-        divWedo.classList.remove("bg-white")
-      }
-      if (self.progress >= 0.9228) {
-        divWedo.classList.add("bg-aloGray")
-        divWedo.classList.add("text-white")
-      } else {
-        divWedo.classList.remove("bg-aloGray")
-        divWedo.classList.remove("text-white")
-      }
-    }
-  }
-});
 
 const scrollDivs = document.querySelectorAll(".scroll-div");
 scrollDivs.forEach((trigger) => {
@@ -160,9 +73,92 @@ scrollDivs.forEach((trigger) => {
   });
 });
 
+  const body = document.querySelector("body");
+  const mainContainer = body.querySelector(".main-container");
+  let proxy = { skew: 0 },
+    skewSetter = gsap.quickSetter(".box1", "skewX", "deg"), // fast
+    clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
 
+  let scrollTween = gsap.to(".main-container", {
+    xPercent: -100,
+    x: () => window.innerWidth,
+    ease: "none", // <-- IMPORTANT!
+    scrollTrigger: {
+      pin: "body",
+      trigger: "body",
+      start: "left left",
+      end: () => `+=${mainContainer.offsetWidth} bottom`,
+      scrub: 1,
+      onUpdate: self => {
+        let skew = clamp(self.getVelocity() / -300);
 
-/* scrollTween.scrollTrigger.disable(); */
+        if (Math.abs(skew) > Math.abs(proxy.skew)) {
+          proxy.skew = skew;
+          gsap.to(proxy, {
+            skew: 0,
+            duration: 0.8,
+            ease: "power3.easeInOut",
+            overwrite: true,
+            onUpdate: () => skewSetter(proxy.skew)
+          });
+        }
+        const stopScrollHere = document.getElementById("prueba");
+        const rect = stopScrollHere.getBoundingClientRect();
+        const isVisible = rect.left >= 0 && rect.left < 10;
+
+        if (isVisible) {
+          stopScrollHere.classList.add("overflow-y-auto")
+        }
+
+        const prueba2 = document.getElementById("prueba2");
+        const rect2 = prueba2.getBoundingClientRect();
+        const isVisible2 = rect2.left >= 0 && rect2.left < 10;
+
+        if (isVisible2) {
+          prueba2.classList.add("overflow-y-auto")
+        }
+
+        const prueba3 = document.getElementById("prueba3");
+        const rect3 = prueba3.getBoundingClientRect();
+        const isVisible3 = rect3.left >= 0 && rect3.left < 10;
+
+        if (isVisible3) {
+          prueba3.classList.add("overflow-y-auto")
+        }
+
+        if (window.innerWidth > 1023) {
+        const divWedo = document.getElementById("footer-nav");
+        if (self.progress < 0.134) {
+          divWedo.classList.add("bg-aloWhite")
+        } else {
+          divWedo.classList.remove("bg-aloWhite")
+        }
+        if (self.progress < 0.30 && self.progress >= 0.134) {
+          divWedo.classList.add("bg-aloBrown")
+        } else {
+          divWedo.classList.remove("bg-aloBrown")
+        }
+        if (self.progress >= 0.30 && self.progress < 0.835) {
+          divWedo.classList.add("bg-aloGreen")
+        } else {
+          divWedo.classList.remove("bg-aloGreen")
+        }
+        if (self.progress >= 0.835 && self.progress < 0.9228) {
+          divWedo.classList.add("bg-white")
+        } else {
+          divWedo.classList.remove("bg-white")
+        }
+        if (self.progress >= 0.9228) {
+          divWedo.classList.add("bg-aloGray")
+          divWedo.classList.add("text-white")
+        } else {
+          divWedo.classList.remove("bg-aloGray")
+          divWedo.classList.remove("text-white")
+        }
+      }
+      }
+    }
+  });
 
 // Obtener todos los elementos con la clase "scroll-trigger"
 const scrollTriggers = document.querySelectorAll(".scroll-trigger");
