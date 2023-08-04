@@ -1106,6 +1106,9 @@ video {
 .justify-end {
     justify-content: flex-end;
 }
+.justify-center {
+    justify-content: center;
+}
 .justify-between {
     justify-content: space-between;
 }
@@ -1164,6 +1167,10 @@ video {
 .border-aloGray {
     --tw-border-opacity: 1;
     border-color: rgb(38 38 38 / var(--tw-border-opacity));
+}
+.border-aloWhite {
+    --tw-border-opacity: 1;
+    border-color: rgb(229 229 229 / var(--tw-border-opacity));
 }
 .border-white {
     --tw-border-opacity: 1;
@@ -1553,12 +1560,29 @@ video {
     background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+@media not all and (min-width: 640px) {
+    .max-sm\:border-aloGray {
+        --tw-border-opacity: 1;
+        border-color: rgb(38 38 38 / var(--tw-border-opacity));
+    }
+}
+
 @media (min-width: 640px) {
     .sm\:flex {
         display: flex;
     }
     .sm\:w-1\/2 {
         width: 50%;
+    }
+    .sm\:border-t {
+        border-top-width: 1px;
+    }
+    .sm\:border-t-2 {
+        border-top-width: 2px;
+    }
+    .sm\:border-aloGray {
+        --tw-border-opacity: 1;
+        border-color: rgb(38 38 38 / var(--tw-border-opacity));
     }
     .sm\:px-6 {
         padding-left: 1.5rem;
@@ -1625,6 +1649,10 @@ video {
     }
     .md\:max-w-\[8vw\] {
         max-width: 8vw;
+    }
+    .md\:border-aloGray {
+        --tw-border-opacity: 1;
+        border-color: rgb(38 38 38 / var(--tw-border-opacity));
     }
     .md\:px-6 {
         padding-left: 1.5rem;
@@ -1889,6 +1917,9 @@ video {
     .lg\:w-\[80vw\] {
         width: 80vw;
     }
+    .lg\:w-\[90vw\] {
+        width: 90vw;
+    }
     .lg\:w-\[950px\] {
         width: 950px;
     }
@@ -1898,9 +1929,6 @@ video {
     }
     .lg\:w-full {
         width: 100%;
-    }
-    .lg\:w-screen {
-        width: 100vw;
     }
     .lg\:min-w-\[150px\] {
         min-width: 150px;
@@ -2079,6 +2107,9 @@ video {
     .lg\:flex-col-reverse {
         flex-direction: column-reverse;
     }
+    .lg\:flex-wrap {
+        flex-wrap: wrap;
+    }
     .lg\:flex-nowrap {
         flex-wrap: nowrap;
     }
@@ -2087,6 +2118,9 @@ video {
     }
     .lg\:items-center {
         align-items: center;
+    }
+    .lg\:justify-center {
+        justify-content: center;
     }
     .lg\:gap-12 {
         gap: 3rem;
@@ -2112,6 +2146,10 @@ video {
     .lg\:border-white {
         --tw-border-opacity: 1;
         border-color: rgb(255 255 255 / var(--tw-border-opacity));
+    }
+    .lg\:border-aloGray {
+        --tw-border-opacity: 1;
+        border-color: rgb(38 38 38 / var(--tw-border-opacity));
     }
     .lg\:bg-cover {
         background-size: cover;
@@ -2147,9 +2185,6 @@ video {
     }
     .lg\:pl-14 {
         padding-left: 3.5rem;
-    }
-    .lg\:pl-16 {
-        padding-left: 4rem;
     }
     .lg\:pl-20 {
         padding-left: 5rem;
@@ -2355,14 +2390,14 @@ video {
         margin-top: 2vh;
         margin-bottom: 2vh;
     }
+    .\33xl\:mt-\[2vh\] {
+        margin-top: 2vh;
+    }
     .\33xl\:mt-\[500px\] {
         margin-top: 500px;
     }
     .\33xl\:mt-\[800px\] {
         margin-top: 800px;
-    }
-    .\33xl\:mt-\[2vh\] {
-        margin-top: 2vh;
     }
     .\33xl\:inline {
         display: inline;
@@ -2434,6 +2469,10 @@ video {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
+    .\33xl\:py-\[2vh\] {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+    }
     .\33xl\:py-\[5vh\] {
         padding-top: 5vh;
         padding-bottom: 5vh;
@@ -2442,15 +2481,14 @@ video {
         padding-top: 8vh;
         padding-bottom: 8vh;
     }
-    .\33xl\:py-\[2vh\] {
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-    }
     .\33xl\:pb-\[15vh\] {
         padding-bottom: 15vh;
     }
     .\33xl\:pb-\[25vh\] {
         padding-bottom: 25vh;
+    }
+    .\33xl\:pb-\[7vh\] {
+        padding-bottom: 7vh;
     }
     .\33xl\:pr-10 {
         padding-right: 2.5rem;
@@ -2463,9 +2501,6 @@ video {
     }
     .\33xl\:pt-\[2vh\] {
         padding-top: 2vh;
-    }
-    .\33xl\:pb-\[7vh\] {
-        padding-bottom: 7vh;
     }
     .\33xl\:text-\[1\.2vw\] {
         font-size: 1.2vw;
