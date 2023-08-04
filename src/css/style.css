@@ -797,10 +797,10 @@ video {
         transform: translateY(-1056px);
     }
     60%, 64% {
-        transform: translateY(-1153px);
+        transform: translateY(-1163px);
     }
     65%, 69% {
-        transform: translateY(-1260px);
+        transform: translateY(-1248px);
     }
     70%, 74% {
         transform: translateY(-1345px);
@@ -809,22 +809,19 @@ video {
         transform: translateY(-1480px);
     }
     80%, 84% {
-        transform: translateY(-1575px);
+        transform: translateY(-1577px);
     }
     85%, 89% {
         transform: translateY(-1672px);
     }
-    90%, 92% {
+    90%, 94% {
         transform: translateY(-1769px);
     }
-    93%, 96% {
+    95%, 99% {
         transform: translateY(-1864px);
     }
-    97%, 99% {
-        transform: translateY(-1960px);
-    }
     100% {
-        transform: translateY(-2057px);
+        transform: translateY(-1960px);
     }
 }
 .animate-carouselAnimationSm {
@@ -855,6 +852,17 @@ video {
 }
 .animate-disappear {
     animation: disappear 2s ease-in-out 3s both;
+}
+@keyframes elementShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.animate-elementShow {
+    animation: elementShow 1s ease-in-out both;
 }
 @keyframes fadeIn {
     0% {
@@ -1084,17 +1092,6 @@ video {
 }
 .animate-zoomOut {
     animation: zoomOut 2s ease-in-out 3s both;
-}
-@keyframes elementShow {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-.animate-elementShow {
-    animation: elementShow 1s ease-in-out both;
 }
 .cursor-pointer {
     cursor: pointer;
@@ -2043,17 +2040,14 @@ video {
         85%, 89% {
             transform: translateY(-3577px);
         }
-        90%, 92% {
+        90%, 94% {
             transform: translateY(-3782px);
         }
-        93%, 96% {
+        95%, 99% {
             transform: translateY(-3995px);
         }
-        97%, 99% {
-            transform: translateY(-4202px);
-        }
         100% {
-            transform: translateY(-4410px);
+            transform: translateY(-4202px);
         }
     }
     .lg\:animate-carouselAnimationLg {

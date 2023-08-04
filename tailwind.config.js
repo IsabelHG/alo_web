@@ -121,10 +121,9 @@ module.exports = {
           '75%, 79%': { transform: 'translateY(-3162px)' },
           '80%, 84%': { transform: 'translateY(-3369px)' },
           '85%, 89%': { transform: 'translateY(-3577px)' },
-          '90%, 92%': { transform: 'translateY(-3782px)' },
-          '93%, 96%': { transform: 'translateY(-3995px)' },
-          '97%, 99%': { transform: 'translateY(-4202px)' },
-          '100%': { transform: 'translateY(-4410px)' }
+          '90%, 94%': { transform: 'translateY(-3782px)' },
+          '95%, 99%': { transform: 'translateY(-3995px)' },
+          '100%': { transform: 'translateY(-4202px)' },
         },
         carouselAnimationSm: {
           '0%, 4%': { transform: 'translateY(-1px)' },
@@ -139,16 +138,15 @@ module.exports = {
           '45%, 49%': { transform: 'translateY(-865px)' },
           '50%, 54%': { transform: 'translateY(-960px)' },
           '55%, 59%': { transform: 'translateY(-1056px)' },
-          '60%, 64%': { transform: 'translateY(-1153px)' },
-          '65%, 69%': { transform: 'translateY(-1260px)' },
+          '60%, 64%': { transform: 'translateY(-1163px)' },
+          '65%, 69%': { transform: 'translateY(-1248px)' },
           '70%, 74%': { transform: 'translateY(-1345px)' },
           '75%, 79%': { transform: 'translateY(-1480px)' },
-          '80%, 84%': { transform: 'translateY(-1575px)' },
+          '80%, 84%': { transform: 'translateY(-1577px)' },
           '85%, 89%': { transform: 'translateY(-1672px)' },
-          '90%, 92%': { transform: 'translateY(-1769px)' },
-          '93%, 96%': { transform: 'translateY(-1864px)' },
-          '97%, 99%': { transform: 'translateY(-1960px)' },
-          '100%': { transform: 'translateY(-2057px)' }
+          '90%, 94%': { transform: 'translateY(-1769px)' },
+          '95%, 99%': { transform: 'translateY(-1864px)' },
+          '100%': { transform: 'translateY(-1960px)' },
         }
       },
       animation: {
