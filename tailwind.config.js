@@ -98,6 +98,10 @@ module.exports = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        elementShow: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         carouselAnimationLg: {
           '0%, 4%': { transform: 'translateY(0)' },
           '5%, 9%': { transform: 'translateY(-210px)' },
@@ -176,7 +180,8 @@ module.exports = {
         marquee2: 'marquee2 20s linear infinite',
         circleRotate: 'circleRotate 20s linear infinite',
         carouselAnimationLg: 'carouselAnimationLg 40s ease-in-out infinite',
-        carouselAnimationSm: 'carouselAnimationSm 40s ease-in-out infinite'
+        carouselAnimationSm: 'carouselAnimationSm 40s ease-in-out infinite',
+        elementShow: 'elementShow 1s ease-in-out both',
       }
     },
     fontFamily: {
