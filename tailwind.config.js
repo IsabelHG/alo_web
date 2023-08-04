@@ -98,6 +98,10 @@ module.exports = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        elementShow: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         carouselAnimationLg: {
           '0%, 4%': { transform: 'translateY(0)' },
           '5%, 9%': { transform: 'translateY(-210px)' },
@@ -118,8 +122,8 @@ module.exports = {
           '80%, 84%': { transform: 'translateY(-3369px)' },
           '85%, 89%': { transform: 'translateY(-3577px)' },
           '90%, 94%': { transform: 'translateY(-3782px)' },
-          '95%, 97%': { transform: 'translateY(-3995px)' },
-          '98%, 100%': { transform: 'translateY(-4202px)' }
+          '95%, 99%': { transform: 'translateY(-3995px)' },
+          '100%': { transform: 'translateY(-4202px)' },
         },
         carouselAnimationSm: {
           '0%, 4%': { transform: 'translateY(-1px)' },
@@ -134,15 +138,15 @@ module.exports = {
           '45%, 49%': { transform: 'translateY(-865px)' },
           '50%, 54%': { transform: 'translateY(-960px)' },
           '55%, 59%': { transform: 'translateY(-1056px)' },
-          '60%, 64%': { transform: 'translateY(-1153px)' },
-          '65%, 69%': { transform: 'translateY(-1260px)' },
+          '60%, 64%': { transform: 'translateY(-1163px)' },
+          '65%, 69%': { transform: 'translateY(-1248px)' },
           '70%, 74%': { transform: 'translateY(-1345px)' },
           '75%, 79%': { transform: 'translateY(-1480px)' },
-          '80%, 84%': { transform: 'translateY(-1575px)' },
+          '80%, 84%': { transform: 'translateY(-1577px)' },
           '85%, 89%': { transform: 'translateY(-1672px)' },
           '90%, 94%': { transform: 'translateY(-1769px)' },
-          '95%, 97%': { transform: 'translateY(-1864px)' },
-          '98%, 100%': { transform: 'translateY(-1960px)' }
+          '95%, 99%': { transform: 'translateY(-1864px)' },
+          '100%': { transform: 'translateY(-1960px)' },
         }
       },
       animation: {
@@ -174,7 +178,8 @@ module.exports = {
         marquee2: 'marquee2 20s linear infinite',
         circleRotate: 'circleRotate 20s linear infinite',
         carouselAnimationLg: 'carouselAnimationLg 40s ease-in-out infinite',
-        carouselAnimationSm: 'carouselAnimationSm 40s ease-in-out infinite'
+        carouselAnimationSm: 'carouselAnimationSm 40s ease-in-out infinite',
+        elementShow: 'elementShow 1s ease-in-out both',
       }
     },
     fontFamily: {

@@ -495,6 +495,9 @@ video {
     --tw-backdrop-saturate:  ;
     --tw-backdrop-sepia:  ;
 }
+.visible {
+    visibility: visible;
+}
 .fixed {
     position: fixed;
 }
@@ -719,6 +722,9 @@ video {
 .w-1\/2 {
     width: 50%;
 }
+.w-10\/12 {
+    width: 83.333333%;
+}
 .w-2\/12 {
     width: 16.666667%;
 }
@@ -821,10 +827,10 @@ video {
         transform: translateY(-1056px);
     }
     60%, 64% {
-        transform: translateY(-1153px);
+        transform: translateY(-1163px);
     }
     65%, 69% {
-        transform: translateY(-1260px);
+        transform: translateY(-1248px);
     }
     70%, 74% {
         transform: translateY(-1345px);
@@ -833,7 +839,7 @@ video {
         transform: translateY(-1480px);
     }
     80%, 84% {
-        transform: translateY(-1575px);
+        transform: translateY(-1577px);
     }
     85%, 89% {
         transform: translateY(-1672px);
@@ -841,10 +847,10 @@ video {
     90%, 94% {
         transform: translateY(-1769px);
     }
-    95%, 97% {
+    95%, 99% {
         transform: translateY(-1864px);
     }
-    98%, 100% {
+    100% {
         transform: translateY(-1960px);
     }
 }
@@ -876,6 +882,17 @@ video {
 }
 .animate-disappear {
     animation: disappear 2s ease-in-out 3s both;
+}
+@keyframes elementShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.animate-elementShow {
+    animation: elementShow 1s ease-in-out both;
 }
 @keyframes fadeIn {
     0% {
@@ -2099,10 +2116,10 @@ video {
         90%, 94% {
             transform: translateY(-3782px);
         }
-        95%, 97% {
+        95%, 99% {
             transform: translateY(-3995px);
         }
-        98%, 100% {
+        100% {
             transform: translateY(-4202px);
         }
     }
@@ -2370,6 +2387,9 @@ video {
         font-size: 0.75rem;
         line-height: 1rem;
     }
+    .lg\:opacity-0 {
+        opacity: 0;
+    }
     .lg\:\[line-height\:30px\] {
         line-height: 30px;
     }
@@ -2465,9 +2485,6 @@ video {
     }
     .\33xl\:block {
         display: block;
-    }
-    .\33xl\:inline {
-        display: inline;
     }
     .\33xl\:flex {
         display: flex;
@@ -2590,32 +2607,23 @@ video {
     .\33xl\:text-\[200px\] {
         font-size: 200px;
     }
-    .\33xl\:text-\[22vw\] {
-        font-size: 22vw;
-    }
     .\33xl\:text-\[2vw\] {
         font-size: 2vw;
     }
     .\33xl\:text-\[300px\] {
         font-size: 300px;
     }
-    .\33xl\:text-\[35px\] {
-        font-size: 35px;
-    }
     .\33xl\:text-\[3vw\] {
         font-size: 3vw;
+    }
+    .\33xl\:text-\[40vh\] {
+        font-size: 40vh;
     }
     .\33xl\:text-\[500px\] {
         font-size: 500px;
     }
     .\33xl\:text-\[50px\] {
         font-size: 50px;
-    }
-    .\33xl\:text-\[40vh\] {
-        font-size: 40vh;
-    }
-    .\33xl\:text-\[2vh\] {
-        font-size: 2vh;
     }
     .\33xl\:leading-none {
         line-height: 1;

@@ -121,12 +121,26 @@ let scrollTween = gsap.to(".main-container", {
       const prueba3 = document.getElementById("prueba3");
       const rect3 = prueba3.getBoundingClientRect();
       const isVisible3 = rect3.left >= -300 && rect3.left < 300;
-      console.log(rect3);
-      console.log(isVisible3);
 
       if (isVisible3) {
         prueba3.classList.add("overflow-y-auto")
       }
+
+
+      /*  const elementHidden = document.querySelectorAll(".element-show");
+       elementHidden.forEach(element => {
+         const rect = element.getBoundingClientRect();
+         const childs = element.children;
+         console.log(childs)
+         const isVisible = rect.left < 300;
+ 
+         if (isVisible) {
+           console.log("visible")
+           childs[0].classList.add("animate-elementShow")
+           childs[1].classList.add("animate-elementShow")
+           
+         }
+       }) */
 
       if (window.innerWidth > 1023) {
         const divWedo = document.getElementById("footer-nav");
@@ -197,3 +211,30 @@ scrollTriggers.forEach((trigger) => {
     });
   });
 });
+
+function animateElement(element) {
+  gsap.to(element, {
+    duration: 1,
+    opacity: 1,
+    ease: "power2.inOut",
+  })
+
+}
+
+function onElementInView(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log(entry.target)
+      animateElement(entry.target)
+      observer.unobserve(entry.target)
+    }
+  })
+}
+
+const elements = document.querySelectorAll(".element-show");
+
+const observer = new IntersectionObserver(onElementInView, { threshold: 0.5 })
+
+elements.forEach(element => {
+  observer.observe(element)
+})
