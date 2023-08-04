@@ -14,6 +14,11 @@ module.exports = {
         aloBrown: "#966446",
         aloOrange: "#FA7819"
       },
+      screens: {
+        '2lg': '1300px',
+        '3xl': '2000px',
+        '4xl': '4000px',
+      },
       keyframes: {
         slideUp: {
           '0%': { transform: 'translateY(200px)' },
@@ -31,6 +36,10 @@ module.exports = {
         zoomOut: {
           '0%': { backgroundSize: '150%' },
           '100%': { backgroundSize: '100%' },
+        },
+        zoomOutXl: {
+          '0%': { backgroundSize: 'auto 150%' },
+          '100%': { backgroundSize: 'auto 105%' },
         },
         sideScale: {
           '0%': { width: '0.5rem' },
@@ -53,7 +62,7 @@ module.exports = {
         },
         slideTextM: {
           '0%': { right: '10%', opacity: '0' },
-          '100%': { right: '25%', opacity: '1' },
+          '100%': { right: '23%', opacity: '1' },
         },
         slideTextL: {
           '0%': { right: '10%', opacity: '0' },
@@ -148,6 +157,7 @@ module.exports = {
         slideUp9: 'slideUp 0.5s ease-in-out 1.8s both',
         disappear: 'disappear 2s ease-in-out 3s both',
         zoomOut: 'zoomOut 2s ease-in-out 3s both',
+        zoomOutXl: 'zoomOutXl 2s ease-in-out 3s both',
         sideScale: 'sideScale 2s ease-in-out 3s both',
         sideScalePc: 'sideScalePc 2s ease-in-out 3s both',
         orangeLine: 'orangeLine 2s ease-in-out 3s both',
@@ -168,6 +178,7 @@ module.exports = {
     },
     fontFamily: {
       'grotesk': ['SpaceGrotesk', 'ui-sans-serif', 'system-ui'],
+      'groteskMono': ['SpaceGroteskMono', 'ui-sans-serif', 'system-ui'],
     }
   },
   plugins: [],
