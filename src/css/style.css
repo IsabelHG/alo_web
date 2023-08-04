@@ -698,6 +698,9 @@ video {
 .w-1\/2 {
     width: 50%;
 }
+.w-10\/12 {
+    width: 83.333333%;
+}
 .w-2\/12 {
     width: 16.666667%;
 }
@@ -746,12 +749,6 @@ video {
 }
 .w-screen {
     width: 100vw;
-}
-.w-8\/12 {
-    width: 66.666667%;
-}
-.w-10\/12 {
-    width: 83.333333%;
 }
 .max-w-\[15vw\] {
     max-width: 15vw;
@@ -814,14 +811,17 @@ video {
     85%, 89% {
         transform: translateY(-1672px);
     }
-    90%, 94% {
+    90%, 92% {
         transform: translateY(-1769px);
     }
-    95%, 97% {
+    93%, 96% {
         transform: translateY(-1864px);
     }
-    98%, 100% {
+    97%, 99% {
         transform: translateY(-1960px);
+    }
+    100% {
+        transform: translateY(-2057px);
     }
 }
 .animate-carouselAnimationSm {
@@ -2029,14 +2029,17 @@ video {
         85%, 89% {
             transform: translateY(-3577px);
         }
-        90%, 94% {
+        90%, 92% {
             transform: translateY(-3782px);
         }
-        95%, 97% {
+        93%, 96% {
             transform: translateY(-3995px);
         }
-        98%, 100% {
+        97%, 99% {
             transform: translateY(-4202px);
+        }
+        100% {
+            transform: translateY(-4410px);
         }
     }
     .lg\:animate-carouselAnimationLg {
@@ -2381,9 +2384,6 @@ video {
     .\33xl\:block {
         display: block;
     }
-    .\33xl\:inline {
-        display: inline;
-    }
     .\33xl\:flex {
         display: flex;
     }
@@ -2505,32 +2505,23 @@ video {
     .\33xl\:text-\[200px\] {
         font-size: 200px;
     }
-    .\33xl\:text-\[22vw\] {
-        font-size: 22vw;
-    }
     .\33xl\:text-\[2vw\] {
         font-size: 2vw;
     }
     .\33xl\:text-\[300px\] {
         font-size: 300px;
     }
-    .\33xl\:text-\[35px\] {
-        font-size: 35px;
-    }
     .\33xl\:text-\[3vw\] {
         font-size: 3vw;
+    }
+    .\33xl\:text-\[40vh\] {
+        font-size: 40vh;
     }
     .\33xl\:text-\[500px\] {
         font-size: 500px;
     }
     .\33xl\:text-\[50px\] {
         font-size: 50px;
-    }
-    .\33xl\:text-\[40vh\] {
-        font-size: 40vh;
-    }
-    .\33xl\:text-\[2vh\] {
-        font-size: 2vh;
     }
     .\33xl\:leading-none {
         line-height: 1;
