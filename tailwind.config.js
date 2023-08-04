@@ -17,7 +17,8 @@ module.exports = {
       screens: {
         '2lg': '1300px',
         '3xl': '2000px',
-        '4xl': '4000px',
+        '4xl': '3000px',
+        '5xl': '4000px',
       },
       keyframes: {
         slideUp: {

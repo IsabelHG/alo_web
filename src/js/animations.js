@@ -76,8 +76,8 @@ scrollDivs.forEach((trigger) => {
 const body = document.querySelector("body");
 const mainContainer = body.querySelector(".main-container");
 let proxy = { skew: 0 },
-  skewSetter = gsap.quickSetter(".box1", "skewX", "deg"), // fast
-  clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
+  skewSetter = gsap.quickSetter(".box1", "translateX", "px"), // fast
+  clamp = gsap.utils.clamp(-100, 100); // don't let the skew go beyond 20 degrees.
 
 let scrollTween = gsap.to(".main-container", {
   xPercent: -100,
@@ -90,13 +90,13 @@ let scrollTween = gsap.to(".main-container", {
     end: () => `+=${mainContainer.offsetWidth} bottom`,
     scrub: 1,
     onUpdate: self => {
-      let skew = clamp(self.getVelocity() / -300);
+      let skew = clamp(self.getVelocity() / -100);
 
       if (Math.abs(skew) > Math.abs(proxy.skew)) {
         proxy.skew = skew;
         gsap.to(proxy, {
           skew: 0,
-          duration: 0.8,
+          duration: 2,
           ease: "power3.easeInOut",
           overwrite: true,
           onUpdate: () => skewSetter(proxy.skew)
@@ -104,7 +104,7 @@ let scrollTween = gsap.to(".main-container", {
       }
       const stopScrollHere = document.getElementById("prueba");
       const rect = stopScrollHere.getBoundingClientRect();
-      const isVisible = rect.left >= 0 && rect.left < 10;
+      const isVisible = rect.left >= -300 && rect.left < 300;
 
       if (isVisible) {
         stopScrollHere.classList.add("overflow-y-auto")
@@ -112,7 +112,7 @@ let scrollTween = gsap.to(".main-container", {
 
       const prueba2 = document.getElementById("prueba2");
       const rect2 = prueba2.getBoundingClientRect();
-      const isVisible2 = rect2.left >= 0 && rect2.left < 10;
+      const isVisible2 = rect2.left >= -300 && rect2.left < 300;
 
       if (isVisible2) {
         prueba2.classList.add("overflow-y-auto")
@@ -120,7 +120,9 @@ let scrollTween = gsap.to(".main-container", {
 
       const prueba3 = document.getElementById("prueba3");
       const rect3 = prueba3.getBoundingClientRect();
-      const isVisible3 = rect3.left >= 0 && rect3.left < 10;
+      const isVisible3 = rect3.left >= -300 && rect3.left < 300;
+      console.log(rect3);
+      console.log(isVisible3);
 
       if (isVisible3) {
         prueba3.classList.add("overflow-y-auto")
