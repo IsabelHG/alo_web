@@ -1,10 +1,30 @@
 function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
-  const hiddenNav = responsiveNav.classList.contains("hidden")
+  let footNav = document.getElementById("footer-nav");
+  let logoBlack = document.getElementById("logo-black");
+  let logoWhite = document.getElementById("logo-white");
+  let pointButton = document.getElementById("pointButton");
+  const hiddenNav = responsiveNav.classList.contains("hidden");
   if (hiddenNav) {
     responsiveNav.classList.remove("hidden");
+    footNav.classList.add("bg-aloGray");
+    footNav.classList.add("border-aloWhite");
+    footNav.classList.remove("bg-aloWhite");
+    footNav.classList.remove("border-aloGray");
+    logoBlack.classList.add("hidden")
+    logoWhite.classList.remove("hidden")
+    pointButton.classList.add("fill-white");
+    pointButton.classList.remove("fill-aloGray");
   } else {
     responsiveNav.classList.add("hidden");
+    footNav.classList.remove("bg-aloGray");
+    footNav.classList.remove("border-aloWhite");
+    footNav.classList.add("bg-aloWhite");
+    footNav.classList.add("border-aloGray");
+    logoBlack.classList.remove("hidden")
+    logoWhite.classList.add("hidden");
+    pointButton.classList.add("fill-aloGray");
+    pointButton.classList.remove("fill-white");
   }
 }
 
@@ -148,6 +168,10 @@ let scrollTween = gsap.to(".main-container", {
         const logoWhite = document.getElementById("logo-white");
         const igBlack = document.getElementById("ig-black");
         const igWhite = document.getElementById("ig-white");
+        const instaIcon = document.getElementById("insta-icon");
+        //const lkdinIcon = document.getElementById("lkdin-icon");
+        const mediumIcon = document.getElementById("medium-icon");
+        const twitIcon = document.getElementById("twit-icon");
         if (self.progress < 0.134) {
           divWedo.classList.add("bg-aloWhite")
         } else {
@@ -176,6 +200,14 @@ let scrollTween = gsap.to(".main-container", {
           logoWhite.classList.remove("hidden")
           igBlack.classList.add("hidden")
           igWhite.classList.remove("hidden")
+          instaIcon.classList.add("fill-white");
+          //lkdinIcon.classList.add("fill-white");
+          mediumIcon.classList.add("fill-white");
+          twitIcon.classList.add("fill-white");
+          instaIcon.classList.remove("fill-aloGray");
+          //lkdinIcon.classList.remove("fill-aloGray");
+          mediumIcon.classList.remove("fill-aloGray");
+          twitIcon.classList.remove("fill-aloGray");
         } else {
           divWedo.classList.remove("bg-aloGray")
           divWedo.classList.remove("text-white")
@@ -183,6 +215,14 @@ let scrollTween = gsap.to(".main-container", {
           logoWhite.classList.add("hidden");
           igBlack.classList.remove("hidden")
           igWhite.classList.add("hidden");
+          instaIcon.classList.remove("fill-white");
+          //lkdinIcon.classList.remove("fill-white");
+          mediumIcon.classList.remove("fill-white");
+          twitIcon.classList.remove("fill-white");
+          instaIcon.classList.add("fill-aloGray");
+          //lkdinIcon.classList.add("fill-aloGray");
+          mediumIcon.classList.add("fill-aloGray");
+          twitIcon.classList.add("fill-aloGray");
           divWedo.classList.remove("border-aloWhite")
           divWedo.classList.add("border-aloGray")
         }
