@@ -176,6 +176,8 @@ module.exports = {
         imageCarousel2: 'imageCarousel 7s ease-in 4s both infinite',
         marquee: 'marquee 20s linear infinite',
         marquee2: 'marquee2 20s linear infinite',
+        marquee3: 'marquee 30s linear infinite',
+        marquee4: 'marquee2 30s linear infinite',
         circleRotate: 'circleRotate 20s linear infinite',
         carouselAnimationLg: 'carouselAnimationLg 40s ease-in-out infinite',
         carouselAnimationSm: 'carouselAnimationSm 40s ease-in-out infinite',
