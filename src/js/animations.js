@@ -28,6 +28,49 @@ function showHideNav() {
   }
 }
 
+if (window.innerWidth < 1024) {
+  window.addEventListener("scroll", function () {
+    var navbar = document.querySelector("#footer-nav");
+    const weare = document.getElementById("weare").getBoundingClientRect().top;
+    const wedo = document.getElementById("wedo").getBoundingClientRect().top;
+    const weconnect = document.getElementById("weconnect").getBoundingClientRect().top;
+    const logoWhite = this.document.getElementById("logo-white");
+    const pointButton = this.document.getElementById("pointButton");
+    // cambiar de color el nav al llegar a un div
+    if (weare > 500) {
+      navbar.classList.add("bg-aloWhite");
+    } else {
+      navbar.classList.remove("bg-aloWhite");
+    }
+    if (weare <= 500 && wedo > 650 ) {
+      navbar.classList.add("bg-aloBrown");
+    } else {
+      navbar.classList.remove("bg-aloBrown");
+    }
+    if (wedo <= 650 && wedo > -11000) { // Cambiar el color al hacer scroll
+      navbar.classList.add("bg-aloGreen");
+    } else {
+      navbar.classList.remove("bg-aloGreen");
+    } 
+    if (wedo <= -11000 && weconnect > 650) {
+      navbar.classList.add("bg-white");
+    } else {
+      navbar.classList.remove("bg-white");
+    }
+    if(weconnect <= 650) {
+      navbar.classList.add("bg-aloGray");
+      navbar.classList.add("border-aloWhite");
+      pointButton.classList.add("fill-white");
+      logoWhite.classList.remove("hidden");
+    } else {
+      navbar.classList.remove("bg-aloGray");
+      navbar.classList.remove("border-aloWhite");
+      logoWhite.classList.add("hidden");
+      pointButton.classList.remove("fill-white");
+    }
+  });
+}
+
 let isAnimating = false;
 function scrollHorizontally(e) {
   if (!isHorizontalScrollEnabled) {
@@ -75,6 +118,8 @@ if (window.addEventListener) {
     window.attachEvent("onmousewheel", scrollHorizontally);
   }
 }
+
+
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -264,7 +309,6 @@ function animateElement(element) {
 function onElementInView(entries, observer) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log(entry.target)
       animateElement(entry.target)
       observer.unobserve(entry.target)
     }
