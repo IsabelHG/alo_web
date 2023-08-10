@@ -1285,9 +1285,6 @@ video {
 .fill-white {
     fill: #fff;
 }
-.fill-aloWhite {
-    fill: #E5E5E5;
-}
 .object-cover {
     -o-object-fit: cover;
        object-fit: cover;
@@ -1341,6 +1338,10 @@ video {
 .py-\[8vh\] {
     padding-top: 8vh;
     padding-bottom: 8vh;
+}
+.py-\[5vh\] {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 .pb-10 {
     padding-bottom: 2.5rem;
@@ -1517,6 +1518,10 @@ video {
     font-size: 0.75rem;
     line-height: 1rem;
 }
+.text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+}
 .font-bold {
     font-weight: 700;
 }
@@ -1548,6 +1553,9 @@ video {
 .text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.underline {
+    text-decoration-line: underline;
 }
 .overline {
     text-decoration-line: overline;
@@ -1677,6 +1685,10 @@ video {
 
 .hover\:underline:hover {
     text-decoration-line: underline;
+}
+
+.hover\:no-underline:hover {
+    text-decoration-line: none;
 }
 
 @media not all and (min-width: 640px) {
@@ -2044,6 +2056,12 @@ video {
     .lg\:w-full {
         width: 100%;
     }
+    .lg\:w-\[160vw\] {
+        width: 160vw;
+    }
+    .lg\:w-\[160vh\] {
+        width: 160vh;
+    }
     .lg\:min-w-\[150px\] {
         min-width: 150px;
     }
@@ -2264,6 +2282,9 @@ video {
     .lg\:p-0 {
         padding: 0px;
     }
+    .lg\:p-\[8vw\] {
+        padding: 8vw;
+    }
     .lg\:px-0 {
         padding-left: 0px;
         padding-right: 0px;
@@ -2367,6 +2388,21 @@ video {
     }
     .lg\:pt-\[8vh\] {
         padding-top: 8vh;
+    }
+    .lg\:pt-5 {
+        padding-top: 1.25rem;
+    }
+    .lg\:pt-\[\] {
+        padding-top: ;
+    }
+    .lg\:pt-\[5vh\] {
+        padding-top: 5vh;
+    }
+    .lg\:pr-\[8vw\] {
+        padding-right: 8vw;
+    }
+    .lg\:pr-\[4vw\] {
+        padding-right: 4vw;
     }
     .lg\:text-2xl {
         font-size: 1.5rem;
@@ -2513,6 +2549,9 @@ video {
     .\32lg\:w-\[80vw\] {
         width: 80vw;
     }
+    .\32lg\:w-\[85vw\] {
+        width: 85vw;
+    }
     .\32lg\:min-w-\[1589px\] {
         min-width: 1589px;
     }
@@ -2601,6 +2640,9 @@ video {
     .\33xl\:w-full {
         width: 100%;
     }
+    .\33xl\:w-\[100vw\] {
+        width: 100vw;
+    }
     .\33xl\:flex-row-reverse {
         flex-direction: row-reverse;
     }
@@ -2626,6 +2668,14 @@ video {
         padding-top: 8vh;
         padding-bottom: 8vh;
     }
+    .\33xl\:py-\[5rem\] {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+    .\33xl\:px-\[1vw\] {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
     .\33xl\:pb-\[15vh\] {
         padding-bottom: 15vh;
     }
@@ -2649,6 +2699,9 @@ video {
     }
     .\33xl\:pt-\[5rem\] {
         padding-top: 5rem;
+    }
+    .\33xl\:pt-0 {
+        padding-top: 0px;
     }
     .\33xl\:text-\[1\.2vw\] {
         font-size: 1.2vw;
