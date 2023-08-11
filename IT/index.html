@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- CSS Local Styles -->
+  <link rel="stylesheet" href="../src/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <title>Alo Web</title>
+
+</head>
+<style>
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none;
+  }
+
+  .alink:hover {
+    text-decoration: overline;
+  }
+
+  .carousel {
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .word {
+    display: block;
+    /* Tamaño de fuente ajustado a 96px */
+    font-weight: 400;
+    /* Altura ajustada para adaptarse al tamaño de fuente */
+    height: 96px;
+    /* Altura ajustada para adaptarse al tamaño de fuente */
+  }
+
+  .img {
+    width: 100%;
+    /* Ancho de la mitad para que ambas imágenes quepan en el contenedor */
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fade-effect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(to left, transparent, white);
+    /* Gradiente para crear el efecto de desvanecimiento */
+    animation: slideImages 8s alternate infinite;
+  }
+
+  @keyframes slideImages {
+
+    0%,
+    45% {
+      /* mostrar la mitad derecha de la imagen */
+      clip-path: inset(0 100% 0 0);
+
+      /* Inicia el desvanecimiento desde la parte derecha */
+    }
+
+    55%,
+    100% {
+      clip-path: inset(0 0 0 0);
+      /* Desaparece completamente hacia la izquierda */
+    }
+  }
+</style>
+
+<body class="font-grotesk lg:overflow-hidden bg-aloGray">
+
+  <div
+    class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed left-0 z-[999] animate-disappear">
+    <div class="p-4 3xl:w-[50vw]">
+      <div>
+        <img class="animate-fadeIn w-1/2 md:w-1/3 lg:w-[50%] 3xl:w-1/2" src="../src/img/alo.svg" alt="">
+      </div>
+      <div class="w-auto lg:w-[50vw] md:w-fit lg:mt-4 h-fit overflow-hidden mt-4 3xl:w-[100%]">
+        <svg class="w-fit h-[13vw] sm:h-[15vw] lg:h-[8vw] 3xl:h-[12vh]" viewBox="0 0 835 135" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path class="animate-slideUp1" fill-rule="evenodd" clip-rule="evenodd"
+            d="M125.6 119.9V131.7H110.3L89.7 113.6C86.9 116.733 83.9 119.5 80.7 121.9C70.5666 129.567 58.3667 133.4 44.1 133.4C34.7667 133.4 26.8333 131.7 20.3 128.3C13.7 124.9 8.66666 120.4 5.2 114.8C1.73333 109.133 0 102.833 0 95.9C0 86.1667 3.46666 78.1 10.4 71.7C15.2 67.2333 21.5333 63.5333 29.4 60.6C27 58.3333 24.8667 56.1333 23 54C19.5333 49.9333 17 45.9667 15.4 42.1C13.8 38.1667 13 34.0333 13 29.7C13 23.4333 14.4 18.1 17.2 13.7C19.9333 9.30001 23.8 5.93334 28.8 3.60001C33.8 1.20001 39.6 0 46.2 0C52.8666 0 58.7333 1.20001 63.8 3.60001C68.8 6.06667 72.6667 9.53333 75.4 14C78.2 18.5333 79.6 23.9333 79.6 30.2C79.6 38.8667 76.7333 46.3 71 52.5C66.4667 57.5 60.1667 61.7667 52.1 65.3L87.8 96C90.2 92.1333 92.4 87.8333 94.4 83.1C99.5333 70.8333 103.2 56.3333 105.4 39.6H117.9C115.567 58.7333 111.3 75.3334 105.1 89.4C102.767 94.7334 100.133 99.6333 97.2 104.1L115.5 119.9H125.6ZM34.7 49.7C37.1 52.1667 39.8333 54.7 42.9 57.3C50.9667 54.3667 57 50.7334 61 46.4C65.0667 41.8667 67.1 36.6333 67.1 30.7C67.1 24.5 65.1667 19.7 61.3 16.3C57.4333 12.9667 52.5 11.3 46.5 11.3C40.2333 11.3 35.1667 13.0333 31.3 16.5C27.3667 19.9667 25.4 24.5667 25.4 30.3C25.4 33.7 26.2333 37 27.9 40.2C29.5 43.4 31.7666 46.5667 34.7 49.7ZM80.5 105.6L39.1 69.2C30.9 71.7333 24.6667 74.9667 20.4 78.9C15.2667 83.6334 12.7 89.4 12.7 96.2C12.7 101.133 14 105.533 16.6 109.4C19.1333 113.2 22.7667 116.2 27.5 118.4C32.1667 120.533 37.7 121.6 44.1 121.6C55.9 121.6 65.9333 118.267 74.2 111.6C76.4 109.8 78.5 107.8 80.5 105.6Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp2" fill-rule="evenodd" clip-rule="evenodd"
+            d="M190.3 131.7V10.7H236.6C243.867 10.7 250.367 12.1 256.1 14.9C261.767 17.7 266.3 21.7 269.7 26.9C273.033 32.1 274.7 38.4 274.7 45.8V48C274.7 55.2667 273 61.5334 269.6 66.8C266.2 72 261.6 76 255.8 78.8C250.067 81.5334 243.667 82.9 236.6 82.9H204.8V131.7H190.3ZM204.8 69.8H235.1C242.833 69.8 248.933 67.8667 253.4 64C257.933 60.1333 260.2 54.7 260.2 47.7V45.9C260.2 38.9 257.967 33.4667 253.5 29.6C249.1 25.7333 242.967 23.8 235.1 23.8H204.8V69.8Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp3" fill-rule="evenodd" clip-rule="evenodd"
+            d="M312.5 134.1C306.567 134.1 301.2 133.067 296.4 131C291.533 128.933 287.733 125.933 285 122C282.2 118.067 280.8 113.3 280.8 107.7C280.8 101.9 282.2 97.1334 285 93.4C287.733 89.6667 291.533 86.8334 296.4 84.9C301.2 83.0334 306.6 82.1 312.6 82.1H341.2V75.9C341.2 69.9 339.433 65.1667 335.9 61.7C332.367 58.2333 327.133 56.5 320.2 56.5C313.4 56.5 308.1 58.1334 304.3 61.4C300.5 64.6667 297.9 69.0667 296.5 74.6L283.7 70.5C285.1 65.7667 287.3 61.4667 290.3 57.6C293.3 53.7333 297.3 50.6334 302.3 48.3C307.367 45.9 313.4 44.7 320.4 44.7C331.267 44.7 339.7 47.5 345.7 53.1C351.7 58.7 354.7 66.5667 354.7 76.7V114.9C354.7 118.367 356.3 120.1 359.5 120.1H367.3V131.7H355.3C351.5 131.7 348.467 130.633 346.2 128.5C343.867 126.367 342.7 123.533 342.7 120V119.1H340.6C339.333 121.3 337.633 123.567 335.5 125.9C333.367 128.3 330.467 130.267 326.8 131.8C323.133 133.333 318.367 134.1 312.5 134.1ZM314 122.4C322.067 122.4 328.6 120 333.6 115.2C338.667 110.4 341.2 103.667 341.2 95V93.1H313.2C307.733 93.1 303.233 94.3 299.7 96.7C296.233 99.0333 294.5 102.567 294.5 107.3C294.5 112.033 296.3 115.733 299.9 118.4C303.567 121.067 308.267 122.4 314 122.4Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp4"
+            d="M379.9 131.7V47.1H393.2V57.5H395.7C397.167 53.8334 399.467 51.1334 402.6 49.4001C405.667 47.6667 409.767 46.8 414.9 46.8H424.9V59.2H414C407.867 59.2667 402.933 61.0001 399.2 64.4001C395.467 67.8001 393.6 73.0667 393.6 80.2V131.7H379.9Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp5"
+            d="M474.7 131.7C469.833 131.7 466.1 130.367 463.5 127.7C460.9 125.1 459.6 121.467 459.6 116.8V59.1H434.2V47.1H459.6V17.1H473.3V47.1H501V59.1H473.3V114.8C473.3 118.267 474.967 120 478.3 120H497.2V131.7H474.7Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp6"
+            d="M515.1 131.7V47.1H528.4V61.5H530.8C532.667 57.4333 535.8 53.7666 540.2 50.5C544.667 47.2333 551.233 45.6 559.9 45.6C566.233 45.6 571.9 46.9333 576.9 49.6C581.9 52.2 585.9 56.1 588.9 61.3C591.9 66.5 593.4 72.9 593.4 80.5V131.7H579.7V81.6C579.7 73.1333 577.6 67 573.4 63.2C569.2 59.4 563.533 57.5 556.4 57.5C548.2 57.5 541.533 60.1666 536.4 65.5C531.267 70.7666 528.7 78.6666 528.7 89.2V131.7H515.1Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp7" fill-rule="evenodd" clip-rule="evenodd"
+            d="M652.5 134.1C643.967 134.1 636.467 132.3 630 128.7C623.533 125.033 618.533 119.933 615 113.4C611.4 106.8 609.6 99.2 609.6 90.6V88.5C609.6 79.7 611.4 72.0333 615 65.5C618.533 58.9 623.467 53.8 629.8 50.2C636.2 46.5333 643.467 44.7 651.6 44.7C659.6 44.7 666.633 46.4 672.7 49.8C678.833 53.2 683.633 58.0667 687.1 64.4C690.567 70.8 692.3 78.2333 692.3 86.7V93H623.3C623.633 102.067 626.567 109.167 632.1 114.3C637.633 119.433 644.533 122 652.8 122C660.067 122 665.667 120.333 669.6 117C673.533 113.667 676.533 109.7 678.6 105.1L690.4 110.8C688.667 114.333 686.267 117.9 683.2 121.5C680.133 125.1 676.167 128.1 671.3 130.5C666.367 132.9 660.1 134.1 652.5 134.1ZM623.4 81.7H678.4C677.933 73.9 675.267 67.8 670.4 63.4C665.467 59 659.2 56.8 651.6 56.8C643.867 56.8 637.533 59 632.6 63.4C627.667 67.8 624.6 73.9 623.4 81.7Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp8"
+            d="M708.9 131.7V47.1H722.2V57.5H724.7C726.167 53.8334 728.467 51.1334 731.6 49.4001C734.733 47.6667 738.833 46.8 743.9 46.8H753.9V59.2H743C736.867 59.2667 731.933 61.0001 728.2 64.4001C724.467 67.8001 722.6 73.0667 722.6 80.2V131.7H708.9Z"
+            fill="#E6E6E6" />
+          <path class="animate-slideUp9"
+            d="M800.9 134.1C790.433 134.1 781.6 131.7 774.4 126.9C767.2 122.033 762.833 114.367 761.3 103.9L774.3 100.9C775.233 106.433 776.967 110.8 779.5 114C782.033 117.133 785.167 119.367 788.9 120.7C792.633 122.033 796.633 122.7 800.9 122.7C807.233 122.7 812.267 121.433 816 118.9C819.667 116.367 821.5 112.967 821.5 108.7C821.5 104.3 819.733 101.233 816.2 99.5C812.667 97.7 807.867 96.2 801.8 95L794.7 93.8C789.3 92.9334 784.333 91.5 779.8 89.5C775.333 87.5667 771.767 84.9333 769.1 81.6C766.433 78.2 765.1 73.9667 765.1 68.9C765.1 61.3 768.033 55.3667 773.9 51.1C779.833 46.8333 787.633 44.7 797.3 44.7C806.833 44.7 814.567 46.8667 820.5 51.2C826.5 55.5333 830.333 61.6333 832 69.5L819.2 72.7C818.2 66.6333 815.733 62.3667 811.8 59.9C807.867 57.3667 803.033 56.1 797.3 56.1C791.5 56.1 786.933 57.1667 783.6 59.3C780.267 61.4334 778.6 64.6 778.6 68.8C778.6 72.8 780.2 75.7667 783.4 77.7C786.533 79.5667 790.767 80.9667 796.1 81.9L803.2 83.1C809.2 84.1667 814.567 85.6 819.3 87.4C824.1 89.1334 827.9 91.6667 830.7 95C833.567 98.4 835 102.8 835 108.2C835 116.467 831.9 122.867 825.7 127.4C819.567 131.867 811.3 134.1 800.9 134.1Z"
+            fill="#E6E6E6" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="flex flex-col lg:flex-row w-screen lg:w-fit lg:overflow-y-hidden main-container relative">
+
+    <div id="home" class="bg-aloWhite w-[100vw] h-[93vh] lg:w-[165vw] 3xl:w-[185vw] relative lg:min-w-[2700px] 2lg:min-w-[2260px]">
+      <div class="lg:flex lg:items-end">
+        <div
+          class="flex justify-end absolute w-full 3xl:w-[25vw] top-0 right-0 md:max-w-[50%] lg:static lg:h-[93vh] lg:flex-col-reverse lg:left-0 lg:items-end lg:w-[20vw] lg:min-w-[280px] element-show lg:opacity-0">
+          <div class="w-3/12 md:w-5/12 lg:w-full flex justify-end lg:animate-sideScalePc">
+            <img
+              class="pr-3 lg:pr-5 3xl:pr-10 h-20 md:h-36 bg-aloOrange animate-sideScale lg:animate-orangeLine object-cover object-right"
+              src="../src/img/02_Home.jpg" alt="">
+          </div>
+          <div
+            class="w-3/12 h-44 md:w-5/12 md:h-72 lg:min-w-[200px] lg:w-[15vw] lg:h-[63vh] lg:animate-zoomOutXl animate-zoomOut bg-no-repeat bg-top bg-[url('/src/img/01_Home.jpg')]">
+          </div>
+        </div>
+        <div
+          class="flex absolute w-full top-28 lg:static lg:w-[30vw] lg:overflow-hidden h-[40vh] md:h-[30vh] lg:h-[60vh] lg:mb-4">
+          <div class="w-2/12 lg:w-[13.3vw] pr-2 lg:pr-[5vw] text-end element-show lg:opacity-0">
+            <svg class="animate-growUpLineSvg1 inline" width="2">
+              <line x1="0" y1="0" x2="0" y2="900" stroke="#262626" />
+            </svg>
+          </div>
+          <div class="w-5/12 md:w-1/5 lg:w-[16.6vw] lg:min-w-[150px] animate-fadeIn element-show lg:opacity-0">
+            <svg class="h-auto w-full" viewBox="0 0 2166 846" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M290.428 602.424H322.137C316.372 651.43 305.561 693.95 289.707 729.984C273.852 766.018 252.954 793.884 227.01 813.583C201.066 833.281 169.595 843.131 132.601 843.131C108.578 843.131 88.159 838.807 71.3432 830.159C54.5274 821.511 41.7934 809.979 33.1453 795.566C24.0167 780.672 19.4531 764.336 19.4531 746.56C19.4531 721.576 28.3429 700.918 46.1195 684.583C63.8962 668.247 90.0801 655.995 124.672 647.827L127.554 648.549C149.655 640.862 165.752 631.253 175.841 619.722C186.411 608.191 191.694 594.738 191.694 579.363C191.694 563.508 186.889 551.256 177.28 542.608C167.191 533.96 154.46 529.637 139.086 529.637L138.365 500.089C155.661 500.089 170.556 503.212 183.048 509.458C196.02 515.704 206.107 524.592 213.314 536.123C220.521 547.653 224.124 561.587 224.124 577.922C224.124 600.023 216.68 619.241 201.786 635.576C186.892 651.431 165.031 664.644 136.204 675.213L133.322 674.492C105.456 681.218 85.0367 690.827 72.0646 703.319C58.612 715.33 51.8835 729.985 51.8835 747.281C51.8835 760.253 55.246 771.543 61.9723 781.152C68.6986 791.242 78.0702 799.17 90.0815 804.935C102.093 810.22 116.265 812.861 132.601 812.861C162.869 812.861 188.812 804.214 210.432 786.918C231.572 770.102 248.87 745.839 262.322 714.129C275.294 682.419 284.663 645.185 290.428 602.424ZM316.373 808.538H342.318V838.806H302.681L114.584 673.051C99.6898 661.04 87.6785 649.75 78.5499 639.18C69.4214 628.61 62.9339 618.28 59.0903 608.19C54.7662 598.581 52.6049 588.012 52.6049 576.481C52.6049 560.626 56.2083 546.932 63.4151 535.401C70.6218 524.351 80.7127 515.704 93.6848 509.458C106.177 503.212 121.068 500.089 138.365 500.089L139.086 529.637C122.751 529.637 109.779 533.96 100.17 542.608C90.0808 551.737 85.0353 563.509 85.0353 577.922C85.0353 587.051 86.9557 595.698 90.7993 603.865C95.1234 612.033 101.129 620.202 108.816 628.37C116.503 636.057 125.393 644.224 135.483 652.872L316.373 808.538Z"
+                fill="#262626" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M508.795 838.804V527.473H627.706C646.444 527.473 663.022 531.076 677.436 538.283C692.33 545.97 704.1 556.3 712.748 569.272C721.396 582.725 725.719 599.059 725.719 618.277V624.043C725.719 642.3 721.155 658.394 712.027 672.327C703.379 685.78 691.608 695.871 676.714 702.597C662.301 709.804 645.964 713.407 627.706 713.407H545.55V838.804H508.795ZM546.271 679.534H624.103C644.282 679.534 660.138 674.73 671.668 665.121C683.199 655.031 688.964 640.859 688.964 622.602V618.277C688.964 600.5 683.199 586.568 671.668 576.479C660.138 566.39 644.282 561.344 624.103 561.344H546.271V679.534Z"
+                fill="#262626" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M822.292 845.291C807.398 845.291 793.707 842.65 781.215 837.365C768.724 832.08 758.874 824.393 751.667 814.304C744.941 804.214 741.578 791.721 741.578 776.827C741.578 762.414 744.941 750.402 751.667 740.793C758.874 730.704 768.724 723.258 781.215 718.453C793.707 713.649 807.639 711.247 823.013 711.247H896.523V695.392C896.523 680.018 891.96 667.766 882.831 658.637C873.703 649.989 860.249 645.665 842.473 645.665C825.177 645.665 811.482 649.748 801.393 657.916C791.784 666.564 785.3 678.095 781.937 692.508L748.785 681.698C752.148 669.687 757.672 658.638 765.359 648.548C773.046 638.459 783.378 630.531 796.35 624.766C809.322 618.52 824.937 615.396 843.194 615.396C871.06 615.396 892.681 622.603 908.055 637.017C923.429 651.43 931.114 671.608 931.114 697.553V795.565C931.114 804.694 935.2 809.258 943.367 809.258H963.545V838.806H932.557C922.948 838.806 915.26 836.163 909.494 830.878C903.248 825.112 900.127 817.667 900.127 808.538V806.376H895.081C891.718 812.141 887.395 817.906 882.11 823.671C876.345 829.917 868.897 834.962 859.768 838.806C850.159 843.13 837.666 845.291 822.292 845.291ZM826.616 815.023C847.276 815.023 864.092 808.779 877.064 796.287C890.036 784.276 896.523 766.978 896.523 744.397V740.074H824.456C810.523 740.074 798.99 742.956 789.861 748.722C780.733 754.967 776.169 764.096 776.169 776.108C776.169 788.119 780.974 797.728 790.583 804.935C799.711 811.661 811.723 815.023 826.616 815.023Z"
+                fill="#262626" />
+              <path
+                d="M995.969 838.808V621.883H1030.56V648.55H1036.33C1040.17 638.941 1046.18 631.973 1054.34 627.649C1062.51 622.845 1073.08 620.442 1086.05 620.442H1111.28V652.873H1083.89C1068.04 652.873 1055.3 657.197 1045.69 665.845C1036.09 674.493 1031.28 687.947 1031.28 706.204V838.808H995.969Z"
+                fill="#262626" />
+              <path
+                d="M1239.56 838.803C1227.07 838.803 1217.46 835.44 1210.73 828.714C1204.01 821.988 1200.64 812.618 1200.64 800.606V652.148H1135.78V621.878H1200.64V544.047H1235.96V621.878H1307.3V652.148H1235.96V795.562C1235.96 804.21 1240.28 808.535 1248.93 808.535H1297.22V838.803H1239.56Z"
+                fill="#262626" />
+              <path
+                d="M1343.34 838.805V621.881H1377.93V658.636H1383.7C1388.5 648.066 1396.67 638.698 1408.2 630.53C1419.73 621.882 1436.55 617.558 1458.65 617.558C1474.99 617.558 1489.64 620.92 1502.61 627.646C1515.1 634.373 1525.19 644.462 1532.88 657.914C1541.05 671.367 1545.13 687.944 1545.13 707.642V838.805H1509.82V709.804C1509.82 688.184 1504.29 672.57 1493.24 662.961C1482.67 653.352 1468.02 648.547 1449.28 648.547C1428.62 648.547 1411.57 655.272 1398.11 668.725C1385.14 682.177 1378.65 702.357 1378.65 729.262V838.805H1343.34Z"
+                fill="#262626" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M1696.47 845.291C1674.85 845.291 1655.63 840.487 1638.82 830.878C1622.48 821.749 1609.51 808.778 1599.9 791.962C1590.77 775.146 1586.21 755.448 1586.21 732.867V727.823C1586.21 705.241 1590.77 685.542 1599.9 668.726C1609.51 651.91 1622.24 638.698 1638.1 629.089C1654.43 619.96 1673.17 615.396 1694.31 615.396C1714.97 615.396 1732.98 619.721 1748.36 628.369C1764.21 637.017 1776.71 649.508 1785.83 665.844C1794.48 682.179 1798.8 701.397 1798.8 723.498V739.352H1621.52C1622.48 762.894 1629.93 781.152 1643.86 794.124C1658.27 807.577 1676.29 814.304 1697.91 814.304C1716.17 814.304 1730.34 809.979 1740.43 801.331C1750.52 792.683 1758.21 782.353 1763.49 770.342L1793.76 785.477C1789.44 794.605 1783.43 803.732 1775.74 812.861C1767.58 821.99 1757.25 829.678 1744.75 835.924C1732.26 842.17 1716.17 845.291 1696.47 845.291ZM1622.24 710.525H1763.49C1762.05 690.346 1755.08 674.732 1742.59 663.681C1730.1 652.151 1714 646.386 1694.31 646.386C1674.61 646.386 1658.27 652.151 1645.3 663.681C1632.81 674.732 1625.12 690.346 1622.24 710.525Z"
+                fill="#262626" />
+              <path
+                d="M1842.04 838.808V621.883H1875.92V648.55H1882.4C1886.25 638.941 1892.01 631.973 1899.7 627.649C1907.87 622.845 1918.44 620.442 1931.41 620.442H1957.35V652.873H1929.25C1913.39 652.873 1900.66 657.197 1891.05 665.845C1881.44 674.493 1876.64 687.947 1876.64 706.204V838.808H1842.04Z"
+                fill="#262626" />
+              <path
+                d="M2078.43 845.291C2051.52 845.291 2028.7 839.047 2009.96 826.555C1991.22 814.063 1979.93 794.365 1976.09 767.46L2009.96 759.532C2012.36 773.945 2016.69 785.235 2022.93 793.403C2029.66 801.571 2037.83 807.337 2047.43 810.7C2057.04 814.063 2067.37 815.745 2078.43 815.745C2094.76 815.745 2107.49 812.621 2116.62 806.376C2126.23 799.649 2131.03 790.761 2131.03 779.711C2131.03 768.661 2126.47 760.733 2117.34 755.928C2108.21 751.604 2095.96 747.76 2080.59 744.397L2061.85 741.515C2047.91 739.112 2035.18 735.509 2023.65 730.705C2012.12 725.42 2003 718.454 1996.27 709.806C1989.54 701.158 1986.18 690.347 1986.18 677.375C1986.18 658.157 1993.62 643.023 2008.52 631.972C2023.89 620.922 2044.07 615.396 2069.05 615.396C2093.56 615.396 2113.5 620.922 2128.87 631.972C2143.77 643.023 2153.62 658.637 2158.42 678.816L2125.27 687.464C2122.87 671.609 2116.62 660.558 2106.53 654.312C2096.44 648.066 2083.95 644.945 2069.05 644.945C2054.16 644.945 2042.39 647.586 2033.74 652.871C2025.09 658.156 2020.77 666.325 2020.77 677.375C2020.77 687.465 2024.85 694.911 2033.02 699.715C2041.19 705 2052 708.844 2065.45 711.247L2084.19 714.129C2099.56 716.531 2113.26 720.134 2125.27 724.939C2137.76 729.743 2147.61 736.229 2154.82 744.397C2162.02 753.045 2165.63 764.337 2165.63 778.27C2165.63 799.89 2157.7 816.465 2141.84 827.996C2125.99 839.527 2104.85 845.291 2078.43 845.291Z"
+                fill="#262626" />
+              <path
+                d="M708.432 184.433C708.432 118.852 791.312 66.243 893.648 66.243C919.592 66.243 944.814 69.8457 967.876 76.3318C954.183 51.8288 934.723 30.9295 908.779 17.2367C830.946 -24.5625 729.331 12.192 682.487 100.114C634.923 187.316 660.148 292.535 737.981 334.334C799.959 367.485 876.351 350.909 928.96 299.741C917.429 301.183 905.659 301.904 893.648 301.904C791.312 301.904 708.432 249.294 708.432 184.433Z"
+                fill="#006EC8" />
+              <path
+                d="M1078.13 184.433C1078.13 136.148 1032.73 95.0696 967.869 76.332C995.255 126.779 995.975 193.082 964.266 251.457C954.897 270.194 942.646 286.049 928.953 299.742C1013.99 288.931 1078.13 241.367 1078.13 184.433Z"
+                fill="#906446" />
+              <path d="M443.927 7.86816H402.129V353.073H443.927V7.86816Z" fill="#262626" />
+              <path d="M443.934 353.077H650.048V314.881H497.984C473.481 314.881 451.861 330.015 443.934 353.077Z"
+                fill="#262626" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M291.152 353.073L260.161 266.592H79.2743L48.2832 353.073H0L126.118 7.86816H214.76L340.157 353.073H291.152ZM79.9922 265.149L82.8777 265.87C91.5258 244.25 112.424 230.558 135.486 230.558H247.912L174.401 23.0031H165.755L79.9922 265.149Z"
+                fill="#262626" />
+            </svg>
+
+          </div>
+        </div>
+        <div
+          class="text-white font-light text-[15vw] md:text-6xl lg:text-[38vh] 3xl:text-[40vh] w-full lg:w-[116vw] 3xl:w-[145vw] lg:right-[-10vw] lg:z-10 bottom-32 lg:bottom-[-4vh] uppercase absolute lg:min-w-[2000px] 2lg:min-w-[1589px] element-show">
+          <div class="h-[55vw] md:h-[40vh] md:mr-56 md:ml-24 lg:h-[100vh] lg:m-0 relative">
+            <p class="box1 absolute top-0 animate-slideTextR">Siamo</p>
+            <p class="box1 absolute top-1/2 animate-slideTextR [transform:translateY(-50%)]">architetti</p>
+            <p class="box1 absolute bottom-0 animate-slideTextL">d'impatto</p>
+          </div>
+        </div>
+        <div class="flex absolute w-full bottom-10 lg:static lg:w-full lg:mb-[65vh] element-show lg:opacity-0">
+          <div class="w-2/12 pr-2 text-end min-h-[80px] lg:w-[160vh] xl:w-[110vw] 2lg:w-[85vw] 3xl:w-[100vw]">
+            <svg class="animate-growUpLineSvg2 inline lg:hidden" width="2">
+              <line x1="0" y1="0" x2="0" y2="80" stroke="#262626" />
+            </svg>
+          </div>
+          <div class="w-3/5 md:w-1/3 lg:w-[350px] animate-fadeIn 3xl:w-2/12">
+            <p class="text-base leading-5 lg:text-[20px] lg:[line-height:30px] 3xl:text-[1.2vw] 3xl:leading-normal">
+              Progettiamo, strutturiamo<br>
+              e gestiamo iniziative di<br>
+              sostenibilità in Europa<br>
+              e in America Latina.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="weare" class="pb-12 bg-aloGreen text-white w-full relative lg:w-[235vw] lg:flex lg:h-[93vh]">
+      <div
+        class="h-[15vh] lg:h-[100vh] md:h-52 w-full lg:w-[20vw] lg:min-w-[200px] bg-[length:200%] lg:bg-cover bg-no-repeat bg-center bg-[url('/src/img/01_Weare.jpg')]">
+      </div>
+      <div
+        class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:overflow-visible lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
+        <div class="lg:-rotate-90 flex relative">
+          <div class="animate-marquee whitespace-nowrap lg:pl-20 pl-14">
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+          </div>
+          <div class="absolute top-0 animate-marquee2 whitespace-nowrap">
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+            <span>Chi siamo ·</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-[100vw] lg:pr-[4vw] element-show lg:opacity-0">
+        <div class="px-4 uppercase text-base lg:text-sm tracking-wider md:px-6 lg:px-0 lg:pt-[5vh] lg:block 3xl:text-[1vw]">
+          <p>La nostra azienda e il suo fondatore</p>
+        </div>
+        <div class="px-4 pt-[14vh] pb-4 md:px-6 lg:px-0 lg:pt-[8vh]">
+          <div class="py-4 text-2xl 3xl:text-[2vw] 3xl:leading-none">
+            <p class="animate-fadeIn">
+              ALO&Partners è una società con sede a Roma (Italia), fondata da Andrea Londoño nel 2011 con l'obiettivo di creare impatto sociale, comunitario, ambientale ed economico in America Latina e in Europa. Lavoro che portiamo avanti ideando, strutturando, gestendo e implementando progetti e iniziative che offrono soluzioni innovative a sfide ambiziose nei settori energetici, agricoli, culturali e ambientali - dall'integrazione della tecnologia Blockchain nella catena del valore del caffè in Brasile con una delle aziende italiane di caffè più rinomate al mondo, alla creazione di una startup di gelato artigianale con tecnologia italiana e metodi artigianali in Colombia.
+            </p>
+          </div>
+          <div class="text-sm lg:flex 3xl:pt-10">
+            <p class="animate-fadeIn lg:w-[30vw] 3xl:text-[1.2vw] 3xl:leading-none">
+              Come un capo di alta moda realizzato da un artigiano o da un sarto in modo altamente dettagliato e personalizzato, o un edificio patrimonio dell'umanità progettato da un architetto con un occhio artistico e funzionale, ogni iniziativa che ALO&Partners intraprende è unica e progettata su misura per generare valore per le comunità e i settori con cui lavoriamo.
+            </p>
+            <p class="animate-fadeIn py-4 lg:px-4 lg:py-0 lg:w-[45vw] 3xl:text-[1.2vw] 3xl:leading-none">
+              I nostri progetti diventano realtà grazie al lavoro congiunto con alleati - i nostri partner - multidisciplinari e provenienti da diversi settori (tra cui governi, aziende private, università, organizzazioni no-profit e organizzazioni multilaterali) che hanno esperienza, conoscenze, competenze, credibilità, un track record consolidato nel loro settore; ma soprattutto, condividono la filosofia e la missione dell'impatto di ALO&Partners.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="px-4 text-black sm:flex sm:px-6 sm:pb-12 lg:pt-6 3xl:py-[5vh]">
+        <div
+          class="w-full h-[60vh] lg:h-[calc(100vh-7rem)] lg:w-[35vw] overflow-hidden relative sm:w-1/2 3xl:h-[100%] element-show lg:opacity-0">
+          <img class="fade-effect w-full h-auto lg:h-full object-cover absolute" src="../src/img/03_Weare_Andrea.jpg"
+            alt="">
+          <img class="w-full h-auto lg:h-full object-cover absolute img" src="../src/img/02_Weare_Andrea.jpg" alt="">
+        </div>
+        <div class="sm:w-1/2 sm:ps-6 lg:w-[70vw] lg:pl-[4vw] lg:pr-[41vw] element-show lg:opacity-0">
+          <div class="px-4 uppercase text-base lg:text-sm tracking-wider md:px-6 hidden 3xl:text-[1vw] 3xl:block">
+            <p>ANDREA LONDOÑO</p>
+          </div>
+          <div class="pt-4 uppercase tracking-wider text-base lg:pt-0 lg:text-sm lg:inline 3xl:text-[1vw] 3xl:hidden">
+            <p>ANDREA LONDOÑO</p>
+          </div>
+          <div class="py-[5vh] text-sm lg:text-xs 3xl:text-[1.2vw] 3xl:leading-none">
+            <p class="animate-fadeIn">
+              Andrea Londoño è direttrice e fondatrice di ALO&Partners. È nata a Medellín, in Colombia, dove ha studiato architettura presso l'Università Pontificia Bolivariana. Proseguendo gli studi, Andrea si è trasferita in Italia, dove ha conseguito il Master in Project Management presso l'Università Roma Tre. Ha lavorato a contatto con il suo Paese come diplomatica dell'Ambasciata colombiana a Roma, collegando Italia e Colombia intorno a interessi, scopi e opportunità comuni. Dopo 6 anni in ambito diplomatico, nel 2011, Andrea ha fondato ALO&Partners approfondendo la sua visione architettonica di ideare, progettare e costruire iniziative che affrontino sfide e bisogni su larga scala in America Latina e in Europa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="wedo" class="lg:pb-12 bg-aloBlue text-white w-full relative lg:w-fit lg:flex lg:h-screen">
+      <div
+        class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:overflow-visible lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
+        <div class="lg:-rotate-90 flex relative">
+          <div class="animate-marquee whitespace-nowrap lg:pl-20 pl-14">
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+          </div>
+          <div class="absolute top-0 animate-marquee2 whitespace-nowrap">
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+            <span>Fare ·</span>
+          </div>
+        </div>
+      </div>
+      <div class="relative 3xl:py-[5vh] lg:w-[60vw] lg:after:content-normal lg:after:text-black lg:after:bg-black lg:after:w-[1px] lg:after:h-4/5 lg:after:top-[15%] lg:after:absolute element-show lg:opacity-0 lg:after:right-0 
+          style=" ::after { transform: translateY(-50%); }">
+        <div class="px-4 uppercase text-base lg:text-sm md:px-6 lg:px-0 lg:pt-[5vh] lg:block 3xl:pt-0 3xl:text-[1vw]">
+          <p>Il nostro lavoro</p>
+        </div>
+        <div class="px-4 py-8 md:px-6 lg:px-0 3xl:pt-20">
+          <div class="py-4 text-2xl 3xl:text-[2vw] 3xl:leading-none 3xl:py-[5vh]">
+            <p class="lg:w-full lg:pr-[52px]">
+              Sappiamo che ogni iniziativa con grandi ambizioni non è facile. Nell'ultimo decennio abbiamo consolidato una conoscenza altamente specializzata che ci permette di affrontare le complessità e le sfumature di ogni sfida.
+              <br>
+              <br>
+              Il nostro approccio a ciascuno dei nostri progetti si basa su tre azioni principali interconnesse che cercano di far leva su iniziative che creano valore e impatto economico, ambientale e sociale.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-screen 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20 before:bg-black before:w-[1px] before:h-3/4 lg:before:h-2/5 before:left-5 before:absolute before:top-8 lg:before:content-none 3xl:h-[93vh]">
+        <div
+          class="w-full h-[360px] lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] lg:w-[450px] 3xl:w-[20vw] relative md:w-1/2 text-white flex flex-col justify-between pl-14 element-show lg:opacity-0">
+          <h1 class="lg:text-[200px] text-9xl pt-5 box1 4xl:text-[400px]">1</h1>
+
+          <p
+            class="w-full lg:text-4xl mb-2 text-[7.5vw] leading-[8vw] pt-[68px] lg:pt-0 box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+            INDIVIDUIAMO
+            <br>
+            OPPORTUNITÀ
+            <br>
+            STRATEGICHE E
+            CONNESSIONI
+            <br>
+            DI VALORE
+          </p>
+        </div>
+        <div class="md:w-1/2 md:ps-6 lg:w-[60vw] w-screen element-show lg:opacity-0">
+          <div class="overflow-hidden lg:pt-[45px] lg:pl-[45px] flex flex-col-reverse lg:block gap-5">
+            <p class="text-sm lg:w-full w-[90vw] pl-5 lg:pl-0 3xl:text-[1.2vw] 3xl:leading-none hidden lg:block">
+              Analizziamo costantemente il contesto, le tendenze, le sfide e le opportunità per la sostenibilità nel mondo ed esploriamo da vicino i diversi territori dell'America Latina. Insieme alle comunità di imprenditori, agricoltori, artigiani e famiglie, selezioniamo una serie di sfide e opportunità nei settori dell'energia, dell'agricoltura, dell'istruzione e della cultura che portano alla generazione di impatti sociali, ambientali ed economici positivi. Spesso si tratta di opportunità che ci sono chiare, ma che i principali decisori non hanno ancora scoperto o esplorato. Mettiamo in relazione queste opportunità con gli interessi di organizzazioni, aziende e governi europei che sono impegnati in America Latina nel loro ruolo di responsabilità sociale, commerciale, ambientale ed economica.
+              <br>
+              <br>
+              Questo ci permette di curare aree specifiche e molto particolari di interesse strategico, dove un'iniziativa può portare a impatti positivi significativi. Inseriamo le questioni strategiche nelle agende di alto livello, scegliendo spazi di dialogo e visibilità che ci permettano di raccontare le storie dei territori, delle persone, delle comunità e delle organizzazioni con cui collaboriamo agli attori strategici dei governi, delle grandi imprese e degli investitori, per scoprire nuove opportunità di scalare e amplificare il nostro impatto.
+            </p>
+            <img src="../src/img/Caso1.jpg" class="lg:w-96 pt-10 w-80 lg:pl-0 pl-14 3xl:w-1/2 3xl:py-[5vh]">
+          </div>
+        </div>
+
+      </div>
+      <div
+        class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20"
+        id="prueba" style="padding: 0;">
+        <div
+          class="sticky top-[-20rem] py-10 lg:h-[calc(100vh-6rem)] overflow-x-hidden flex flex-col justify-between lg:pl-[5vw] pl-5 lg:fixed lg:top-0">
+          <div class="overflow-hidden text-sm pt-8 lg:hidden w-[90vw] md:w-full">
+            <p>
+              Analizziamo costantemente il contesto, le tendenze, le sfide e le opportunità per la sostenibilità nel mondo ed esploriamo da vicino i diversi territori dell'America Latina. Insieme alle comunità di imprenditori, agricoltori, artigiani e famiglie, selezioniamo una serie di sfide e opportunità nei settori dell'energia, dell'agricoltura, dell'istruzione e della cultura che portano alla generazione di impatti sociali, ambientali ed economici positivi. Spesso si tratta di opportunità che ci sono chiare, ma che i principali decisori non hanno ancora scoperto o esplorato. Mettiamo in relazione queste opportunità con gli interessi di organizzazioni, aziende e governi europei che sono impegnati in America Latina nel loro ruolo di responsabilità sociale, commerciale, ambientale ed economica.
+              <br>
+              <br>
+              Questo ci permette di curare aree specifiche e molto particolari di interesse strategico, dove un'iniziativa può portare a impatti positivi significativi. Inseriamo le questioni strategiche nelle agende di alto livello, scegliendo spazi di dialogo e visibilità che ci permettano di raccontare le storie dei territori, delle persone, delle comunità e delle organizzazioni con cui collaboriamo agli attori strategici dei governi, delle grandi imprese e degli investitori, per scoprire nuove opportunità di scalare e amplificare il nostro impatto.
+            </p>
+          </div>
+          <h1
+            class="text-[10vw] leading-[10vw] lg:text-5xl w-full pt-[70px] lg:w-full 3xl:text-[3vw] 3xl:w-full element-show lg:opacity-0">
+            ¿Come lo abbiamo<br>
+            fatto?</h1>
+        </div>
+        <div class="flex flex-col bg-aloWhite lg:px-[5vw] px-5 pb-[40px] lg:pb-0 lg:mt-[100vh] relative z-[2]">
+          <div class="pt-[70px]">
+            <h1 class="text-[10vw] leading-[10vw]  lg:text-5xl w-full lg:w-full lg:pl-0 3xl:text-[3vw] 3xl:w-full">
+              ¿Come lo abbiamo<br>
+              fatto?</h1>
+            <br>
+            <div class="flex gap-12 relative lg:mt-36 mt-10 flex-wrap lg:flex-col">
+              <h1
+                class="box1 font-groteskMono absolute text-white lg:text-[180px] lg:-top-28 top-10 left-28 lg:left-10 font-bold text-9xl 3xl:text-[500px]">
+                CEA</h1>
+              <img src="../src/img/Caso1A_CEA.jpg" class="lg:w-3/5">
+              <p class="lg:pt-10 lg:z-10 text-sm lg:w-3/4 self-end 3xl:text-[1.2vw] 3xl:leading-none">
+                Nel 2013 ci siamo avventurati per la prima volta nel settore energetico. Dopo un'esaustiva esplorazione di territori ricchi di risorse energetiche e lo studio di opportunità strategiche in Colombia con il potenziale di attrarre l'interesse europeo, abbiamo aperto una porta per creare ponti tra la Commissione francese per l'energia alternativa e atomica (CEA-Liten) - una delle istituzioni energetiche più importanti d'Europa - e una serie di attori strategici in Colombia, promuovendo innovazioni e soluzioni di energia rinnovabile nel Paese. È così che è nata l'iniziativa Colombia is Energy, in collaborazione con RutaN, un'istituzione colombiana per l'innovazione e partner strategico di questo progetto.
+                <br>
+                <br>
+                Grazie alle missioni commerciali strategiche delle aziende colombiane presso gli stabilimenti di CEA-Liten in Francia e alla partecipazione dei leader di CEA-Liten a incontri di alto livello con le aziende, il governo nazionale e le amministrazioni locali in Colombia - guidati e organizzati da ALO&Partners - sono state stabilite relazioni chiave che hanno influenzato l'interesse e l'incursione di CEA-Liten in Colombia, cercando di sviluppare progetti e attività nel settore delle energie rinnovabili nel Paese.
+              </p>
+            </div>
+          </div>
+          <div class="lg:pt-[70px]">
+            <div class="flex gap-12 relative lg:mt-72 flex-wrap-reverse mt-20 lg:flex-nowrap">
+              <h1
+                class="font-groteskMono absolute text-white lg:text-[250px] lg:-top-32 lg:right-36 font-bold top-32 text-8xl right-20 3xl:text-[500px]">
+                MOKA</h1>
+              <p class="lg:pt-10 lg:z-10 text-sm lg:basis-[70%] 3xl:text-[1.2vw] 3xl:leading-none">
+                A seguito della nostra partecipazione ad alcuni dei più importanti spazi e fiere agroalimentari in Colombia e in Europa, ci siamo accorti che esisteva un'opportunità mai scoperta o valorizzata prima, quella di sfruttare strategicamente l'infinita ricchezza dei prodotti della biodiversità colombiana come materia prima da trasformare con le tecnologie all'avanguardia e la specializzazione artigianale dell'industria italiana: il gelato. Nasce così nel 2019 FONTE, uno spazio creato da ALO&Partners nell'ambito di Expo Agrofuturo, una delle più importanti fiere agricole dell'America Latina, per mettere in contatto le aziende di tecnologia di trasformazione della materia prima gelato con i produttori di frutta colombiana coltivata da produttori rurali impegnati nella qualità.
+                <br>
+                <br>
+                Anni dopo, ampliando l'idea originale sviluppata con FONTE, abbiamo creato MOKA, uno spazio nel contesto della fiera Expo Agrofuturo per collegare le conoscenze, le ultime tendenze, le innovazioni e la tecnologia di trasformazione delle materie prime delle aziende europee con i prodotti del caffè e del cacao di cui la Colombia è leader mondiale. Questo spazio consiste in attività di networking, conferenze e visite alle aziende agricole produttrici che creano legami e scambi di valore tra i produttori colombiani e le aziende internazionali di trasformazione delle materie prime.
+              </p>
+              <div class="lg:basis-[30%] flex justify-end lg:block">
+                <img src="../src/img/Caso1B_MOKA.jpg" class="w-1/2 lg:w-96">
+              </div>
+            </div>
+          </div>
+          <div class="pt-32 pb-16 3xl:pb-[7vh] hidden lg:block">
+            <svg width="25" height="25" viewBox="0 0 33 23" fill="none" xmlns="http://www.w3.org/2000/svg"
+              class="scroll-div cursor-pointer" data-target="target">
+              <path
+                d="M21.4014 23L32.0015 12.3999V10.6001L21.4014 0L19.7012 1.7998L27.0015 9.1001L28.3013 10L28.2012 10.5L26.5015 10.2998H0.701172V12.7998H26.5015L28.2012 12.6001L28.3013 13L27.0015 14L19.7012 21.2998L21.4014 23Z"
+                fill="#262626" />
+            </svg>
+
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-[40px] w-screen 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 relative lg:after:content-normal lg:after:bg-black lg:after:w-[1px] lg:after:h-48 lg:after:top-[60%] lg:after:absolute lg:after:right-0 lg:after:ml-20 before:content-normal before:bg-black before:w-[1px] before:h-3/4 lg:before:2/5 before:top-8 before:absolute before:left-5 lg:before:content-none">
+        <div
+          class="w-full h-fit flex-col-reverse lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] 3xl:w-[20vw] lg:w-[450px] relative md:w-1/2 text-white flex lg:flex-col justify-between lg:flex-wrap-reverse pl-14 element-show lg:opacity-0"
+          id="target">
+          <p
+            class="lg:text-4xl pt-[68px] lg:pt-[70px] text-[7.5vw] leading-[8vw] box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+            MOBILITIAMO<br>
+            CONOSCENZE<br>
+            E RISORSE
+          </p>
+          <h1 class="lg:text-[200px] lg:pt-20 text-9xl box1 4xl:text-[400px]">2</h1>
+        </div>
+        <div class="md:w-1/2 md:ps-6 lg:w-[60vw] flex flex-col justify-between 3xl:h-[80vh] element-show lg:opacity-0">
+          <img src="../src/img/Caso2.jpg"
+            class="w-2/3 3xl:w-[75%] ml-[50px] mt-[30px] lg:m-0 lg:w-[32rem] object-cover">
+          <div
+            class="hidden lg:block overflow-hidden text-sm pt-8 pl-5 lg:pl-0 w-[90vw] lg:w-full md:w-full md:pl-0 3xl:text-[1.2vw] 3xl:leading-none">
+            <p>
+              Crediamo che i bisogni e i desideri delle comunità e dei territori in cui lavoriamo debbano sempre essere al centro. Ci impegniamo in progetti che generano impatti tangibili e benefici a lungo termine per la società e l'ambiente. Per questo motivo guidiamo e gestiamo strategicamente, dall'inizio alla fine, la realizzazione di ogni progetto in cui siamo coinvolti, per garantire che ogni elemento sia implementato con precisione dettagliata e che ogni impegno sia rispettato o superato.
+              <br>
+              <br>
+              A tal fine, grazie alla rete di professionisti in Europa e America Latina che abbiamo coltivato per oltre un decennio sul mercato, consolidiamo un gruppo multidisciplinare di alleati con elevate conoscenze, competenze, credibilità e track record - i nostri partner; inoltre, cerchiamo e gestiamo finanziamenti, risorse e assistenza tecnica pertinenti per realizzare gli obiettivi di ogni progetto e affrontare con grande prontezza qualsiasi ostacolo o barriera che possa sorgere.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="pb-[40px] w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba2"
+        style="padding: 0;">
+        <div
+          class="sticky top-[-12rem] sm:top-0 lg:h-[calc(100vh-6rem)] overflow-x-hidden lg:flex lg:pl-[5vw] lg:fixed lg:top-0 3xl:pb-[25vh]">
+          <div class="overflow-hidden px-5 text-sm pt-8 lg:hidden w-[100vw] md:w-full">
+            <p>
+              Crediamo che i bisogni e i desideri delle comunità e dei territori in cui lavoriamo debbano sempre essere al centro. Ci impegniamo in progetti che generano impatti tangibili e benefici a lungo termine per la società e l'ambiente. Per questo motivo guidiamo e gestiamo strategicamente, dall'inizio alla fine, la realizzazione di ogni progetto in cui siamo coinvolti, per garantire che ogni elemento sia implementato con precisione dettagliata e che ogni impegno sia rispettato o superato.
+              <br>
+              <br>
+              A tal fine, grazie alla rete di professionisti in Europa e America Latina che abbiamo coltivato per oltre un decennio sul mercato, consolidiamo un gruppo multidisciplinare di alleati con elevate conoscenze, competenze, credibilità e track record - i nostri partner; inoltre, cerchiamo e gestiamo finanziamenti, risorse e assistenza tecnica pertinenti per realizzare gli obiettivi di ogni progetto e affrontare con grande prontezza qualsiasi ostacolo o barriera che possa sorgere.
+            </p>
+          </div>
+          <h1
+            class="text-[10vw] leading-[10vw] lg:text-5xl pb-10 lg:self-end lg:w-full lg:pl-0 pl-5 pt-32 lg:pt-0 3xl:text-[3vw] 3xl:w-full element-show lg:opacity-0">
+            ¿Come lo abbiamo<br>
+            fatto?
+          </h1>
+        </div>
+        <div class="flex flex-col bg-aloWhite lg:px-[5vw] mt-20 pl-5 pb-32 lg:pb-0 relative lg:mt-[100vh] z-[2]">
+          <div class="pt-[70px]">
+            <h1 class="text-[10vw] leading-[10vw] lg:text-5xl lg:w-full 3xl:text-[3vw] 3xl:w-full">
+              ¿Come lo abbiamo<br>
+              fatto?
+            </h1>
+            <br>
+            <div class="flex lg:flex-row flex-col lg:gap-12 gap-14 relative lg:mt-72 mt-10 3xl:mt-[500px] pr-5 lg:p-0">
+              <h1
+                class="font-groteskMono absolute text-white lg:text-8xl text-4xl lg:-top-[230px] top-[1rem] lg:left-0 font-bold w-full uppercase 3xl:text-[300px] 3xl:top-[-400px]">
+                PRESENZA<br>
+                DELL'ITALIA<br>
+                ALL'EXPO AGROFUTURO
+              </h1>
+              <div class="lg:basis-[50%] flex justify-end lg:block pr-10 lg:pr-0">
+                <img src="../src/img/Caso2A_Agrofuturo.jpg" class="w-1/2 lg:w-full">
+              </div>
+              <p class="z-10 text-sm lg:basis-[50%] 3xl:text-[1.2vw] 3xl:leading-none">
+                Conoscendo le grandi opportunità di scambio tra le aziende europee e le opportunità di business in Colombia e America Latina, ALO&Partners ha condotto uno sforzo strategico e una gestione di prospezione, facilitazione del dialogo, missioni di lavoro e mobilitazione di risorse e reti per portare l'Italia come Paese d'onore per la prima volta nella storia di Expo Agrofuturo. Nessun governo o azienda aveva mai creato questa opportunità prima d'ora, e ALO&Partners - che ha rappresentato ufficialmente il Paese in questa importante fiera - ha gestito connessioni preziose per le aziende italiane che cercano nuovi mercati in America Latina. Questo importante risultato è stato preceduto dall'alleanza che ALO&Partners ha gestito tra MacFrut - una delle più importanti fiere ortofrutticole in Italia e in Europa - ed Expo Agrofuturo.
+              </p>
+            </div>
+          </div>
+          <div class="lg:pt-[70px] pr-5 lg:p-0">
+            <div class="flex lg:flex-none flex-col-reverse gap-12 relative lg:mt-72 mt-32">
+              <h1
+                class="font-groteskMono absolute text-white lg:text-[220px] text-7xl lg:-top-[160px] -top-10 lg:left-28 font-bold uppercase 3xl:text-[500px]">
+                ÁTTIMO</h1>
+              <p class="z-10 text-sm lg:basis-[70%] 3xl:text-[1.2vw] 3xl:leading-none">
+                Con le nostre conoscenze nel settore agricolo e la nostra specializzazione nell'innovazione e nella tecnologia come vettori per trasformare le materie prime in prodotti di alto valore, ci siamo posti la domanda: com'è possibile che in Colombia si consumi principalmente gelato industriale e non si approfitti del privilegio di ingredienti di alta qualità prodotti nel Paese per essere trasformati in gelato - un'industria che genera milioni di euro in Italia e in Europa?
+                <br>
+                <br>
+                Questa esplorazione ha portato ALO&Partners, insieme a partner locali, investitori e ad alcune delle aziende più specializzate in tecnologia e metodi di gelateria in Italia, a unire le forze per creare Áttimo, un'azienda colombiana che produce e commercializza gelato con un'essenza italiana. Áttimo combina ingredienti colombiani di altissima qualità prodotti da farmers locali con le migliori tecniche di gelateria italiane, in un modello di business che sta facendo breccia nel mercato colombiano, elevando ingredienti e prodotti attraverso metodi innovativi e il know-how artigianale italiano nella trasformazione delle materie prime.
+              </p>
+              <div class="lg:basis-[20%] flex lg:flex-none pl-5 lg:pl-0">
+                <img src="../src/img/Caso2B_Attimo.jpg" class="w-1/2 lg:w-2/3">
+              </div>
+            </div>
+          </div>
+          <div class="pt-32 pb-16 3xl:pb-[7vh] hidden lg:block">
+            <svg width="25" height="25" viewBox="0 0 33 23" fill="none" xmlns="http://www.w3.org/2000/svg"
+              id="enableScrollButton2">
+              <path
+                d="M21.4014 23L32.0015 12.3999V10.6001L21.4014 0L19.7012 1.7998L27.0015 9.1001L28.3013 10L28.2012 10.5L26.5015 10.2998H0.701172V12.7998H26.5015L28.2012 12.6001L28.3013 13L27.0015 14L19.7012 21.2998L21.4014 23Z"
+                fill="#262626" />
+            </svg>
+
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-[40px] 3xl:py-[5vh] w-screen text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[60%] after:absolute after:right-0 after:ml-20 before:content-normal before:bg-black before:w-[1px] before:h-full lg:before:h-48 lg:before:top-[60%] before:absolute before:left-5 lg:before:right-0 lg:before:ml-20"
+        id="targetDiv2">
+        <div
+          class="lg:h-[calc(100vh-6rem)] overflow-x-hidden flex flex-wrap lg:block lg:pl-14 lg:pt-2 element-show lg:opacity-0">
+          <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 box1 z-[1] 4xl:text-[400px] lg:hidden">3</h1>
+          <h1
+            class="z-[1] lg:text-4xl text-[7.5vw] leading-[8vw] w-[90%] lg:w-1/2 text-white pt-[68px] lg:pt-0 pl-14 lg:pl-0 box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+            DIAMO FORZA ALLE INIZIATIVE
+            CON INNOVAZIONE E
+            TECNOLOGIA ALL'AVANGUARDIA</h1>
+          <img src="../src/img/Caso3.jpg" class="w-44 absolute right-[20px] top-[10vh] lg:hidden">
+          <div class="flex flex-col lg:flex-row gap-14 3xl:py-[5vh]">
+            <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 box1 z-[1] 4xl:text-[400px] hidden lg:block">3
+            </h1>
+            <img src="../src/img/Caso3.jpg"
+              class="w-44 mt-10 absolute right-[20px] top-[300px] lg:static 3xl:h-[50vh] 3xl:w-auto hidden lg:block">
+            <p
+              class="lg:mt-10 lg:w-[55vw] text-sm pl-5 lg:pl-0 w-[90vw] 3xl:text-[1.2vw] 3xl:leading-none hidden lg:block">
+              Crediamo fermamente che la tecnologia sia un acceleratore e un amplificatore di impatto. Siamo convinti che sia possibile non solo sfruttare, ma anche sfruttare soluzioni, facendo uso di strumenti e sviluppi tecnologici altamente avanzati e innovativi: dallo sfruttamento delle onde televisive per portare Internet a comunità non connesse, all'intelligenza artificiale e all'Internet degli oggetti per l'agricoltura, fino alla Blockchain come strumento per la tracciabilità di una catena di produzione.
+              <br>
+              <br>
+              Guardiamo da vicino, studiamo e approfondiamo i modi in cui i nuovi sviluppi tecnologici possono essere messi al servizio dell'impatto sociale, comunitario e ambientale. Creiamo ponti e relazioni solide con grandi aziende, organizzazioni, istituzioni e startup che studiano e sviluppano strumenti innovativi per analizzare le sfide che identifichiamo e proporre modi in cui i loro sviluppi possono aggiungere valore alle iniziative e ai progetti che gestiamo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;">
+        <div
+          class="sticky top-[-12rem] lg:h-[calc(100vh-6rem)] overflow-x-hidden lg:flex lg:pl-[5vw] pl-5 pt-20 lg:pt-0 3xl:pb-[15vh] lg:top-0 lg:fixed">
+          <div class="overflow-hidden text-sm pt-8 lg:hidden w-[90vw] md:w-full">
+            <p>
+              Crediamo fermamente che la tecnologia sia un acceleratore e un amplificatore di impatto. Siamo convinti che sia possibile non solo sfruttare, ma anche sfruttare soluzioni, facendo uso di strumenti e sviluppi tecnologici altamente avanzati e innovativi: dallo sfruttamento delle onde televisive per portare Internet a comunità non connesse, all'intelligenza artificiale e all'Internet degli oggetti per l'agricoltura, fino alla Blockchain come strumento per la tracciabilità di una catena di produzione.
+              <br>
+              <br>
+              Guardiamo da vicino, studiamo e approfondiamo i modi in cui i nuovi sviluppi tecnologici possono essere messi al servizio dell'impatto sociale, comunitario e ambientale. Creiamo ponti e relazioni solide con grandi aziende, organizzazioni, istituzioni e startup che studiano e sviluppano strumenti innovativi per analizzare le sfide che identifichiamo e proporre modi in cui i loro sviluppi possono aggiungere valore alle iniziative e ai progetti che gestiamo.
+            </p>
+          </div>
+          <h1
+            class="text-[10vw] leading-[10vw] lg:text-5xl pb-10 pt-32 lg:pt-0 lg:self-end lg:w-full 3xl:text-[3vw] 3xl:w-full element-show lg:opacity-0">
+            ¿Come lo abbiamo<br>
+            fatto?
+          </h1>
+        </div>
+        <div class="pb-[40px] flex flex-col bg-aloWhite lg:px-[5vw] mt-20 px-5 relative z-[2] lg:mt-[100vh]">
+          <div class="pt-[70px]">
+            <h1 class="text-[10vw] leading-[10vw] lg:text-5xl lg:w-full 3xl:text-[3vw] 3xl:w-full">
+              ¿Come lo abbiamo<br>
+              fatto?
+            </h1>
+            <br>
+            <div class="flex gap-12 flex-col lg:flex-row relative lg:mt-80 mt-5 3xl:mt-[800px]">
+              <h1
+                class="font-groteskMono absolute uppercase text-white lg:text-8xl text-4xl lg:-top-[220px] top-56 lg:left-36 font-bold w-full 3xl:text-[300px] 3xl:top-[-600px]">
+                TRASFORMAZIONE 
+                TECNOLOGICA DEL CAFFÈ 
+              </h1>
+              <div class="lg:basis-[35%]">
+                <img src="../src/img/Caso3A_Coffee5.jpg" class="w-1/2 lg:w-full">
+              </div>
+              <p class="z-10 text-sm lg:basis-[65%] pt-10 3xl:text-[1.2vw] 3xl:leading-none">
+                Il tempo trascorso in aree non collegate in diverse missioni ci ha permesso di osservare in prima persona molte delle sfide affrontate dalle comunità che vivono lontano dai centri urbani: scarsa attenzione da parte delle istituzioni e mancanza di accesso all'istruzione di base e alle opportunità sanitarie che diamo per scontate nelle città. Così, nel 2017, siamo arrivati in un luogo poco conosciuto come zona di produzione del caffè e che per molti anni ha subito le devastazioni del conflitto armato: il Dipartimento di Meta in Colombia, ma dove si trova questo prodotto agricolo di alta qualità.
+                <br>
+                <br>
+                Nei comuni produttori di caffè di Mesetas, Lejanías e San Juan de Arama, abbiamo guidando gli sforzi per implementare il pilota Coffee 5.0 Technology Transformation, consolidando un'alleanza tra: Lavazza, uno dei più importanti torrefattori al mondo, che ha lavorato sul territorio con Carcafé; Microsoft; xFarm, una startup europea di tecnologia agricola; e Makaia, un'organizzazione no-profit colombiana con una vasta esperienza e leadership nello sviluppo di progetti sociali sul territorio.
+                <br>
+                <br>
+                Abbiamo portato la connettività nella zona, sfruttando i canali inutilizzati dello spettro delle onde televisive, noti come TVWS (Television White Spaces), per trasmettere segnale Internet grazie al supporto di Microsoft. Portare la connettività e l'accesso a Internet nei comuni aveva due obiettivi chiave: (i) incorporare la tecnologia nei processi produttivi dei coltivatori di caffè per migliorare la qualità delle informazioni e dei dati per il processo decisionale e quindi aumentare la produttività dei raccolti; e (ii) offrire alla comunità intorno alle piantagioni di caffè l'accesso a Internet per sostenere l'istruzione dei bambini e dei giovani e offrire servizi sanitari come la telemedicina e la telediagnosi alla popolazione.
+                <br>
+                <br>
+                Successivamente, xFarm ha installato sensori e dispositivi tecnologici specializzati per l'agricoltura che sfruttano l'Internet delle cose (IoT) sulle coltivazioni di caffè in 5 aziende pilota. Questi dispositivi producono informazioni chiave per tutti gli attori della catena del valore del caffè per prendere decisioni e azioni tempestive per migliorare la produttività, la qualità e i profitti dei coltivatori di caffè.
+              </p>
+            </div>
+          </div>
+          <div class="lg:pt-[70px] pb-32">
+            <div class="flex gap-12 flex-col-reverse lg:flex-row relative mt-72 3xl:mt-[800px]">
+              <h1
+                class="font-groteskMono absolute text-white lg:-top-64 lg:left-0 right-0 -top-32 font-bold uppercase lg:text-7xl text-4xl lg:w-[950px] w-80 3xl:text-[200px] 3xl:top-[-600px] 3xl:w-[100%]">
+                ECOSISTEMA DIGITALE
+                <br>DI INFORMAZIONI SUL CAFFÈ 
+                CHE SFRUTTA LA TECNOLOGIA BLOCKCHAIN
+              </h1>
+              <p class="z-10 text-sm lg:basis-[65%] lg:pt-16 3xl:text-[1.2vw] 3xl:leading-none">
+                Ispirati dalla portata della tecnologia per l'industria del caffè che abbiamo osservato in Colombia, nel 2020 abbiamo avviato un nuovo progetto in collaborazione con Lavazza (e il suo marchio di caffè 1895), xFarm, Bip (una società di consulenza leader nel campo dell'innovazione e della tecnologia) per portare la tecnologia Blockchain nelle aziende agricole del caffè in Brasile. Lo scopo di questo progetto era quello di creare una miscela di caffè che incorporasse la Blockchain per la tracciabilità nelle fasi più importanti della sua catena di produzione. Sfruttando sensori e dispositivi per misurare le condizioni agricole, siamo stati in grado di incorporare dati altamente affidabili e tracciabili dalla produzione di caffè di due fattorie in Brasile, in modo che gli attori chiave della catena del valore, tra cui il torrefattore (Lavazza), gli acquirenti (aziende e baristi) e i consumatori finali, avessero informazioni sulle origini, i processi, le risorse utilizzate, gli standard di sicurezza, la tostatura, le condizioni climatiche e del suolo, il trasporto e la manipolazione di ogni chicco di caffè.
+                <br>
+                <br>
+                Con l'integrazione della Blockchain, in un futuro molto prossimo, torrefattori e consumatori, amanti del caffè, non solo potranno creare portafogli digitali con criptovalute, ma contribuiranno ad aumentare il reddito dei produttori - un giusto riflesso del prezioso lavoro nel campo del caffè, le comunità di coltivatori di caffè, il loro impegno verso elevati standard produttivi e il loro importante ruolo nella crescita sostenibile dal punto di vista sociale e ambientale - ma potranno anche partecipare attivamente alla diffusione (dati reali e immutabili) della bellezza degli ambienti del caffè, un ulteriore incentivo per produttori, torrefattori e consumatori a proteggere il nostro pianeta e le comunità che lo abitano.
+                <br>
+                <br>
+                Questa promettente iniziativa ha dimostrato che la tecnologia Blockchain dà voce ai coltivatori di caffè e un valore tangibile alla sostenibilità e all'impatto del loro prodotto; per questo motivo abbiamo esteso questa iniziativa a Cuba con Lavazza e il suo Tierra! Cuba, costruendo un ecosistema informativo digitale che sfrutta la tecnologia Blockchain come abbiamo fatto in Brasile, questa volta a più di 170 fattorie di caffè in quattro regioni di Cuba.
+              </p>
+              <div class="lg:basis-[35%] flex justify-end lg:block pr-10 lg:pr-0">
+                <img src="../src/img/Caso3B_Blockchain.jpg" class="w-1/2 lg:w-full">
+              </div>
+            </div>
+          </div>
+          <div class="pt-32 pb-16 3xl:pb-[7vh] hidden lg:block">
+            <svg width="25" height="25" viewBox="0 0 33 23" fill="none" xmlns="http://www.w3.org/2000/svg"
+              onclick="scrollTargetDiv3()">
+              <path
+                d="M21.4014 23L32.0015 12.3999V10.6001L21.4014 0L19.7012 1.7998L27.0015 9.1001L28.3013 10L28.2012 10.5L26.5015 10.2998H0.701172V12.7998H26.5015L28.2012 12.6001L28.3013 13L27.0015 14L19.7012 21.2998L21.4014 23Z"
+                fill="#262626" />
+            </svg>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ourpassions" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white">
+      <div
+        class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:overflow-visible lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
+        <div class="lg:-rotate-90 flex relative">
+          <div class="animate-marquee3 whitespace-nowrap lg:pl-20 pl-14">
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+          </div>
+          <div class="absolute top-0 animate-marquee4 whitespace-nowrap">
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+            <span>Ci appassiona ·</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-[75vw] lg:h-full 3xl:py-[5vh] element-show lg:opacity-0">
+        <div
+          class="px-4 uppercase text-base lg:text-sm tracking-wider md:px-6 lg:px-0 lg:pt-[5vh] lg:block 3xl:pt-0 3xl:text-[1vw]">
+          <p class="animate-slideUpText">Settori in cui abbiamo esperienza</p>
+        </div>
+        <div class="px-4 pt-[14vh] pb-4 md:px-6 lg:px-0 lg:pt-[6vh]">
+          <div class="py-4 text-2xl lg:w-[60vw] 3xl:text-[2vw] 3xl:leading-none">
+            <p class="animate-fadeIn">
+              Per ALO&Partners, le opportunità di azione nello spazio della sostenibilità sono infinite. Sappiamo che, con l'evoluzione del mondo e dell'umanità, emergono nuove esigenze e sfide che di solito colpiscono maggiormente le popolazioni e i territori più svantaggiati.
+            </p>
+            <p class="animate-fadeIn py-6">
+              Non vediamo limiti al contributo che possiamo dare in più settori, ma negli ultimi 10 anni ci siamo specializzati in alcuni:
+            </p>
+          </div>
+          <div
+            class="text-base lg:text-sm lg:flex border-white border-y 3xl:text-[1.2vw] 3xl:leading-none 3xl:py-[2vh] 3xl:my-[2vh]">
+            <div class="lg:w-[30vw] py-4 grid gap-1 grid-cols-1">
+              <p>AGRICOLTURA</p>
+              <p>ENERGIA</p>
+              <p>MODA</p>
+              <p>CULTURA</p>
+              <p>AMBIENTE</p>
+              <p>SICUREZZA ALIMENTARE</p>
+              <p>TECNOLOGIA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="weconnect" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white">
+      <div
+        class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:overflow-visible lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
+        <div class="lg:-rotate-90 flex relative">
+          <div class="animate-marquee3 whitespace-nowrap lg:pl-20 pl-14">
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+          </div>
+          <div class="absolute top-0 animate-marquee4 whitespace-nowrap">
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+            <span>Colleghiamo ·</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-[30vw] lg:h-full lg:mx-[3vw] 3xl:py-[5vh] element-show lg:opacity-0">
+        <div
+          class="px-4 uppercase text-base lg:text-sm tracking-wider md:px-6 lg:px-0 lg:pt-[5vh] lg:block 3xl:pt-0 3xl:text-[1vw]">
+          <p class="animate-slideUpText">Alleati</p>
+        </div>
+        <div class="px-4 pt-[14vh] pb-4 md:px-6 lg:px-0 lg:pt-[6vh]">
+          <div class="py-4 text-2xl 3xl:text-[2vw] 3xl:leading-none">
+            <p class="animate-fadeIn">
+              Nostri partner sono aziende, persone, organizzazioni e iniziative che condividono la nostra visione e il nostro proposito di creare valore.
+            </p>
+          </div>
+          <div class="text-sm border-white border-t 3xl:pt-[2vh] 3xl:mt-[2vh]">
+            <div class="grid grid-cols-4 gap-9 pt-6 items-center justify-evenly">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Lavazza.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/1895.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]"
+                src="../src/img/logos/HeritageCollective.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Microsoft.png"
+                alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/RutaN.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/bip.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/CEA.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Makaia.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Agrofuturo.png"
+                alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/XFarm.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Macfrut.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Migrante.png"
+                alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Attimo.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Babbi.png" alt="">
+              <img class="max-w-[15vw] md:max-w-[8vw] mx-auto lg:max-w-[4vw]" src="../src/img/logos/Portobello.png"
+                alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-[35vw] lg:h-full lg:mx-[3vw] 3xl:py-[5vh] element-show lg:opacity-0">
+        <div class="hidden px-4 uppercase text-sm tracking-wider md:px-6 lg:px-0 lg:pt-[5vh] lg:block 3xl:pt-0 3xl:text-[1vw]">
+          <p class="animate-slideUpText">Contattaci</p>
+        </div>
+        <div class="px-4 pt-[14vh] pb-4 md:px-6 lg:px-0 lg:pt-[6vh] flex flex-col-reverse lg:block">
+          <div class="pb-4 font-light">
+            <div class="py-10 uppercase text-base lg:text-sm tracking-wider lg:hidden">
+              <p class="animate-slideUpText">Contattaci</p>
+            </div>
+            <div class="animate-fadeIn text-2xl lg:text-xs lg:w-[30vw] py-3 3xl:text-[1.2vw] 3xl:leading-none">
+              <a class="hover:no-underline underline" href="mailto:info@alopartners.com" target="_blank">info@alopartners.com</a>
+            </div>
+            <div class="animate-fadeIn text-2xl lg:text-xs lg:w-[30vw] py-3 3xl:text-[1.2vw] 3xl:leading-none">
+              <a class="hover:no-underline underline" href="https://medium.com/@andrealondono_20565" target="_blank">Medium</a><br>
+              <a class="hover:no-underline underline" href="https://it.linkedin.com/company/alo&partners" target="_blank">Linkedin</a><br>
+              <a class="hover:no-underline underline" href="#" target="_blank">Instagram</a><br>
+              <a class="hover:no-underline underline" href="https://twitter.com/alo_partners" target="_blank">Twitter</a>
+            </div>
+            <div class="text-[0.7vw] justify-between hidden lg:flex 3xl:mt-[2vh]">
+              <p class="animate-slideUpText w-fit">© ALO & PARTNERS - 2024</p>
+              <div>
+                <span class="pr-2 animate-slideUpText">Content and concept by <a class="hover:no-underline underline" href="https://www.laura-adiwasito.com/" target="_blank">Laura Adiwasito</a></span>
+                <span class="border-white border-l pl-2 animate-slideUpText">Design by <a class="hover:no-underline underline" href="https://primero.studio/" target="_blank">primero.studio</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="pb-6 lg:pb-0 lg:pt-10 lg:border-white lg:border-t 3xl:pt-[2vh] 3xl:mt-[2vh]">
+            <a href="https://medium.com/@andrealondono_20565" target="_blank">
+              <img class="h-[30vh] lg:h-[40vh] mx-auto animate-circleRotate" src="../src/img/circle.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-aloGray w-screen h-screen lg:h-screen flex lg:flex-col lg:items-center text-white">
+      <div class="mx-auto pb-[1vh] lg:pb-[8vh] h-[93vh] lg:h-[106vh] flex flex-col justify-between lg:block">
+        <div class="flex flex-wrap justify-center element-show lg:opacity-0">
+          <svg class="w-[90vw] mt-[2vh]" viewBox="0 0 1850 616" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M730.601 27.0996H662.4V595.5H730.601V27.0996Z" fill="#E6E6E6" />
+            <path d="M730.602 595.5H1113.3V532.2H820.201C779.901 532.2 744.002 557.5 730.602 595.5Z" fill="#E6E6E6" />
+            <path
+              d="M353.401 27.0996H207.301L0.300781 595.5H80.001L272.201 51.9004H286.901L407.901 393.9H217.401C179.301 393.9 145.301 416.7 130.801 451.9L130.501 453H428.801L479.201 595.5H560.501L353.401 27.0996Z"
+              fill="#E6E6E6" />
+            <path
+              d="M1261.2 355.901C1255.3 244.101 1379.4 122.8 1539.3 83.3001C1530 75.5001 1520.3 67.9999 1510.2 61.0999C1364.3 -39.9001 1191.7 -11.1999 1124.7 125.3C1057.7 261.7 1121.6 454.1 1267.6 555.1C1413.5 656 1586.1 627.301 1653.1 490.901C1658.9 479.101 1663.6 466.901 1667.5 454.401C1636.1 470.201 1601.8 482.8 1565.9 491.3C1403.6 529.5 1267.1 468.901 1261.2 355.901Z"
+              fill="#00AF6E" />
+            <path
+              d="M1848.9 217.4C1843 104.4 1706.6 43.7992 1544.3 82.0992C1542.63 82.4992 1540.97 82.8994 1539.3 83.2994C1652.7 178.699 1705.3 332 1667.5 454.4C1777.8 399.1 1853.6 305.4 1848.9 217.4Z"
+              fill="#956648" />
+          </svg>
+          <!-- <div class="text-2xl md:text-4xl lg:text-8xl">
+            <p>& You</p>
+          </div> -->
+          <div class="carousel h-16 flex text-2xl md:text-4xl lg:text-7xl lg:h-48 relative w-[90vw]">
+            <pre class="z-10"><svg class="h-5 md:h-9 lg:h-[4.5rem] w-auto mt-[0.6vh] lg:w-12 lg:pb-3 5xl:mt-0" viewBox="0 0 64 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M53.5009 20.5998H59.7008C58.5675 30.1331 56.4341 38.3998 53.3008 45.3998C50.2341 52.4665 46.1675 57.8998 41.1008 61.6998C36.0342 65.4998 29.9341 67.3998 22.8008 67.3998C18.1341 67.3998 14.1675 66.5665 10.9009 64.8998C7.56755 63.2331 5.06755 60.9665 3.40088 58.0998C1.66755 55.2998 0.800781 52.1665 0.800781 48.6998C0.800781 43.8331 2.50088 39.7998 5.90088 36.5998C9.36755 33.3998 14.4675 30.9998 21.2008 29.3998L21.8008 29.4998C26.0674 28.0331 29.2008 26.1665 31.2008 23.8998C33.2675 21.6998 34.3008 19.0998 34.3008 16.0998C34.3008 12.9665 33.3342 10.5665 31.4009 8.89981C29.4675 7.23314 27.0009 6.39981 24.0009 6.39981L23.8008 0.799805C27.2008 0.799805 30.1342 1.39981 32.6008 2.59981C35.1342 3.79981 37.1009 5.53314 38.5009 7.7998C39.8342 9.9998 40.5009 12.6665 40.5009 15.7998C40.5009 20.1331 39.0675 23.8665 36.2008 26.9998C33.3341 30.1332 29.1009 32.6998 23.5009 34.6998L22.9009 34.5998C17.5009 35.9331 13.5009 37.7998 10.9009 40.1998C8.36755 42.5331 7.10083 45.3998 7.10083 48.7998C7.10083 51.2665 7.73419 53.4665 9.00085 55.3998C10.3342 57.3331 12.1675 58.8331 14.5009 59.8998C16.8342 60.9665 19.6008 61.4998 22.8008 61.4998C28.6674 61.4998 33.7009 59.8331 37.9009 56.4998C42.0342 53.1665 45.3675 48.4331 47.9009 42.2998C50.5009 36.1665 52.3675 28.9331 53.5009 20.5998ZM58.5009 60.6998H63.5009V66.5998H55.9009L19.2008 34.3998C16.3341 31.9998 14.0341 29.7998 12.3008 27.7998C10.5008 25.7331 9.20088 23.7331 8.40088 21.7998C7.60088 19.8665 7.20081 17.7998 7.20081 15.5998C7.20081 12.4665 7.90078 9.79981 9.30078 7.59981C10.7008 5.39981 12.6342 3.69982 15.1008 2.49982C17.6342 1.36648 20.5341 0.799805 23.8008 0.799805L24.0009 6.39981C20.8675 6.39981 18.3342 7.26648 16.4009 8.99982C14.4675 10.7332 13.5009 13.0331 13.5009 15.8998C13.5009 17.5665 13.9008 19.1998 14.7008 20.7998C15.5008 22.3998 16.6342 23.9998 18.1008 25.5998C19.5675 27.1331 21.3342 28.7331 23.4009 30.3998L58.5009 60.6998Z" fill="#E6E6E6"/>
+              </svg>
+              </pre>
+            <div
+              class="lg:animate-carouselAnimationLg animate-carouselAnimationSm absolute pl-7 lg:pl-20 lg:flex lg:flex-col lg:gap-28">
+              <span class="word">Lavazza</span>
+              <span class="word">Microsoft</span>
+              <span class="word">CEA</span>
+              <span class="word">Migrante</span>
+              <span class="word">Heritage Collective</span>
+              <span class="word">Portobello</span>
+              <span class="word">Colombia</span>
+              <span class="word">Italia</span>
+              <span class="word">Babbi</span>
+              <span class="word">Agrofuturo</span>
+              <span class="word">Corferias</span>
+              <span class="word">AgriLink</span>
+              <span class="word pt-3 lg:pt-0">CCC</span>
+              <span class="word">Cámara de Comercio de Medellín</span>
+              <span class="word">Makaia</span>
+              <span class="word pt-10">Áttimo</span>
+              <span class="word pt-10">TEDx</span>
+              <span class="word pt-10">Blockchain</span>
+              <span class="word pt-10">C-Neutral</span>
+              <span class="word pt-10">Partners</span>
+              <span class="word pt-10">Lavazza</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-[3vw] md:text-[1.8vw] lg:hidden px-4">
+          <p class="animate-slideUpText pb-2 lg:pb-0">Content and concept<br>by <a>Laura Adiwasito</a></p>
+          <p class="animate-slideUpText pb-8 lg:pb-0">Design by<br><a>primero.studio</a></p>
+          <p class="animate-slideUpText w-fit">© ALO & PARTNERS - 2024</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div
+    class="overflow-hidden fixed bottom-0 w-screen h-[7vh] border-t max-sm:border-aloGray flex justify-between items-center px-2 z-40"
+    id="footer-nav">
+    <ul class="border-inherit text-xs h-fit lg:flex lg:items-center 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px]">
+      <span class="float-left px-2 cursor-pointer scroll-trigger" data-target="home">
+        <svg class="h-[3vh]" id="logo-black" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M60.2986 14.9999C60.2986 9.79985 66.9986 5.49985 75.2986 5.49985C77.3986 5.49985 79.4986 5.7999 81.2986 6.2999C80.1986 4.2999 78.5988 2.59985 76.4988 1.49985C70.1988 -1.90015 61.9985 1.0998 58.1985 8.1998C54.2985 15.2998 56.3985 23.7998 62.6985 27.1998C67.6985 29.8998 73.8989 28.5998 78.0989 24.3998C77.2323 24.5331 76.2986 24.6 75.2986 24.6C66.9986 24.6 60.2986 20.2999 60.2986 14.9999Z"
+            fill="#262626" />
+          <path
+            d="M90.2993 14.9998C90.2993 11.0998 86.5993 7.7998 81.2993 6.2998C83.4993 10.3998 83.5996 15.7998 81.0996 20.4998C80.2329 21.9664 79.2329 23.2663 78.0996 24.3997C85.0996 23.4997 90.2993 19.6998 90.2993 14.9998Z"
+            fill="#262626" />
+          <path d="M36.6982 0.799805H33.3984V28.6997H36.6982V0.799805Z" fill="#262626" />
+          <path d="M36.6992 28.6995H55.5996V25.5996H41.0996C39.1996 25.5996 37.3992 26.8995 36.6992 28.6995Z"
+            fill="#262626" />
+          <path
+            d="M18.1987 0.799805H10.999L0.798828 28.6997H4.69873L14.1987 1.99976H14.8989L20.7988 18.7998H11.499C9.59902 18.7998 7.89873 19.8997 7.19873 21.6997H21.8989L24.2988 28.6997H28.3989L18.1987 0.799805Z"
+            fill="#262626" />
+        </svg>
+        <svg class="h-[3vh] hidden" id="logo-white" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M60.2986 14.9999C60.2986 9.79985 66.9986 5.49985 75.2986 5.49985C77.3986 5.49985 79.4986 5.7999 81.2986 6.2999C80.1986 4.2999 78.5988 2.59985 76.4988 1.49985C70.1988 -1.90015 61.9985 1.0998 58.1985 8.1998C54.2985 15.2998 56.3985 23.7998 62.6985 27.1998C67.6985 29.8998 73.8989 28.5998 78.0989 24.3998C77.2323 24.5331 76.2986 24.6 75.2986 24.6C66.9986 24.6 60.2986 20.2999 60.2986 14.9999Z"
+            fill="white" />
+          <path
+            d="M90.2993 14.9998C90.2993 11.0998 86.5993 7.7998 81.2993 6.2998C83.4993 10.3998 83.5996 15.7998 81.0996 20.4998C80.2329 21.9664 79.2329 23.2663 78.0996 24.3997C85.0996 23.4997 90.2993 19.6998 90.2993 14.9998Z"
+            fill="white" />
+          <path d="M36.6982 0.799805H33.3984V28.6997H36.6982V0.799805Z" fill="white" />
+          <path d="M36.6992 28.6995H55.5996V25.5996H41.0996C39.1996 25.5996 37.3992 26.8995 36.6992 28.6995Z"
+            fill="white" />
+          <path
+            d="M18.1987 0.799805H10.999L0.798828 28.6997H4.69873L14.1987 1.99976H14.8989L20.7988 18.7998H11.499C9.59902 18.7998 7.89873 19.8997 7.19873 21.6997H21.8989L24.2988 28.6997H28.3989L18.1987 0.799805Z"
+            fill="white" />
+        </svg>
+      </span>
+      <span
+        class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
+        data-target="weare">CHI SIAMO</span>
+      <span
+        class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
+        data-target="wedo">FARE</span>
+      <span
+        class="hover:underline float-left border-inherit  border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
+        data-target="ourpassions">CI APPASSIONA</span>
+      <span class="hover:underline float-left px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw"
+        data-target="weconnect">COLLEGHIAMO</span>
+    </ul>
+    <div
+      class="border-inherit text-xs h-fit 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px] 3xl:flex 3xl:flex-row-reverse 3xl:items-center">
+      <a href="https://it.linkedin.com/company/alo&partners" class="float-right hidden lg:block px-1 3xl:px-[1vw]" target="_blank">
+        <svg class="h-[14px] 3xl:h-[35px]" id="ig-black" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z"
+            fill="#262626" />
+        </svg>
+        <svg class="h-[14px] 3xl:h-[35px] hidden" id="ig-white" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z"
+            fill="white" />
+        </svg>
+      </a>
+      <a href="https://medium.com/@andrealondono_20565" class="float-right hidden lg:block px-1 3xl:px-[1vw]" target="_blank">
+        <svg id="medium-icon" class="h-[14px] 3xl:h-[35px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3999 46.7007 39.7999 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7999C43.3999 0.800781 46.1998 3.60068 46.1998 7.20068ZM25.4998 23.7007C25.4998 18.4007 21.1998 14.0007 15.7998 14.0007C10.4998 14.0007 6.09979 18.4007 6.09979 23.7007C6.09979 29.1007 10.4998 33.4008 15.7998 33.4008C21.1998 33.4008 25.4998 29.1007 25.4998 23.7007ZM36.0998 23.7007C36.0998 18.6007 33.8999 14.5007 31.2999 14.5007C28.5999 14.5007 26.4998 18.6007 26.4998 23.7007C26.4998 28.8007 28.5999 33.0007 31.2999 33.0007C33.8999 33.0007 36.0998 28.8007 36.0998 23.7007ZM40.3998 23.7007C40.3998 19.2007 39.6998 15.5007 38.6998 15.5007C37.7998 15.5007 37.0998 19.2007 37.0998 23.7007C37.0998 28.3007 37.7998 32.0007 38.6998 32.0007C39.6998 32.0007 40.3998 28.3007 40.3998 23.7007Z" />
+        </svg>
+      </a>
+      <a href="#about" class="float-right hidden lg:block px-1 3xl:px-[1vw]" target="_blank">
+        <svg id="insta-icon" class="h-[14px] 3xl:h-[35px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3998 46.7007 39.7998 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7998C43.3998 0.800781 46.1998 3.60068 46.1998 7.20068ZM39.4998 16.7007C39.4998 11.6007 35.3998 7.50073 30.2998 7.50073H16.2998C11.1998 7.50073 6.99982 11.6007 6.99982 16.7007V30.7007C6.99982 35.8007 11.1998 40.0007 16.2998 40.0007H30.2998C35.3998 40.0007 39.4998 35.8007 39.4998 30.7007V16.7007ZM36.6998 16.7007V30.7007C36.6998 34.3007 33.7998 37.2007 30.2998 37.2007H16.2998C12.6998 37.2007 9.7998 34.3007 9.7998 30.7007V16.7007C9.7998 13.2007 12.6998 10.3008 16.2998 10.3008H30.2998C33.7998 10.3008 36.6998 13.2007 36.6998 16.7007ZM31.5998 23.7007C31.5998 19.1007 27.7998 15.4008 23.2998 15.4008C18.6998 15.4008 14.8998 19.1007 14.8998 23.7007C14.8998 28.3007 18.6998 32.0007 23.2998 32.0007C27.7998 32.0007 31.5998 28.3007 31.5998 23.7007ZM28.7998 23.7007C28.7998 26.8007 26.2998 29.2007 23.2998 29.2007C20.1998 29.2007 17.6998 26.8007 17.6998 23.7007C17.6998 20.7007 20.1998 18.2007 23.2998 18.2007C26.2998 18.2007 28.7998 20.7007 28.7998 23.7007ZM33.8998 14.9008C33.8998 13.8008 32.9998 12.9008 31.8998 12.9008C30.7998 12.9008 29.8998 13.8008 29.8998 14.9008C29.8998 16.0008 30.7998 16.9008 31.8998 16.9008C32.9998 16.9008 33.8998 16.0008 33.8998 14.9008Z" />
+        </svg>
+      </a>
+      <a href="https://twitter.com/alo_partners" class="float-right hidden lg:block pl-2 pr-1 3xl:px-[1vw]" target="_blank">
+        <svg id="twit-icon" class="h-[14px] 3xl:h-[35px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3998 46.7007 39.7998 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7998C43.3998 0.800781 46.1998 3.60068 46.1998 7.20068ZM38.2998 37.4008L26.5998 21.9008L36.6998 10.0007H31.8998L24.2998 18.9008L17.5998 10.0007H8.19983L19.3998 24.8008L8.69983 37.4008H13.4998L21.6998 27.8008L29.0998 37.4008H38.2998ZM16.2998 12.4008L33.3998 35.0007H30.1998L12.9998 12.4008H16.2998Z" />
+        </svg>
+      </a>
+      <a href="../ES/"
+        class="hover:underline float-right border-inherit border-r px-2 hidden lg:block 3xl:px-[1vw] 3xl:border-r-2">ES</a>
+      <a href="../IT/"
+        class="hover:underline float-right border-inherit border-r px-2 hidden lg:block 3xl:px-[1vw] 3xl:border-r-2">IT</a>
+      <a href="../EN/"
+        class="hover:underline float-right border-inherit border-r px-2 hidden lg:block 3xl:px-[1vw] 3xl:border-r-2">EN</a>
+      <a onclick="showHideNav()" href="#about" class="float-right lg:hidden">
+        <svg id="pointButton" class="w-[20px] fill-aloGray" viewBox="0 0 27 6" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4.99829 2.7998C4.99829 4.0998 3.99849 5.1001 2.69849 5.1001C1.49849 5.1001 0.398438 4.0998 0.398438 2.7998C0.398438 1.4998 1.49849 0.5 2.69849 0.5C3.99849 0.5 4.99829 1.4998 4.99829 2.7998Z" />
+          <path
+            d="M15.8989 2.7998C15.8989 4.0998 14.8989 5.1001 13.5989 5.1001C12.3989 5.1001 11.2988 4.0998 11.2988 2.7998C11.2988 1.4998 12.3989 0.5 13.5989 0.5C14.8989 0.5 15.8989 1.4998 15.8989 2.7998Z" />
+          <path
+            d="M26.7991 2.7998C26.7991 4.0998 25.799 5.1001 24.499 5.1001C23.199 5.1001 22.1992 4.0998 22.1992 2.7998C22.1992 1.4998 23.199 0.5 24.499 0.5C25.799 0.5 26.7991 1.4998 26.7991 2.7998Z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div id="responsiveNav"
+    class="bg-aloGray text-white w-screen h-[93vh] fixed top-0 hidden right-0 left-0 z-30 lg:hidden overflow-hidden">
+    <div class="flex flex-col justify-between p-4 h-full">
+      <div class="text-lg grid gap-1">
+        <p><a onclick="showHideNav()" href="#weare"
+            class="hover:underline border-aloGray border-r p-2 cursor-pointer scroll-trigger" data-target="weare">CHI SIAMO</a></p>
+        <p><a onclick="showHideNav()" href="#wedo"
+            class="hover:underline border-aloGray border-r p-2 cursor-pointer scroll-trigger" data-target="wedo">FARE</a></p>
+        <p><a onclick="showHideNav()" href="#ourpassions"
+            class="hover:underline border-aloGray border-r p-2 cursor-pointer scroll-trigger"
+            data-target="ourpassions">CI APPASSIONA</a></p>
+        <p><a onclick="showHideNav()" href="#weconnect" class="hover:underline p-2 cursor-pointer"
+            data-target="weconnect scroll-trigger">COLLEGHIAMO</a></p>
+      </div>
+      <div class="text-lg h-fit">
+        <a href="https://it.linkedin.com/company/alo&partners" class="float-right px-2" target="_blank">
+          <svg class="h-[18px]" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z"
+              fill="#FFFFFF" />
+          </svg>
+        </a>
+        <a href="https://medium.com/@andrealondono_20565" class="float-right px-1" target="_blank">
+          <svg class="h-[18px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3999 46.7007 39.7999 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7999C43.3999 0.800781 46.1998 3.60068 46.1998 7.20068ZM25.4998 23.7007C25.4998 18.4007 21.1998 14.0007 15.7998 14.0007C10.4998 14.0007 6.09979 18.4007 6.09979 23.7007C6.09979 29.1007 10.4998 33.4008 15.7998 33.4008C21.1998 33.4008 25.4998 29.1007 25.4998 23.7007ZM36.0998 23.7007C36.0998 18.6007 33.8999 14.5007 31.2999 14.5007C28.5999 14.5007 26.4998 18.6007 26.4998 23.7007C26.4998 28.8007 28.5999 33.0007 31.2999 33.0007C33.8999 33.0007 36.0998 28.8007 36.0998 23.7007ZM40.3998 23.7007C40.3998 19.2007 39.6998 15.5007 38.6998 15.5007C37.7998 15.5007 37.0998 19.2007 37.0998 23.7007C37.0998 28.3007 37.7998 32.0007 38.6998 32.0007C39.6998 32.0007 40.3998 28.3007 40.3998 23.7007Z"
+              fill="#FFFFFF" />
+          </svg>
+        </a>
+        <a href="#about" class="float-right px-1" target="_blank">
+          <svg class="h-[18px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3998 46.7007 39.7998 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7998C43.3998 0.800781 46.1998 3.60068 46.1998 7.20068ZM39.4998 16.7007C39.4998 11.6007 35.3998 7.50073 30.2998 7.50073H16.2998C11.1998 7.50073 6.99982 11.6007 6.99982 16.7007V30.7007C6.99982 35.8007 11.1998 40.0007 16.2998 40.0007H30.2998C35.3998 40.0007 39.4998 35.8007 39.4998 30.7007V16.7007ZM36.6998 16.7007V30.7007C36.6998 34.3007 33.7998 37.2007 30.2998 37.2007H16.2998C12.6998 37.2007 9.7998 34.3007 9.7998 30.7007V16.7007C9.7998 13.2007 12.6998 10.3008 16.2998 10.3008H30.2998C33.7998 10.3008 36.6998 13.2007 36.6998 16.7007ZM31.5998 23.7007C31.5998 19.1007 27.7998 15.4008 23.2998 15.4008C18.6998 15.4008 14.8998 19.1007 14.8998 23.7007C14.8998 28.3007 18.6998 32.0007 23.2998 32.0007C27.7998 32.0007 31.5998 28.3007 31.5998 23.7007ZM28.7998 23.7007C28.7998 26.8007 26.2998 29.2007 23.2998 29.2007C20.1998 29.2007 17.6998 26.8007 17.6998 23.7007C17.6998 20.7007 20.1998 18.2007 23.2998 18.2007C26.2998 18.2007 28.7998 20.7007 28.7998 23.7007ZM33.8998 14.9008C33.8998 13.8008 32.9998 12.9008 31.8998 12.9008C30.7998 12.9008 29.8998 13.8008 29.8998 14.9008C29.8998 16.0008 30.7998 16.9008 31.8998 16.9008C32.9998 16.9008 33.8998 16.0008 33.8998 14.9008Z"
+              fill="#FFFFFF" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/alo_partners" class="float-right pl-2 pr-1" target="_blank">
+          <svg class="h-[18px]" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M46.1998 7.20068V40.3008C46.1998 43.8008 43.3998 46.7007 39.7998 46.7007H6.69983C3.19983 46.7007 0.299805 43.8008 0.299805 40.3008V7.20068C0.299805 3.60068 3.19983 0.800781 6.69983 0.800781H39.7998C43.3998 0.800781 46.1998 3.60068 46.1998 7.20068ZM38.2998 37.4008L26.5998 21.9008L36.6998 10.0007H31.8998L24.2998 18.9008L17.5998 10.0007H8.19983L19.3998 24.8008L8.69983 37.4008H13.4998L21.6998 27.8008L29.0998 37.4008H38.2998ZM16.2998 12.4008L33.3998 35.0007H30.1998L12.9998 12.4008H16.2998Z"
+              fill="#FFFFFF" />
+          </svg>
+        </a>
+        <a href="../EN/" class="hover:underline float-left border-white border-r px-2">ES</a>
+        <a href="../IT/" class="hover:underline float-left border-white border-r px-2">IT</a>
+        <a href="../ES/" class="hover:underline float-left px-2">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js"
+    crossorigin="anonymous"></script>
+  <script nomodule
+    src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll"
+    crossorigin="anonymous"></script>
+  <script src="../src/js/animations.js"></script>
+
+</body>
+
+</html>
