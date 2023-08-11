@@ -1,3 +1,4 @@
+var showMenu = false
 function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
   let footNav = document.getElementById("footer-nav");
@@ -10,11 +11,13 @@ function showHideNav() {
     footNav.classList.add("bg-aloGray");
     footNav.classList.add("border-aloWhite");
     footNav.classList.remove("bg-aloWhite");
+    footNav.classList.remove("bg-aloGreen");
     footNav.classList.remove("border-aloGray");
     logoBlack.classList.add("hidden")
     logoWhite.classList.remove("hidden")
     pointButton.classList.add("fill-white");
     pointButton.classList.remove("fill-aloGray");
+    showMenu = true
   } else {
     responsiveNav.classList.add("hidden");
     footNav.classList.remove("bg-aloGray");
@@ -25,51 +28,58 @@ function showHideNav() {
     logoWhite.classList.add("hidden");
     pointButton.classList.add("fill-aloGray");
     pointButton.classList.remove("fill-white");
+    showMenu = false
   }
 }
 
 if (window.innerWidth < 1024) {
   window.addEventListener("scroll", function () {
-    var navbar = document.querySelector("#footer-nav");
-    const weare = document.getElementById("weare").getBoundingClientRect().top;
-    const wedo = document.getElementById("wedo").getBoundingClientRect().top;
-    const weconnect = document.getElementById("weconnect").getBoundingClientRect().top;
-    const logoWhite = this.document.getElementById("logo-white");
-    const pointButton = this.document.getElementById("pointButton");
-    // cambiar de color el nav al llegar a un div
-    if (weare > 500) {
-      navbar.classList.add("bg-aloWhite");
-    } else {
-      navbar.classList.remove("bg-aloWhite");
-    }
-    if (weare <= 500 && wedo > 650 ) {
-      navbar.classList.add("bg-aloBrown");
-    } else {
-      navbar.classList.remove("bg-aloBrown");
-    }
-    if (wedo <= 650 && wedo > -11000) { // Cambiar el color al hacer scroll
-      navbar.classList.add("bg-aloGreen");
-    } else {
-      navbar.classList.remove("bg-aloGreen");
-    } 
-    if (wedo <= -11000 && weconnect > 650) {
-      navbar.classList.add("bg-white");
-    } else {
-      navbar.classList.remove("bg-white");
-    }
-    if(weconnect <= 650) {
-      navbar.classList.add("bg-aloGray");
-      navbar.classList.add("border-aloWhite");
-      pointButton.classList.add("fill-white");
-      logoWhite.classList.remove("hidden");
-    } else {
-      navbar.classList.remove("bg-aloGray");
-      navbar.classList.remove("border-aloWhite");
-      logoWhite.classList.add("hidden");
-      pointButton.classList.remove("fill-white");
+    if (!showMenu) {
+      var navbar = document.querySelector("#footer-nav");
+      const weare = document.getElementById("weare").getBoundingClientRect().top;
+      const wedo = document.getElementById("wedo").getBoundingClientRect().top;
+      const weconnect = document.getElementById("weconnect").getBoundingClientRect().top;
+      const logoWhite = this.document.getElementById("logo-white");
+      const logoBlack = this.document.getElementById("logo-black");
+      const pointButton = this.document.getElementById("pointButton");
+      // cambiar de color el nav al llegar a un div
+      if (weare > 500) {
+        navbar.classList.add("bg-aloWhite");
+      } else {
+        navbar.classList.remove("bg-aloWhite");
+      }
+      if (weare <= 500 && wedo > 650) {
+        navbar.classList.add("bg-aloBrown");
+      } else {
+        navbar.classList.remove("bg-aloBrown");
+      }
+      if (wedo <= 650 && wedo > -11000) { // Cambiar el color al hacer scroll
+        navbar.classList.add("bg-aloGreen");
+      } else {
+        navbar.classList.remove("bg-aloGreen");
+      }
+      if (wedo <= -11000 && weconnect > 650) {
+        navbar.classList.add("bg-white");
+      } else {
+        navbar.classList.remove("bg-white");
+      }
+      if (weconnect <= 650) {
+        navbar.classList.add("bg-aloGray");
+        navbar.classList.add("border-aloWhite");
+        pointButton.classList.add("fill-white");
+        logoWhite.classList.remove("hidden");
+        logoBlack.classList.add("hidden")
+      } else {
+        navbar.classList.remove("bg-aloGray");
+        navbar.classList.remove("border-aloWhite");
+        logoWhite.classList.add("hidden");
+        pointButton.classList.remove("fill-white");
+        logoBlack.classList.remove("hidden")
+      }
     }
   });
 }
+
 
 let isAnimating = false;
 function scrollHorizontally(e) {
