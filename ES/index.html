@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -15,14 +15,11 @@
 
 </head>
 <style>
-  ::-webkit-scrollbar {
-    display: none;
+  html::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    /* make scrollbar transparent */
   }
-
-  html {
-    scrollbar-width: none;
-  }
-
   .alink:hover {
     text-decoration: overline;
   }
@@ -217,7 +214,7 @@
       </div>
     </div>
 
-    <div id="weare" class="pb-12 bg-aloGreen text-white w-full relative lg:w-[235vw] lg:flex lg:h-[93vh]">
+    <div class="pb-12 bg-aloGreen text-white w-full relative lg:w-[235vw] lg:flex lg:h-[93vh]" id="weare">
       <div
         class="h-[15vh] lg:h-[100vh] md:h-52 w-full lg:w-[20vw] lg:min-w-[200px] bg-[length:200%] lg:bg-cover bg-no-repeat bg-center bg-[url('/src/img/01_Weare.jpg')]">
       </div>
@@ -351,7 +348,7 @@
 
       </div>
       <div
-        class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20"
+        class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative after:content-normal after:bg-black after:w-[1px] after:h-48 after:top-[13%] after:absolute after:right-0 after:ml-20 overflow-x-hidden"
         id="prueba" style="padding: 0;">
         <div
           class="sticky top-[-20rem] py-10 lg:h-[calc(100vh-6rem)] overflow-x-hidden flex flex-col justify-between lg:pl-[5vw] pl-5 lg:fixed lg:top-0">
@@ -536,7 +533,7 @@
           </div>
         </div>
       </div>
-      <div class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;">
+      <div class="w-screen lg:w-[75vw] text-black md:px-6 md:pb-12 lg:pt-6 relative overflow-x-hidden" id="prueba3" style="padding: 0;">
         <div
           class="sticky top-[-12rem] lg:h-[calc(100vh-6rem)] overflow-x-hidden lg:flex lg:pl-[5vw] pl-5 pt-20 lg:pt-0 3xl:pb-[15vh] lg:top-0 lg:fixed">
           <div class="overflow-hidden text-sm pt-8 lg:hidden w-[90vw] md:w-full">

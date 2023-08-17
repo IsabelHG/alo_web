@@ -294,16 +294,33 @@ scrollTriggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
     // Obtener el ID del div al que se debe desplazar
     const targetID = trigger.dataset.target;
+    const targetElement = document.getElementById(targetID);
 
-    // Obtener la posición del div objetivo horizontalmente
-    const targetPosition = mainContainer.querySelector(`#${targetID}`).offsetLeft;
+    if (targetID === "weare") {
+      const targetPosition = targetElement.offsetLeft + 450;
+      gsap.to(window, {
+        scrollTo: targetPosition,
 
-    // Realizar la animación de desplazamiento suave usando ScrollToPlugin
-    gsap.to(window, {
-      scrollTo: targetPosition, // Cambia "100" por la distancia que desees entre el borde superior del div y la parte superior de la ventana
-      duration: 1, // Duración de la animación en segundos
-      ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
-    });
+        duration: 1, // Duración de la animación en segundos
+        ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
+      });
+    } else if (targetID === "wedo") {
+      const targetPosition = targetElement.offsetLeft + 250;
+      gsap.to(window, {
+        scrollTo: targetPosition,
+
+        duration: 1, // Duración de la animación en segundos
+        ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
+      });
+    } else {
+      const targetPosition = targetElement.offsetLeft + 630;
+
+      gsap.to(window, {
+        scrollTo: targetPosition,
+        duration: 1,
+        ease: "power2.inOut",
+      })
+    }
   });
 });
 
