@@ -1187,9 +1187,6 @@ video {
 .overflow-x-hidden {
     overflow-x: hidden;
 }
-.overflow-y-hidden {
-    overflow-y: hidden;
-}
 .whitespace-nowrap {
     white-space: nowrap;
 }
@@ -1257,6 +1254,9 @@ video {
 }
 .bg-\[length\:200\%\] {
     background-size: 200%;
+}
+.bg-\[length\:auto_105\%\] {
+    background-size: auto 105%;
 }
 .bg-center {
     background-position: center;
@@ -1509,6 +1509,12 @@ video {
 }
 .tracking-wider {
     letter-spacing: 0.05em;
+}
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+.tracking-normal {
+    letter-spacing: 0em;
 }
 .text-black {
     --tw-text-opacity: 1;
@@ -1792,6 +1798,12 @@ video {
     .lg\:top-0 {
         top: 0px;
     }
+    .lg\:right-\[\] {
+        right: ;
+    }
+    .lg\:right-\[-5vw\] {
+        right: -5vw;
+    }
     .lg\:z-10 {
         z-index: 10;
     }
@@ -1879,6 +1891,9 @@ video {
     }
     .lg\:h-screen {
         height: 100vh;
+    }
+    .lg\:max-h-\[6vh\] {
+        max-height: 6vh;
     }
     .lg\:w-1\/2 {
         width: 50%;
@@ -1974,6 +1989,18 @@ video {
     .lg\:w-full {
         width: 100%;
     }
+    .lg\:w-\[calc\(100vw-14rem\)\] {
+        width: calc(100vw - 14rem);
+    }
+    .lg\:w-\[calc\(\)\] {
+        width: calc();
+    }
+    .lg\:w-\[calc\(100\%\+\)\] {
+        width: calc(100% + );
+    }
+    .lg\:w-\[calc\(100\%\+5vw\)\] {
+        width: calc(100% + 5vw);
+    }
     .lg\:min-w-\[150px\] {
         min-width: 150px;
     }
@@ -1991,6 +2018,12 @@ video {
     }
     .lg\:max-w-\[4vw\] {
         max-width: 4vw;
+    }
+    .lg\:max-w-\[46vw\] {
+        max-width: 46vw;
+    }
+    .lg\:max-w-\[6vw\] {
+        max-width: 6vw;
     }
     .lg\:flex-none {
         flex: none;
@@ -2129,6 +2162,19 @@ video {
     }
     .lg\:animate-zoomOutXl {
         animation: zoomOutXl 2s ease-in-out 3s both;
+    }
+    @keyframes slideTextR {
+        0% {
+            left: 10%;
+            opacity: 0;
+        }
+        100% {
+            left: 0;
+            opacity: 1;
+        }
+    }
+    .lg\:animate-slideTextR {
+        animation: slideTextR 1s ease-in-out 0.5s both;
     }
     .lg\:flex-row {
         flex-direction: row;
