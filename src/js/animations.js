@@ -1,3 +1,13 @@
+// Obtener el elemento sticky 
+let stickyElements = document.querySelectorAll(".stickyElement");
+stickyElements.forEach(myFunction);
+function myFunction(item) {
+  // Obtener su altura 
+  let heightSticky = item.offsetHeight; 
+  // Asignarla directamente a la propiedad top 
+  item.style.top = "calc(-" + heightSticky + 'px + 85vh)';
+}
+
 var showMenu = false
 function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
@@ -137,7 +147,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const scrollDivs = document.querySelectorAll(".scroll-div");
 scrollDivs.forEach((trigger) => {
   trigger.addEventListener("click", () => {
-    stopScrollHere.classList.remove("overflow-y-auto")
     const targetID = trigger.dataset.target;
     const targetPosition = mainContainer.querySelector(`#${targetID}`).offsetLeft;
     gsap.to(window, {
@@ -181,25 +190,13 @@ let scrollTween = gsap.to(".main-container", {
       const rect = stopScrollHere.getBoundingClientRect();
       const isVisible = rect.left >= -300 && rect.left < 300;
 
-      if (isVisible) {
-        stopScrollHere.classList.add("overflow-y-auto")
-      }
-
       const prueba2 = document.getElementById("prueba2");
       const rect2 = prueba2.getBoundingClientRect();
       const isVisible2 = rect2.left >= -300 && rect2.left < 300;
 
-      if (isVisible2) {
-        prueba2.classList.add("overflow-y-auto")
-      }
-
       const prueba3 = document.getElementById("prueba3");
       const rect3 = prueba3.getBoundingClientRect();
       const isVisible3 = rect3.left >= -300 && rect3.left < 300;
-
-      if (isVisible3) {
-        prueba3.classList.add("overflow-y-auto")
-      }
 
 
       /*  const elementHidden = document.querySelectorAll(".element-show");

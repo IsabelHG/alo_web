@@ -17,6 +17,7 @@ module.exports = {
         aloOrange: "#FA7819"
       },
       screens: {
+        'xs': '450px',
         '2lg': '1300px',
         '3xl': '2000px',
         '4xl': '3000px',
