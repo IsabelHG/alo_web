@@ -8,6 +8,44 @@ function myFunction(item) {
   item.style.top = "calc(-" + heightSticky + 'px + 85vh)';
 }
 
+var scrollContainer = document.querySelector('.divRigth');
+
+scrollContainer.addEventListener('wheel', function (event) {
+  const delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+  const scrollSpeed = 60;
+  const scrollAmount = -delta * scrollSpeed;
+  const scrollStep = 30;
+
+  if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth && scrollAmount > 0) {
+    // Si estamos al final del div y se intenta hacer scroll hacia abajo
+    return; // Salir del manejador sin hacer nada, permitiendo el scroll predeterminado
+  }
+
+  event.preventDefault();
+
+  function animateScroll(totalSteps) {
+    if (totalSteps <= 0) {
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+        scrollContainer.removeEventListener('wheel', handleScroll);
+      }
+      return;
+    }
+
+    const step = Math.min(scrollStep, totalSteps);
+    scrollContainer.scrollLeft += (scrollAmount * step / scrollSpeed);
+
+    requestAnimationFrame(() => animateScroll(totalSteps - step));
+  }
+
+  function handleScroll(event) {
+    animateScroll(Math.abs(scrollAmount));
+  }
+
+  // Comenzar la animación del scroll
+  handleScroll(event);
+});
+
+
 var showMenu = false
 function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
@@ -159,9 +197,24 @@ scrollDivs.forEach((trigger) => {
 
 const body = document.querySelector("body");
 const mainContainer = body.querySelector(".main-container");
+const divRigth = document.querySelector(".divRigth");
+const pinRigth = document.querySelector(".pinRigth");
 let proxy = { skew: 0 },
   skewSetter = gsap.quickSetter(".box1", "translateX", "px"), // fast
   clamp = gsap.utils.clamp(-100, 100); // don't let the skew go beyond 20 degrees.
+
+let scrollTweenDiv = gsap.to(".divRigth", {
+  xPercent: -100,
+  x: () => window.innerWidth,
+  ease: "none", // <-- IMPORTANT!
+  scrollTrigger: {
+    pin: "pinRigth",
+    trigger: "pinRigth",
+    start: "left left",
+    end: () => `+=${divRigth.offsetWidth} bottom`,
+    scrub: 1,
+  }
+});
 
 let scrollTween = gsap.to(".main-container", {
   xPercent: -100,
@@ -186,6 +239,7 @@ let scrollTween = gsap.to(".main-container", {
           onUpdate: () => skewSetter(proxy.skew)
         });
       }
+
       const stopScrollHere = document.getElementById("prueba");
       const rect = stopScrollHere.getBoundingClientRect();
       const isVisible = rect.left >= -300 && rect.left < 300;
@@ -224,6 +278,7 @@ let scrollTween = gsap.to(".main-container", {
         //const lkdinIcon = document.getElementById("lkdin-icon");
         const mediumIcon = document.getElementById("medium-icon");
         const twitIcon = document.getElementById("twit-icon");
+        console.log(self.progress)
         if (self.progress < 0.134) {
           divWedo.classList.add("bg-aloWhite")
         } else {
@@ -234,7 +289,7 @@ let scrollTween = gsap.to(".main-container", {
         } else {
           divWedo.classList.remove("bg-aloBrown")
         }
-        if (self.progress >= 0.30 && self.progress < 0.835) {
+        if (self.progress >= 0.254 && self.progress < 0.835) {
           divWedo.classList.add("bg-aloGreen")
         } else {
           divWedo.classList.remove("bg-aloGreen")
