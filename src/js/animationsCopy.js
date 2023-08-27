@@ -8,6 +8,16 @@ if (window.innerWidth < 1024) {
     // Asignarla directamente a la propiedad top 
     item.style.top = "calc(-" + heightSticky + 'px + 85vh)';
   }
+} else if (window.innerWidth >= 1024) {
+  // Obtener el elemento sticky 
+  let stickyElements = document.querySelectorAll(".stickyElement");
+  stickyElements.forEach(myFunction);
+  function myFunction(item) {
+    // Obtener su altura 
+    let widthSticky = item.offsetWidth; 
+    // Asignarla directamente a la propiedad top 
+    item.style.left = "calc(-" + widthSticky + 'px + 100vw)';
+  }
 }
 
 if (window.innerWidth >= 1024) {

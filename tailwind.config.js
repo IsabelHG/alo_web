@@ -57,8 +57,8 @@ module.exports = {
         },
         orangeLine: {
           '0%': { width: '0.5rem', height: '0vh' },
-          '50%': { width: '0.5rem', height: '37vh' },
-          '100%': { width: '100%', height: '37vh' },
+          '50%': { width: '0.5rem', height: '30vh' },
+          '100%': { width: '100%', height: '30vh' },
         },
         slideTextR: {
           '0%': { left: '10%', opacity: '0' },
