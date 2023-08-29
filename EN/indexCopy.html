@@ -80,7 +80,7 @@ html::-webkit-scrollbar {
   }
 </style>
 
-<body class="font-grotesk lg:flex lg:h-[93vh] main-container">
+<body class="font-grotesk lg:flex lg:h-[93vh] main-container scroll-smooth">
 
     <div class="flex">
         <div id="home" class="bg-aloWhite lg:min-w-[300vh] w-[100vw] h-[93vh] lg:w-[165vw] relative">
@@ -179,7 +179,7 @@ html::-webkit-scrollbar {
           <div
             class="h-[15vh] lg:h-[93vh] md:h-52 w-full lg:w-[20vw] lg:min-w-[200px] bg-[length:200%] lg:bg-cover bg-no-repeat bg-center bg-[url('/src/img/01_Weare.jpg')]">
           </div>
-          <div
+          <div id="weareline"
             class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:h-[93vh] lg:overflow-hidden lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
             <div class="lg:-rotate-90 flex relative tracking-normal">
               <div class="animate-marquee whitespace-nowrap lg:pl-20 pl-14">
@@ -800,7 +800,7 @@ html::-webkit-scrollbar {
           </div>
         </div>
     </div>
-    <div class="flex">
+    <div id="animationFinal" class="flex">
         <div class="bg-aloGray w-screen h-screen lg:overflow-hidden lg:h-[93vh] flex lg:flex-col lg:items-center text-white">
           <div class="pb-[1vh] lg:pb-[8vh] h-[93vh] lg:h-[106vh] flex flex-col justify-between lg:block">
             <div class="w-screen flex flex-col justify-center element-show lg:opacity-0">
@@ -908,63 +908,32 @@ html::-webkit-scrollbar {
     id="footer-nav">
         <ul class="border-inherit text-xs h-fit lg:flex lg:items-center 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px]">
             <span class="float-left px-2 cursor-pointer scroll-trigger" data-target="home">
-                <svg class="h-[3vh]" id="logo-black" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M60.2986 14.9999C60.2986 9.79985 66.9986 5.49985 75.2986 5.49985C77.3986 5.49985 79.4986 5.7999 81.2986 6.2999C80.1986 4.2999 78.5988 2.59985 76.4988 1.49985C70.1988 -1.90015 61.9985 1.0998 58.1985 8.1998C54.2985 15.2998 56.3985 23.7998 62.6985 27.1998C67.6985 29.8998 73.8989 28.5998 78.0989 24.3998C77.2323 24.5331 76.2986 24.6 75.2986 24.6C66.9986 24.6 60.2986 20.2999 60.2986 14.9999Z"
-                        fill="#262626" />
-                    <path
-                        d="M90.2993 14.9998C90.2993 11.0998 86.5993 7.7998 81.2993 6.2998C83.4993 10.3998 83.5996 15.7998 81.0996 20.4998C80.2329 21.9664 79.2329 23.2663 78.0996 24.3997C85.0996 23.4997 90.2993 19.6998 90.2993 14.9998Z"
-                        fill="#262626" />
-                    <path d="M36.6982 0.799805H33.3984V28.6997H36.6982V0.799805Z" fill="#262626" />
-                    <path d="M36.6992 28.6995H55.5996V25.5996H41.0996C39.1996 25.5996 37.3992 26.8995 36.6992 28.6995Z"
-                        fill="#262626" />
-                    <path
-                        d="M18.1987 0.799805H10.999L0.798828 28.6997H4.69873L14.1987 1.99976H14.8989L20.7988 18.7998H11.499C9.59902 18.7998 7.89873 19.8997 7.19873 21.6997H21.8989L24.2988 28.6997H28.3989L18.1987 0.799805Z"
-                        fill="#262626" />
-                </svg>
-                <svg class="h-[3vh] hidden" id="logo-white" viewBox="0 0 91 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M60.2986 14.9999C60.2986 9.79985 66.9986 5.49985 75.2986 5.49985C77.3986 5.49985 79.4986 5.7999 81.2986 6.2999C80.1986 4.2999 78.5988 2.59985 76.4988 1.49985C70.1988 -1.90015 61.9985 1.0998 58.1985 8.1998C54.2985 15.2998 56.3985 23.7998 62.6985 27.1998C67.6985 29.8998 73.8989 28.5998 78.0989 24.3998C77.2323 24.5331 76.2986 24.6 75.2986 24.6C66.9986 24.6 60.2986 20.2999 60.2986 14.9999Z"
-                        fill="white" />
-                    <path
-                        d="M90.2993 14.9998C90.2993 11.0998 86.5993 7.7998 81.2993 6.2998C83.4993 10.3998 83.5996 15.7998 81.0996 20.4998C80.2329 21.9664 79.2329 23.2663 78.0996 24.3997C85.0996 23.4997 90.2993 19.6998 90.2993 14.9998Z"
-                        fill="white" />
-                    <path d="M36.6982 0.799805H33.3984V28.6997H36.6982V0.799805Z" fill="white" />
-                    <path d="M36.6992 28.6995H55.5996V25.5996H41.0996C39.1996 25.5996 37.3992 26.8995 36.6992 28.6995Z"
-                        fill="white" />
-                    <path
-                        d="M18.1987 0.799805H10.999L0.798828 28.6997H4.69873L14.1987 1.99976H14.8989L20.7988 18.7998H11.499C9.59902 18.7998 7.89873 19.8997 7.19873 21.6997H21.8989L24.2988 28.6997H28.3989L18.1987 0.799805Z"
-                        fill="white" />
+                <svg class="h-[3vh]" id="logoNav" viewBox="0 0 91 29" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60.2986 14.9999C60.2986 9.79985 66.9986 5.49985 75.2986 5.49985C77.3986 5.49985 79.4986 5.7999 81.2986 6.2999C80.1986 4.2999 78.5988 2.59985 76.4988 1.49985C70.1988 -1.90015 61.9985 1.0998 58.1985 8.1998C54.2985 15.2998 56.3985 23.7998 62.6985 27.1998C67.6985 29.8998 73.8989 28.5998 78.0989 24.3998C77.2323 24.5331 76.2986 24.6 75.2986 24.6C66.9986 24.6 60.2986 20.2999 60.2986 14.9999Z" />
+                    <path d="M90.2993 14.9998C90.2993 11.0998 86.5993 7.7998 81.2993 6.2998C83.4993 10.3998 83.5996 15.7998 81.0996 20.4998C80.2329 21.9664 79.2329 23.2663 78.0996 24.3997C85.0996 23.4997 90.2993 19.6998 90.2993 14.9998Z" />
+                    <path d="M36.6982 0.799805H33.3984V28.6997H36.6982V0.799805Z" />
+                    <path d="M36.6992 28.6995H55.5996V25.5996H41.0996C39.1996 25.5996 37.3992 26.8995 36.6992 28.6995Z" />
+                    <path d="M18.1987 0.799805H10.999L0.798828 28.6997H4.69873L14.1987 1.99976H14.8989L20.7988 18.7998H11.499C9.59902 18.7998 7.89873 19.8997 7.19873 21.6997H21.8989L24.2988 28.6997H28.3989L18.1987 0.799805Z" />
                 </svg>
             </span>
             <span
             class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="weare">WE ARE</span>
+            data-target="weare"><a href="#weareline">WE ARE</a></span>
             <span
             class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="wedo">WE
-            DO</span>
+            data-target="wedo"><a href="#wedo">WE DO</a></span>
             <span
             class="hover:underline float-left border-inherit  border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="ourpassions">OUR PASSIONS</span>
+            data-target="ourpassions"><a href="#ourpassions">OUR PASSIONS</a></span>
             <span class="hover:underline float-left px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw"
-            data-target="weconnect">WE
-            CONNECT</span>
+            data-target="weconnect"><a href="#weconnect">WE CONNECT</a></span>
         </ul>
         <div
         class="border-inherit text-xs h-fit 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px] 3xl:flex 3xl:flex-row-reverse 3xl:items-center">
             <a href="https://it.linkedin.com/company/alo&partners" class="float-right hidden lg:block px-1 3xl:px-[1vw]" target="_blank">
-                <svg class="h-[14px] 3xl:h-[35px]" id="ig-black" viewBox="0 0 19 19" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+                <svg id="lkdin-icon" class="h-[14px] 3xl:h-[35px]" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z"
-                        fill="#262626" />
-                </svg>
-                <svg class="h-[14px] 3xl:h-[35px] hidden" id="ig-white" viewBox="0 0 19 19" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z"
-                        fill="white" />
+                        d="M18.5996 2.89941V15.8994C18.5996 17.2994 17.4996 18.3994 16.0996 18.3994H3.09961C1.79961 18.3994 0.699219 17.2994 0.699219 15.8994V2.89941C0.699219 1.59941 1.79961 0.399414 3.09961 0.399414H16.0996C17.4996 0.399414 18.5996 1.59941 18.5996 2.89941ZM6.09961 6.89941H3.59961V15.3994H6.09961V6.89941ZM6.09961 4.69946C6.09961 3.99946 5.69941 3.39941 4.89941 3.39941C4.09941 3.39941 3.59961 3.99946 3.59961 4.69946C3.59961 5.39946 4.09941 5.89941 4.89941 5.89941C5.69941 5.89941 6.09961 5.39946 6.09961 4.69946ZM15.5996 15.3994V10.4995C15.5996 7.99951 14.299 6.89941 12.499 6.89941C11.099 6.89941 10.4996 7.69946 10.0996 8.19946V6.89941H7.59961V15.3994H10.0996V10.8994C10.0996 10.6994 10.0992 10.1995 10.1992 9.99951C10.3992 9.49951 10.799 8.99951 11.499 8.99951C12.499 8.99951 13.0996 9.79956 13.0996 10.7996V15.3994H15.5996Z" />
                 </svg>
             </a>
             <a href="https://medium.com/@andrealondono_20565" class="float-right hidden lg:block px-1 3xl:px-[1vw]" target="_blank">
