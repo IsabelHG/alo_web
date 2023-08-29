@@ -77,16 +77,18 @@ function colorGray() {
 }
 
 function textGray() {
-  menuBar.classList.remove("text-white")
-  menuBar.classList.remove("border-aloWhite")
+  menuBar.classList.remove("text-white");
+  menuBar.classList.remove("border-aloWhite");
   logoNav.classList.remove("fill-white");
+  pointButton.classList.remove("fill-white");
   instaIcon.classList.remove("fill-white");
   lkdinIcon.classList.remove("fill-white");
   mediumIcon.classList.remove("fill-white");
   twitIcon.classList.remove("fill-white");
-  menuBar.classList.add("text-aloGray")
-  menuBar.classList.add("border-aloGray")
+  menuBar.classList.add("text-aloGray");
+  menuBar.classList.add("border-aloGray");
   logoNav.classList.add("fill-aloGray");
+  pointButton.classList.add("fill-aloGray");
   instaIcon.classList.add("fill-aloGray");
   lkdinIcon.classList.add("fill-aloGray");
   mediumIcon.classList.add("fill-aloGray");
@@ -94,16 +96,18 @@ function textGray() {
 }
 
 function textWhite() {
-  menuBar.classList.add("text-white")
-  menuBar.classList.add("border-aloWhite")
+  menuBar.classList.add("text-white");
+  menuBar.classList.add("border-aloWhite");
   logoNav.classList.add("fill-white");
+  pointButton.classList.add("fill-white");
   instaIcon.classList.add("fill-white");
   lkdinIcon.classList.add("fill-white");
   mediumIcon.classList.add("fill-white");
   twitIcon.classList.add("fill-white");
-  menuBar.classList.remove("text-aloGray")
-  menuBar.classList.remove("border-aloGray")
+  menuBar.classList.remove("text-aloGray");
+  menuBar.classList.remove("border-aloGray");
   logoNav.classList.remove("fill-aloGray");
+  pointButton.classList.remove("fill-aloGray");
   instaIcon.classList.remove("fill-aloGray");
   lkdinIcon.classList.remove("fill-aloGray");
   mediumIcon.classList.remove("fill-aloGray");
@@ -111,21 +115,40 @@ function textWhite() {
 }
 
 window.addEventListener("wheel", function (e) {
-  if (window.scrollX >= posicionFinal.x) {
-    colorGray();
-    textWhite();
-  }else if (window.scrollX >= posicionOurPassions.x) {
-    colorWhite();
-    textGray();
-  }else if (window.scrollX >= posicionWeDo.x) {
-    colorGreen();
-    textGray();
-  }else if (window.scrollX >= posicionWeAre.x) {
-    colorBrown();
-    textGray();
-  }else{
-    colorWhite();
-    textGray();
+  if (window.innerWidth < 1024) {
+    if (window.scrollY >= posicionFinal.y) {
+      colorGray();
+      textWhite();
+    }else if (window.scrollY >= posicionOurPassions.y) {
+      colorWhite();
+      textGray();
+    }else if (window.scrollY >= posicionWeDo.y) {
+      colorGreen();
+      textGray();
+    }else if (window.scrollY >= posicionWeAre.y) {
+      colorBrown();
+      textGray();
+    }else{
+      colorWhite();
+      textGray();
+    }
+  } else if (window.innerWidth >= 1024) {
+    if (window.scrollX >= posicionFinal.x) {
+      colorGray();
+      textWhite();
+    }else if (window.scrollX >= posicionOurPassions.x) {
+      colorWhite();
+      textGray();
+    }else if (window.scrollX >= posicionWeDo.x) {
+      colorGreen();
+      textGray();
+    }else if (window.scrollX >= posicionWeAre.x) {
+      colorBrown();
+      textGray();
+    }else{
+      colorWhite();
+      textGray();
+    }
   }
 });
 

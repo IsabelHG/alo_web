@@ -1598,6 +1598,10 @@ video {
 .tracking-wider {
     letter-spacing: 0.05em;
 }
+.text-aloGray {
+    --tw-text-opacity: 1;
+    color: rgb(38 38 38 / var(--tw-text-opacity));
+}
 .text-black {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1605,10 +1609,6 @@ video {
 .text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-.text-aloGray {
-    --tw-text-opacity: 1;
-    color: rgb(38 38 38 / var(--tw-text-opacity));
 }
 .underline {
     text-decoration-line: underline;
