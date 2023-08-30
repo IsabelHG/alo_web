@@ -187,7 +187,7 @@ if (window.innerWidth >= 1024) {
     }
 
     titles.forEach(title => {
-      title.style.transform = `translateX(${scrollDirection * 20}%)`
+      title.style.transform = `translateX(${scrollDirection * 5}%)`
     })
   })
 }
