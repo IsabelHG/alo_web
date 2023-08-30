@@ -1233,9 +1233,6 @@ video {
 .whitespace-nowrap {
     white-space: nowrap;
 }
-.rounded {
-    border-radius: 0.25rem;
-}
 .rounded-t-\[1\.5rem\] {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
@@ -1621,6 +1618,13 @@ video {
 }
 .overline {
     text-decoration-line: overline;
+}
+.transition {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
 .\[transform\:translateY\(-50\%\)\] {
     transform: translateY(-50%);
@@ -2410,10 +2414,6 @@ video {
         border-start-end-radius: 0px;
         border-end-end-radius: 0px;
     }
-    .lg\:rounded-s-\[1\.5rem\] {
-        border-start-start-radius: 1.5rem;
-        border-end-start-radius: 1.5rem;
-    }
     .lg\:rounded-l-\[1\.5rem\] {
         border-top-left-radius: 1.5rem;
         border-bottom-left-radius: 1.5rem;
@@ -2421,6 +2421,10 @@ video {
     .lg\:rounded-r-none {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
+    }
+    .lg\:rounded-s-\[1\.5rem\] {
+        border-start-start-radius: 1.5rem;
+        border-end-start-radius: 1.5rem;
     }
     .lg\:border-s {
         border-inline-start-width: 1px;

@@ -160,6 +160,8 @@ window.addEventListener("scroll", function (e) {
 
 if (window.innerWidth >= 1024) {
   var item = document.getElementById("MAIN");
+  let scrollDirection = 0;
+  const titles = document.querySelectorAll(".box1");
 
   window.addEventListener("wheel", function (e) {
     if (e.deltaY > 0) {
@@ -176,6 +178,18 @@ if (window.innerWidth >= 1024) {
       });
     }
   });
+
+  window.addEventListener("wheel", function (e) {
+    if (e.deltaY > 0) {
+      scrollDirection = 1;
+    } else {
+      scrollDirection = -1;
+    }
+
+    titles.forEach(title => {
+      title.style.transform = `translateX(${scrollDirection * 20}%)`
+    })
+  })
 }
 
 var showMenu = false
