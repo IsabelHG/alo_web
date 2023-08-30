@@ -80,7 +80,7 @@ html::-webkit-scrollbar {
   }
 </style>
 
-<body class="font-grotesk lg:flex lg:h-[93vh] scroll-smooth">
+<body class="font-grotesk lg:flex lg:h-[93vh] scroll-smooth lg:overflow-hidden">
   
     <div class="flex flex-col lg:flex-row">
         <div id="home" class="bg-aloWhite lg:min-w-[300vh] w-[100vw] h-[93vh] lg:w-[165vw] relative">
@@ -357,7 +357,7 @@ html::-webkit-scrollbar {
               <div
               class="w-screen lg:w-[135vw] text-black md:px-6 md:pb-12 relative"
               id="prueba">
-                <div class="flex flex-col lg:gap-28 lg:flex-row bg-aloWhite lg:px-[8vw] px-5 pb-32 lg:pb-0 relative z-[2] lg:w-full lg:h-[93vh] rounded-t-[1.5rem] lg:rounded-s-[1.5rem] lg:rounded-e-none">
+                <div class="flex flex-col lg:gap-28 lg:flex-row bg-aloWhite lg:px-[8vw] px-5 pb-32 lg:pb-0 relative z-[2] lg:w-full lg:h-[93vh] rounded-t-[1.5rem] lg:rounded-l-[1.5rem] lg:rounded-r-none">
                   <div class="pt-[70px]">
                     <div class="flex gap-y-[2vw] gap-x-[8vw] relative mt-10 3xl:mt-[10vh] flex-wrap lg:flex-col">
                       <h1
@@ -533,21 +533,22 @@ html::-webkit-scrollbar {
                     </h1>
                     <img src="../src/img/Caso3.jpg"
                       class="w-44 mt-10 absolute right-[20px] top-[300px] lg:static 3xl:h-[50vh] 3xl:w-auto hidden lg:block">
-                    <p
-                      class="lg:mt-10 lg:w-[55vw] text-sm pt-24 lg:pt-0 pl-5 lg:pl-0 w-[90vw] 3xl:text-[1.2vw] 3xl:leading-none">
-                      We firmly believe that technology is an accelerator and amplifier of impact. We are convinced that 
-                      it is not only possible to leverage, but also to bolster solutions using highly advanced and 
-                      innovative technological tools and developments—from using unused television waves to bring internet 
-                      to remote rural communities, to artificial intelligence and Internet of Things for agriculture, to 
-                      Blockchain as a traceability tool in an agricultural production chain.
-                      <br>
-                      <br>
-                      We closely observe, deeply study, and comprehensively explore ways in which new technological 
-                      developments can serve social, community, and environmental impact. We tend bridges and forge 
-                      solid relationships with large companies, organizations, institutions, and startups who study 
-                      and develop innovative tools so that they analyze the challenges we identify and propose new 
-                      ways in which their developments add value to bolster the initiatives and projects that we lead.
-                    </p>
+                    <div class="overflow-hidden text-sm pt-8 pl-[5vw] lg:pl-0 w-[95vw] lg:w-[55vw] md:w-full md:pl-0 3xl:text-[1.2vw] 3xl:leading-none">
+                      <p class="lg:mt-10 pt-24 lg:pt-0">
+                        We firmly believe that technology is an accelerator and amplifier of impact. We are convinced that 
+                        it is not only possible to leverage, but also to bolster solutions using highly advanced and 
+                        innovative technological tools and developments—from using unused television waves to bring internet 
+                        to remote rural communities, to artificial intelligence and Internet of Things for agriculture, to 
+                        Blockchain as a traceability tool in an agricultural production chain.
+                        <br>
+                        <br>
+                        We closely observe, deeply study, and comprehensively explore ways in which new technological 
+                        developments can serve social, community, and environmental impact. We tend bridges and forge 
+                        solid relationships with large companies, organizations, institutions, and startups who study 
+                        and develop innovative tools so that they analyze the challenges we identify and propose new 
+                        ways in which their developments add value to bolster the initiatives and projects that we lead.
+                      </p>
+                    </div>
                   </div>
                 </div>        
                 <div
@@ -854,8 +855,8 @@ html::-webkit-scrollbar {
               </div>
             </div>
             <div class="text-[3vw] md:text-[1.8vw] lg:hidden px-4">
-              <p class="animate-slideUpText pb-2 lg:pb-0">Content and concept<br>by <a>Laura Adiwasito</a></p>
-              <p class="animate-slideUpText pb-8 lg:pb-0">Design by<br><a>primero.studio</a></p>
+              <p class="animate-slideUpText pb-2 lg:pb-0">Content and concept<br>by <a class="hover:no-underline underline" href="https://www.laura-adiwasito.com/" target="_blank">Laura Adiwasito</a></p>
+              <p class="animate-slideUpText pb-8 lg:pb-0">Design by<br><a class="hover:no-underline underline" href="https://primero.studio/" target="_blank">primero.studio</a></p>
               <p class="animate-slideUpText w-fit">© ALO & PARTNERS - 2024</p>
             </div>
           </div>
@@ -863,13 +864,13 @@ html::-webkit-scrollbar {
     </div>
 
     <div
-  class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed left-0 z-[999] animate-disappear">
+  class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed top-0 left-0 z-[999] animate-disappear">
         <div class="p-4 3xl:w-[50vw]">
             <div>
                 <img class="animate-fadeIn w-1/2 md:w-1/3 lg:w-[50%] 3xl:w-1/2" src="../src/img/alo.svg" alt="">
             </div>
-            <div class="w-auto lg:w-[50vw] md:w-fit lg:mt-4 h-fit overflow-hidden mt-4 3xl:w-[100%]">
-                <svg class="w-fit h-[13vw] sm:h-[15vw] lg:h-[8vw] 3xl:h-[12vh]" viewBox="0 0 835 135" fill="none"
+            <div class="w-auto lg:w-[50vw] lg:mt-4 h-auto overflow-hidden mt-4 3xl:w-[100%]">
+                <svg class="lg:w-full h-[13vw] sm:h-[15vw] lg:h-[8vw] 3xl:h-[12vh]" viewBox="0 0 835 135" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path class="animate-slideUp1" fill-rule="evenodd" clip-rule="evenodd"
                     d="M125.6 119.9V131.7H110.3L89.7 113.6C86.9 116.733 83.9 119.5 80.7 121.9C70.5666 129.567 58.3667 133.4 44.1 133.4C34.7667 133.4 26.8333 131.7 20.3 128.3C13.7 124.9 8.66666 120.4 5.2 114.8C1.73333 109.133 0 102.833 0 95.9C0 86.1667 3.46666 78.1 10.4 71.7C15.2 67.2333 21.5333 63.5333 29.4 60.6C27 58.3333 24.8667 56.1333 23 54C19.5333 49.9333 17 45.9667 15.4 42.1C13.8 38.1667 13 34.0333 13 29.7C13 23.4333 14.4 18.1 17.2 13.7C19.9333 9.30001 23.8 5.93334 28.8 3.60001C33.8 1.20001 39.6 0 46.2 0C52.8666 0 58.7333 1.20001 63.8 3.60001C68.8 6.06667 72.6667 9.53333 75.4 14C78.2 18.5333 79.6 23.9333 79.6 30.2C79.6 38.8667 76.7333 46.3 71 52.5C66.4667 57.5 60.1667 61.7667 52.1 65.3L87.8 96C90.2 92.1333 92.4 87.8333 94.4 83.1C99.5333 70.8333 103.2 56.3333 105.4 39.6H117.9C115.567 58.7333 111.3 75.3334 105.1 89.4C102.767 94.7334 100.133 99.6333 97.2 104.1L115.5 119.9H125.6ZM34.7 49.7C37.1 52.1667 39.8333 54.7 42.9 57.3C50.9667 54.3667 57 50.7334 61 46.4C65.0667 41.8667 67.1 36.6333 67.1 30.7C67.1 24.5 65.1667 19.7 61.3 16.3C57.4333 12.9667 52.5 11.3 46.5 11.3C40.2333 11.3 35.1667 13.0333 31.3 16.5C27.3667 19.9667 25.4 24.5667 25.4 30.3C25.4 33.7 26.2333 37 27.9 40.2C29.5 43.4 31.7666 46.5667 34.7 49.7ZM80.5 105.6L39.1 69.2C30.9 71.7333 24.6667 74.9667 20.4 78.9C15.2667 83.6334 12.7 89.4 12.7 96.2C12.7 101.133 14 105.533 16.6 109.4C19.1333 113.2 22.7667 116.2 27.5 118.4C32.1667 120.533 37.7 121.6 44.1 121.6C55.9 121.6 65.9333 118.267 74.2 111.6C76.4 109.8 78.5 107.8 80.5 105.6Z"
@@ -904,7 +905,7 @@ html::-webkit-scrollbar {
     </div>
 
     <div
-    class="overflow-hidden fixed bottom-0 w-screen h-[7vh] border-t max-sm:border-aloGray flex justify-between items-center px-2 z-40"
+    class="bg-aloWhite overflow-hidden fixed bottom-0 w-screen h-[7vh] border-t max-sm:border-aloGray flex justify-between items-center px-2 z-40"
     id="footer-nav">
         <ul class="border-inherit text-xs h-fit lg:flex lg:items-center 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px]">
             <span class="float-left px-2 cursor-pointer scroll-trigger" data-target="home">

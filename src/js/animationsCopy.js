@@ -236,9 +236,9 @@ if (window.innerWidth < 1024) {
         navbar.classList.remove("bg-aloGreen");
       }
       if (wedo <= -11000 && weconnect > 650) {
-        navbar.classList.add("bg-white");
+        navbar.classList.add("bg-aloWhite");
       } else {
-        navbar.classList.remove("bg-white");
+        navbar.classList.remove("bg-aloWhite");
       }
       if (weconnect <= 650) {
         navbar.classList.add("bg-aloGray");
@@ -285,15 +285,12 @@ elements.forEach(element => {
 
 // Obtener todos los elementos con la clase "scroll-trigger"
 const scrollTriggers = document.querySelectorAll(".scroll-trigger");
-console.log(scrollTriggers);
 // Agregar un evento de clic a cada elemento "span"
 scrollTriggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
     // Obtener el ID del div al que se debe desplazar
     const targetID = trigger.dataset.target;
-    console.log(targetID);
     const targetElement = document.getElementById(targetID);
-    console.log(targetElement);
 
     const targetPosition = obtenerPosicion(targetElement);
     gsap.to(window, {
