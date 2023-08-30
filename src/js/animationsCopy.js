@@ -114,9 +114,15 @@ function textWhite() {
   twitIcon.classList.remove("fill-aloGray");
 }
 
-window.addEventListener("wheel", function (e) {
+window.addEventListener("scroll", function (e) {
   if (window.innerWidth < 1024) {
-    if (window.scrollY >= posicionFinal.y) {
+    
+    let menuResponsive = document.getElementById("responsiveNav");
+
+    if (!menuResponsive.classList.contains("hidden")) {
+      colorGray();
+      textWhite();
+    }else if (window.scrollY >= posicionFinal.y) {
       colorGray();
       textWhite();
     }else if (window.scrollY >= posicionOurPassions.y) {
@@ -156,8 +162,19 @@ if (window.innerWidth >= 1024) {
   var item = document.getElementById("MAIN");
 
   window.addEventListener("wheel", function (e) {
-    if (e.deltaY > 0) item.scrollLeft += 100;
-    else item.scrollLeft -= 100;
+    if (e.deltaY > 0) {
+      item.scrollBy({
+        top: 0,
+        left: 100,
+        behaviour: "smooth",
+      });
+    } else {
+      item.scrollBy({
+        top: 0,
+        left: -100,
+        behaviour: "smooth",
+      });
+    }
   });
 }
 
@@ -165,8 +182,7 @@ var showMenu = false
 function showHideNav() {
   let responsiveNav = document.getElementById("responsiveNav");
   let footNav = document.getElementById("footer-nav");
-  let logoBlack = document.getElementById("logo-black");
-  let logoWhite = document.getElementById("logo-white");
+  let logoNav = document.getElementById("logoNav");
   let pointButton = document.getElementById("pointButton");
   const hiddenNav = responsiveNav.classList.contains("hidden");
   if (hiddenNav) {
@@ -176,8 +192,8 @@ function showHideNav() {
     footNav.classList.remove("bg-aloWhite");
     footNav.classList.remove("bg-aloGreen");
     footNav.classList.remove("border-aloGray");
-    logoBlack.classList.add("hidden")
-    logoWhite.classList.remove("hidden")
+    logoNav.classList.add("fill-white");
+    logoNav.classList.remove("fill-aloGray");
     pointButton.classList.add("fill-white");
     pointButton.classList.remove("fill-aloGray");
     showMenu = true
@@ -187,8 +203,8 @@ function showHideNav() {
     footNav.classList.remove("border-aloWhite");
     footNav.classList.add("bg-aloWhite");
     footNav.classList.add("border-aloGray");
-    logoBlack.classList.remove("hidden")
-    logoWhite.classList.add("hidden");
+    logoNav.classList.add("fill-aloGray");
+    logoNav.classList.remove("fill-white");
     pointButton.classList.add("fill-aloGray");
     pointButton.classList.remove("fill-white");
     showMenu = false
@@ -201,8 +217,7 @@ if (window.innerWidth < 1024) {
       const weare = document.getElementById("weare").getBoundingClientRect().top;
       const wedo = document.getElementById("wedo").getBoundingClientRect().top;
       const weconnect = document.getElementById("weconnect").getBoundingClientRect().top;
-      const logoWhite = this.document.getElementById("logo-white");
-      const logoBlack = this.document.getElementById("logo-black");
+      const logoNav = this.document.getElementById("logoNav");
       const pointButton = this.document.getElementById("pointButton");
       // cambiar de color el nav al llegar a un div
       if (weare > 500) {
@@ -229,18 +244,18 @@ if (window.innerWidth < 1024) {
         navbar.classList.add("bg-aloGray");
         navbar.classList.add("border-aloWhite");
         pointButton.classList.add("fill-white");
-        logoWhite.classList.remove("hidden");
-        logoBlack.classList.add("hidden")
+        logoNav.classList.add("fill-white");
       } else {
         navbar.classList.remove("bg-aloGray");
         navbar.classList.remove("border-aloWhite");
-        logoWhite.classList.add("hidden");
         pointButton.classList.remove("fill-white");
-        logoBlack.classList.remove("hidden")
+        logoNav.classList.remove("fill-white")
       }
     }
   });
 }
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function animateElement(element) {
   gsap.to(element, {
@@ -270,38 +285,21 @@ elements.forEach(element => {
 
 // Obtener todos los elementos con la clase "scroll-trigger"
 const scrollTriggers = document.querySelectorAll(".scroll-trigger");
-
+console.log(scrollTriggers);
 // Agregar un evento de clic a cada elemento "span"
 scrollTriggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
     // Obtener el ID del div al que se debe desplazar
     const targetID = trigger.dataset.target;
+    console.log(targetID);
     const targetElement = document.getElementById(targetID);
+    console.log(targetElement);
 
-    if (targetID === "weare") {
-      const targetPosition = targetElement.offsetLeft + 450;
-      gsap.to(window, {
-        scrollTo: targetPosition,
-
-        duration: 1, // Duración de la animación en segundos
-        ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
-      });
-    } else if (targetID === "wedo") {
-      const targetPosition = targetElement.offsetLeft + 250;
-      gsap.to(window, {
-        scrollTo: targetPosition,
-
-        duration: 1, // Duración de la animación en segundos
-        ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
-      });
-    } else {
-      const targetPosition = targetElement.offsetLeft + 630;
-
-      gsap.to(window, {
-        scrollTo: targetPosition,
-        duration: 1,
-        ease: "power2.inOut",
-      })
-    }
+    const targetPosition = obtenerPosicion(targetElement);
+    gsap.to(window, {
+      scrollTo: targetPosition,
+      duration: 1, // Duración de la animación en segundos
+      ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
+    });
   });
 });

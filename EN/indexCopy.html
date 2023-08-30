@@ -80,9 +80,9 @@ html::-webkit-scrollbar {
   }
 </style>
 
-<body class="font-grotesk lg:flex lg:h-[93vh] main-container scroll-smooth">
-
-    <div class="flex">
+<body class="font-grotesk lg:flex lg:h-[93vh] scroll-smooth">
+  
+    <div class="flex flex-col lg:flex-row">
         <div id="home" class="bg-aloWhite lg:min-w-[300vh] w-[100vw] h-[93vh] lg:w-[165vw] relative">
           <div class="lg:flex lg:items-end">
             <div
@@ -416,7 +416,7 @@ html::-webkit-scrollbar {
             </div>
             <div class="flex flex-col lg:flex-row">
               <div
-              class="stickyElement sticky lg:left-0 pt-[40px] w-[125vw] 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 before:content-normal before:bg-black before:w-[1px] before:h-[30%] lg:before:2/5 before:top-8 before:absolute before:left-5 lg:before:content-none">
+              class="stickyElement lg:h-[93vh] sticky lg:left-0 pt-[40px] w-screen lg:w-[125vw] 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 before:content-normal before:bg-black before:w-[1px] before:h-[30%] lg:before:2/5 before:top-8 before:absolute before:left-5 lg:before:content-none">
                 <div
                   class="w-full h-fit flex-col-reverse lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] 3xl:w-[20vw] lg:w-[450px] relative md:w-1/2 text-white flex lg:flex-col justify-between lg:flex-wrap-reverse pl-14 element-show lg:opacity-0"
                   id="target">
@@ -559,7 +559,7 @@ html::-webkit-scrollbar {
                   </h1>
                 </div>
               </div>
-              <div class="w-screen lg:w-[240vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;">
+              <div class="w-screen lg:w-[245vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;">
                 <div class="pb-[40px] flex flex-col bg-aloWhite lg:px-[8vw] mt-20 px-5 relative z-[2] lg:flex-row lg:mt-0 lg:h-[93vh] lg:gap-[8vw] lg:pb-0 rounded-t-[1.5rem] lg:rounded-s-[1.5rem] lg:rounded-e-none">
                   <div class="pt-[70px]">
                     <div class="flex gap-12 flex-col lg:flex-row relative lg:mt-0 mt-5 3xl:mt-[10vh] 4xl:mt-[15vh]">
@@ -918,15 +918,15 @@ html::-webkit-scrollbar {
             </span>
             <span
             class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="weare"><a href="#weareline">WE ARE</a></span>
+            data-target="weareline">WE ARE</span>
             <span
             class="hover:underline float-left border-inherit border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="wedo"><a href="#wedo">WE DO</a></span>
+            data-target="wedo">WE DO</span>
             <span
             class="hover:underline float-left border-inherit  border-r px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw] 3xl:border-r-2"
-            data-target="ourpassions"><a href="#ourpassions">OUR PASSIONS</a></span>
-            <span class="hover:underline float-left px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw"
-            data-target="weconnect"><a href="#weconnect">WE CONNECT</a></span>
+            data-target="ourpassions">OUR PASSIONS</span>
+            <span class="hover:underline float-left px-2 hidden lg:block cursor-pointer scroll-trigger 3xl:px-[1vw]"
+            data-target="weconnect">WE CONNECT</span>
         </ul>
         <div
         class="border-inherit text-xs h-fit 3xl:text-[18px] 4xl:text-[20px] 5xl:text-[35px] 3xl:flex 3xl:flex-row-reverse 3xl:items-center">
@@ -987,9 +987,9 @@ html::-webkit-scrollbar {
                     class="hover:underline border-aloGray border-r p-2 cursor-pointer scroll-trigger"
                     data-target="ourpassions">OUR PASSIONS</a></p>
                 <p><a onclick="showHideNav()" href="#weconnect" class="hover:underline p-2 cursor-pointer"
-                    data-target="weconnect scroll-trigger">WE CONNECT</a></p>
+                    data-target="weconnect" scroll-trigger">WE CONNECT</a></p>
             </div>
-            <div class="text-lg h-fit pt-2">
+            <div class="text-lg h-fit pt-2 pb-[3vh]">
                 <a href="https://it.linkedin.com/company/alo&partners" class="float-right px-2" target="_blank">
                     <svg class="h-[18px]" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
