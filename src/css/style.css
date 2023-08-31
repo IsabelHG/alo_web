@@ -1911,6 +1911,9 @@ video {
     .lg\:right-\[-10vw\] {
         right: -10vw;
     }
+    .lg\:right-\[-5vw\] {
+        right: -5vw;
+    }
     .lg\:top-0 {
         top: 0px;
     }
@@ -1919,6 +1922,9 @@ video {
     }
     .lg\:top-\[25vh\] {
         top: 25vh;
+    }
+    .lg\:right-\[0\] {
+        right: 0;
     }
     .lg\:z-10 {
         z-index: 10;

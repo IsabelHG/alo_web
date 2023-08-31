@@ -162,6 +162,7 @@ if (window.innerWidth >= 1024) {
   var item = document.getElementById("MAIN");
   let scrollDirection = 0;
   const titles = document.querySelectorAll(".box1");
+  const titleCenter = document.querySelectorAll(".box2");
 
   window.addEventListener("wheel", function (e) {
     if (e.deltaY > 0) {
@@ -188,6 +189,9 @@ if (window.innerWidth >= 1024) {
 
     titles.forEach(title => {
       title.style.transform = `translateX(${scrollDirection * 5}%)`
+    })
+    titleCenter.forEach(title => {
+      title.style.transform = `translate(${scrollDirection * 5}%,-50%)`
     })
   })
 }

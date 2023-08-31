@@ -62,8 +62,8 @@ html::-webkit-scrollbar {
     animation: slideImages 8s alternate infinite;
   }
 
-  .box1 {
-    transition: transform 1s ease-in-out;
+  .box1 , .box2 {
+    transition: transform 1s ease-out;
   }
 
 
@@ -154,10 +154,10 @@ html::-webkit-scrollbar {
               </div>
             </div>
             <div
-              class="text-white font-light text-[17vw] md:text-6xl lg:overflow-y-hidden lg:text-[40vh] lg:leading-[0.8] 3xl:text-[40vh] w-full lg:w-[116vw] lg:right-[-10vw] lg:z-10 bottom-32 lg:bottom-auto lg:top-0 uppercase absolute lg:min-w-[230vh] element-show">
+              class="text-white font-light text-[17vw] md:text-6xl lg:text-[40vh] lg:leading-[0.8] 3xl:text-[40vh] w-full lg:w-[116vw] lg:right-[0] lg:z-10 bottom-32 lg:bottom-auto lg:top-0 uppercase absolute lg:min-w-[230vh] element-show">
               <div class="h-[55vw] md:h-[40vh] md:mr-56 md:ml-24 lg:h-[93vh] lg:m-0 relative">
                 <p class="box1 absolute top-0 animate-slideTextM">We are</p>
-                <p class="box1 absolute top-1/2 animate-slideTextR [transform:translateY(-50%)]">impact</p>
+                <p class="box2 absolute top-1/2 animate-slideTextR [transform:translateY(-50%)]">impact</p>
                 <p class="box1 absolute bottom-0 animate-slideTextL">architects</p>
               </div>
             </div>
@@ -313,10 +313,10 @@ html::-webkit-scrollbar {
               class="stickyElement w-screen sticky lg:left-0 lg:w-[130vw] 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 before:bg-black before:w-[1px] before:h-[30%] lg:before:h-2/5 before:left-5 before:absolute before:top-8 lg:before:content-none 3xl:h-[93vh]">
               <div
                 class="w-full h-fit lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] lg:w-[450px] 3xl:w-[20vw] relative md:w-1/2 text-white flex flex-col justify-between pl-14 element-show lg:opacity-0">
-                <h1 class="lg:text-[200px] text-9xl pt-5 box1 4xl:text-[400px]">1</h1>
+                <h1 class="lg:text-[200px] text-9xl pt-5 4xl:text-[400px]">1</h1>
       
                 <p
-                  class="w-full lg:text-4xl mb-2 text-[7.5vw] leading-[8vw] pt-[68px] lg:pt-0 box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+                  class="w-full lg:text-4xl mb-2 text-[7.5vw] leading-[8vw] pt-[68px] lg:pt-0 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
                   WE
                   IDENTIFY
                   <br>
@@ -366,7 +366,7 @@ html::-webkit-scrollbar {
                   <div class="pt-[70px]">
                     <div class="flex gap-y-[2vw] gap-x-[8vw] relative mt-10 3xl:mt-[10vh] flex-wrap lg:flex-col">
                       <h1
-                        class="box1 font-groteskMono absolute text-white lg:text-[14vw] xl:text-[10vw] lg:-top-[5.5rem] -top-[5rem] 3xl:-top-[15vh] left-0 lg:left-[1.5rem] font-bold text-[25vw] 3xl:text-[20vh]">
+                        class="font-groteskMono absolute text-white lg:text-[14vw] xl:text-[10vw] lg:-top-[5.5rem] -top-[5rem] 3xl:-top-[15vh] left-0 lg:left-[1.5rem] font-bold text-[25vw] 3xl:text-[20vh]">
                         CEA</h1>
                       <img src="../src/img/Caso1A_CEA.jpg" class="lg:h-[32vh] w-fit object-contain object-left">
                       <p class="lg:z-10 text-sm self-end pt-[2vh] lg:pt-0 lg:w-[60vw] 3xl:text-[1.2vw] 3xl:leading-none">
@@ -426,12 +426,12 @@ html::-webkit-scrollbar {
                   class="w-full h-fit flex-col-reverse lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] 3xl:w-[20vw] lg:w-[450px] relative md:w-1/2 text-white flex lg:flex-col justify-between lg:flex-wrap-reverse pl-14 element-show lg:opacity-0"
                   id="target">
                   <p
-                    class="lg:text-4xl pt-[68px] lg:pt-[70px] text-[7.5vw] leading-[8vw] box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+                    class="lg:text-4xl pt-[68px] lg:pt-[70px] text-[7.5vw] leading-[8vw] 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
                     WE MOBILIZE<br>
                     KNOWLEDGE<br>
                     AND RESOURCES
                   </p>
-                  <h1 class="lg:text-[200px] lg:pt-20 text-9xl box1 4xl:text-[400px]">2</h1>
+                  <h1 class="lg:text-[200px] lg:pt-20 text-9xl 4xl:text-[400px]">2</h1>
                 </div>
                 <div class="md:w-1/2 md:ps-6 lg:w-[65vw] flex flex-col justify-between 3xl:h-[80vh] element-show lg:opacity-0 lg:pr-[5vw]">
                   <img src="../src/img/Caso2.jpg"
@@ -526,15 +526,15 @@ html::-webkit-scrollbar {
               id="targetDiv2">
                 <div
                   class="lg:h-[calc(100vh-6rem)] overflow-x-hidden flex flex-col lg:flex-row lg:block lg:pl-14 lg:pt-2 element-show lg:opacity-0">
-                  <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 box1 z-[1] 4xl:text-[400px] lg:hidden">3</h1>
+                  <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 z-[1] 4xl:text-[400px] lg:hidden">3</h1>
                   <h1
-                    class="z-[1] lg:text-4xl text-[7.5vw] leading-[8vw] w-[90%] lg:w-1/2 text-white pt-[68px] lg:pt-0 pl-14 lg:pl-0 box1 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+                    class="z-[1] lg:text-4xl text-[7.5vw] leading-[8vw] w-[90%] lg:w-1/2 text-white pt-[68px] lg:pt-0 pl-14 lg:pl-0 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
                     WE BOLSTER OUR INITIATIVES
                     WITH NEXT GENERATION
                     INNOVATION AND TECHNOLOGY</h1>
                   <img src="../src/img/Caso3.jpg" class="w-[33vw] absolute right-[20px] lg:hidden">
                   <div class="flex flex-col lg:flex-row gap-14 3xl:py-[5vh]">
-                    <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 box1 z-[1] 4xl:text-[400px] hidden lg:block">3
+                    <h1 class="text-9xl lg:text-[200px] text-white pl-14 lg:pl-0 z-[1] 4xl:text-[400px] hidden lg:block">3
                     </h1>
                     <img src="../src/img/Caso3.jpg"
                       class="w-44 mt-10 absolute right-[20px] top-[300px] lg:static 3xl:h-[50vh] 3xl:w-auto hidden lg:block">
