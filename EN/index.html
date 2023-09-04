@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- CSS Local Styles -->
   <link rel="stylesheet" href="../src/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -85,10 +87,10 @@ html::-webkit-scrollbar {
   }
 </style>
 
-<body class="font-grotesk lg:flex lg:h-[93vh] scroll-smooth lg:overflow-hidden">
-  
+<body class="font-grotesk lg:flex lg:h-[93vh] scroll-smooth">
+  <div class="js-virtual-scroll lg:flex">
     <div class="flex flex-col lg:flex-row">
-        <div id="home" class="bg-aloWhite lg:min-w-[300vh] w-[100vw] h-[93vh] lg:w-[165vw] relative">
+        <div id="home" class="bg-aloWhite lg:min-w-[300vh] w-[100vw] h-[93vh] lg:w-[165vw] relative" data-scroll data-scroll-id="home">
           <div class="lg:flex lg:items-end">
             <div
               class="flex justify-end absolute w-full 3xl:w-[25vw] top-0 right-0 md:max-w-[50%] lg:static lg:h-[93vh] lg:flex-col-reverse lg:left-0 lg:items-end lg:w-[20vw] lg:min-w-[280px] element-show lg:opacity-0">
@@ -180,7 +182,7 @@ html::-webkit-scrollbar {
         </div>
     </div>
     <div class="flex">
-        <div id="weare" class="pb-12 bg-aloGreen text-white w-full relative lg:w-[235vw] lg:flex lg:h-[93vh]">
+        <div id="weare" class="pb-12 bg-aloGreen text-white w-full relative lg:w-[235vw] lg:flex lg:h-[93vh]" data-scroll data-scroll-id="weare">
           <div
             class="h-[15vh] lg:h-[93vh] md:h-52 w-full lg:w-[20vw] lg:min-w-[200px] bg-[length:200%] lg:bg-cover bg-no-repeat bg-center bg-[url('/src/img/01_Weare.jpg')]">
           </div>
@@ -267,7 +269,7 @@ html::-webkit-scrollbar {
         </div>
     </div>
     <div class="flex">
-        <div id="wedo" class="lg:pb-12 bg-aloBlue text-white w-full relative lg:w-fit lg:flex lg:h-[93vh]">
+        <div id="wedo" class="lg:pb-12 bg-aloBlue text-white w-full relative lg:w-fit lg:flex lg:h-[93vh]" data-scroll data-scroll-id="wedo">
             <div
               class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:h-[93vh] lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
               <div class="lg:-rotate-90 flex relative tracking-normal">
@@ -313,10 +315,10 @@ html::-webkit-scrollbar {
               class="stickyElement w-screen sticky lg:left-0 lg:w-[130vw] 3xl:py-[5vh] text-black md:flex md:px-6 md:pb-12 lg:pt-6 before:bg-black before:w-[1px] before:h-[30%] lg:before:h-2/5 before:left-5 before:absolute before:top-8 lg:before:content-none 3xl:h-[93vh]">
               <div
                 class="w-full h-fit lg:h-[calc(100vh-6rem)] 3xl:h-[80vh] lg:w-[450px] 3xl:w-[20vw] relative md:w-1/2 text-white flex flex-col justify-between pl-14 element-show lg:opacity-0">
-                <h1 class="lg:text-[200px] text-9xl pt-5 4xl:text-[400px]">1</h1>
+                <h1 class="lg:text-[200px] text-9xl pt-5 4xl:text-[400px] box1">1</h1>
       
                 <p
-                  class="w-full lg:text-4xl mb-2 text-[7.5vw] leading-[8vw] pt-[68px] lg:pt-0 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none">
+                  class="w-full lg:text-4xl mb-2 text-[7.5vw] leading-[8vw] pt-[68px] lg:pt-0 3xl:text-[50px] 4xl:text-[75px] 5xl:text-[100px] 3xl:leading-none box1">
                   WE
                   IDENTIFY
                   <br>
@@ -360,7 +362,7 @@ html::-webkit-scrollbar {
               </div>
               </div>
               <div
-              class="w-screen lg:w-[135vw] text-black md:px-6 md:pb-12 relative"
+              class="w-screen lg:w-[135vw] text-black md:px-6 md:pb-12 relative" data-scroll data-scroll-speed="5"
               id="prueba">
                 <div class="flex flex-col lg:gap-28 lg:flex-row bg-aloWhite lg:px-[8vw] px-5 pb-32 lg:pb-0 relative z-[2] lg:w-full lg:h-[93vh] rounded-t-[1.5rem] lg:rounded-l-[1.5rem] lg:rounded-r-none">
                   <div class="pt-[70px]">
@@ -466,7 +468,7 @@ html::-webkit-scrollbar {
                 </div>
               </div>
               <div class="pb-[40px] w-screen lg:w-[140vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba2"
-                style="padding: 0;">
+                style="padding: 0;" data-scroll data-scroll-speed="5">
                 <div class="flex flex-col bg-aloWhite mt-20 pl-5 lg:px-[8vw] pb-32 lg:pb-0 relative z-[2] lg:mt-0 lg:flex-row lg:gap-[8vw] lg:min-h-[93vh] rounded-t-[1.5rem] lg:rounded-s-[1.5rem] lg:rounded-e-none">
                   <div class="pt-[70px]">
                     <div class="flex lg:flex-row flex-col lg:gap-12 gap-14 relative lg:mt-[25vh] 3xl:mt-[30vh] 4xl:mt-[35vh] pr-5 lg:p-0">
@@ -565,7 +567,7 @@ html::-webkit-scrollbar {
                   </h1>
                 </div>
               </div>
-              <div class="w-screen lg:w-[245vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;">
+              <div class="w-screen lg:w-[245vw] text-black md:px-6 md:pb-12 lg:pt-6 relative" id="prueba3" style="padding: 0;" data-scroll data-scroll-speed="5">
                 <div class="pb-[40px] flex flex-col bg-aloWhite lg:px-[8vw] mt-20 px-5 relative z-[2] lg:flex-row lg:mt-0 lg:h-[93vh] lg:gap-[8vw] lg:pb-0 rounded-t-[1.5rem] lg:rounded-s-[1.5rem] lg:rounded-e-none">
                   <div class="pt-[70px]">
                     <div class="flex gap-12 flex-col lg:flex-row relative lg:mt-0 mt-5 3xl:mt-[10vh] 4xl:mt-[15vh]">
@@ -658,7 +660,7 @@ html::-webkit-scrollbar {
           </div>
     </div>
     <div class="flex">
-        <div id="ourpassions" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white">
+        <div id="ourpassions" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white" data-scroll data-scroll-id="ourpassions">
           <div
             class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:h-[93vh] lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
             <div class="lg:-rotate-90 flex relative tracking-normal">
@@ -712,7 +714,7 @@ html::-webkit-scrollbar {
         </div>
     </div>
     <div class="flex">
-        <div id="weconnect" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white">
+        <div id="weconnect" class="bg-aloGray w-screen lg:h-[93vh] lg:flex lg:items-center text-white" data-scroll data-scroll-id="weconnect">
           <div
             class="tracking-[0.2rem] py-4 w-full overflow-hidden lg:h-[93vh] lg:w-56 font-light text-[10vh] lg:text-[120px] 3xl:text-[10vw] 3xl:w-[15vw] element-show lg:opacity-0">
             <div class="lg:-rotate-90 flex relative tracking-normal">
@@ -867,6 +869,7 @@ html::-webkit-scrollbar {
           </div>
         </div>
     </div>
+  </div>
 
     <div
   class="bg-aloGray w-screen h-screen lg:h-[100vh] lg:flex lg:items-center overflow-hidden fixed top-0 left-0 z-[999] animate-disappear">

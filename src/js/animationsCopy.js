@@ -31,6 +31,70 @@ function obtenerPosicion(elemento) {
   return { x: x, y: y }; // devolver un objeto con las coordenadas
 }
 
+const virtualScrollSelector = '.js-virtual-scroll';
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector(virtualScrollSelector),
+  smooth: true,
+  direction: 'horizontal',
+})
+
+locoScroll.on('scroll', (args) => {
+  if (typeof args.currentElements['home'] === 'object') {
+      colorWhite();
+      textGray();
+  }
+
+  if (typeof args.currentElements['weare'] === 'object') {
+    let progress = args.currentElements['weare'].progress;
+    console.log(progress);
+    if (progress > 0.28) {
+      colorBrown();
+      textGray();
+    }
+  }
+
+  if (typeof args.currentElements['wedo'] === 'object') {
+    let progress = args.currentElements['wedo'].progress;
+    if (progress > 0.090) {
+      colorGreen();
+      textGray();
+    }
+  }
+
+  if (typeof args.currentElements['ourpassions'] === 'object') {
+    let progress = args.currentElements['ourpassions'].progress;
+    if (progress > 0.47) {
+      colorWhite();
+      textGray();
+    }
+  }
+
+  if (typeof args.currentElements['weconnect'] === 'object') {
+    let progress = args.currentElements['weconnect'].progress;
+    if (progress > 0.47) {
+      colorGray();
+      textWhite();
+    }
+    console.log(progress);
+  }
+})
+
+const scrollTriggers = document.querySelectorAll(".scroll-trigger");
+scrollTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const targetID = trigger.dataset.target;
+    const targetElement = document.getElementById(targetID);
+
+    const targetPosition = obtenerPosicion(targetElement);
+
+    locoScroll.scrollTo(targetPosition.x, {
+      smooth: true,
+      duration: 2000, // Duración de la animación en segundos
+    })
+
+  });
+});
 let elementoHome = document.getElementById("home"); // obtener el elemento por su id
 let posicionHome = obtenerPosicion(elementoHome); // llamar a la función para obtener su posición
 let elementoWeAre = document.getElementById("weareline"); // obtener el elemento por su id
@@ -301,7 +365,7 @@ elements.forEach(element => {
   observer.observe(element)
 })
 
-// Obtener todos los elementos con la clase "scroll-trigger"
+/* // Obtener todos los elementos con la clase "scroll-trigger"
 const scrollTriggers = document.querySelectorAll(".scroll-trigger");
 // Agregar un evento de clic a cada elemento "span"
 scrollTriggers.forEach((trigger) => {
@@ -317,4 +381,4 @@ scrollTriggers.forEach((trigger) => {
       ease: "power2.inOut", // Curva de animación, puedes ajustarla según tus preferencias
     });
   });
-});
+}); */
